@@ -130,23 +130,30 @@
     <ClCompile Include="Alien Invasion.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlienArmy.h" />
     <ClInclude Include="AlienDrone.h" />
     <ClInclude Include="AlienMonster.h" />
     <ClInclude Include="AlienSoldier.h" />
+    <ClInclude Include="AlienSoldiersQ.h" />
     <ClInclude Include="ArrayStack.h" />
     <ClInclude Include="ArmyUnit.h" />
+    <ClInclude Include="Deque.h" />
+    <ClInclude Include="EarthArmy.h" />
     <ClInclude Include="EarthGunnery.h" />
     <ClInclude Include="EarthSoldier.h" />
+    <ClInclude Include="EarthSoldierQ.h" />
     <ClInclude Include="EarthTank.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameconfig.h" />
     <ClInclude Include="Generator.h" />
+    <ClInclude Include="GunneryPriQ.h" />
     <ClInclude Include="LinkedQueue.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="priNode.h" />
     <ClInclude Include="priQueue.h" />
     <ClInclude Include="QueueADT.h" />
     <ClInclude Include="StackADT.h" />
+    <ClInclude Include="TanksStack.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Generator Data.txt" />

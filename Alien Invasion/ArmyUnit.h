@@ -69,7 +69,7 @@ public:
 	}
 	void set_power(int power) {
 		this->power = power;
-	}
+	}	
 
 	void set_attack_capacity(int attack_capacity) {
 		this->attack_capacity = attack_capacity;

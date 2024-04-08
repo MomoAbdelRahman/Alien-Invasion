@@ -25,6 +25,15 @@
     <Filter Include="AlienUnits">
       <UniqueIdentifier>{9751e120-d84e-467e-9861-fb14b0db042a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ArmyUnits">
+      <UniqueIdentifier>{b5ade964-ae0d-44b9-ab1a-bcc8e37e32eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Earth Lists">
+      <UniqueIdentifier>{c280a08b-57ab-4a2c-bd5c-4a14f7980774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Alien Lists">
+      <UniqueIdentifier>{4edbe4e0-0289-42e2-a2e2-04097af451c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Alien Invasion.cpp">
@@ -82,6 +91,27 @@
     </ClInclude>
     <ClInclude Include="AlienDrone.h">
       <Filter>AlienUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthArmy.h">
+      <Filter>ArmyUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienArmy.h">
+      <Filter>ArmyUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="Deque.h">
+      <Filter>DataStructures\Basic ADT</Filter>
+    </ClInclude>
+    <ClInclude Include="GunneryPriQ.h">
+      <Filter>Earth Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="TanksStack.h">
+      <Filter>Earth Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthSoldierQ.h">
+      <Filter>Earth Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienSoldiersQ.h">
+      <Filter>Alien Lists</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
