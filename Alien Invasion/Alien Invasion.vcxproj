@@ -130,8 +130,16 @@
     <ClCompile Include="Alien Invasion.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlienDrone.h" />
+    <ClInclude Include="AlienMonster.h" />
+    <ClInclude Include="AlienSoldier.h" />
     <ClInclude Include="ArrayStack.h" />
     <ClInclude Include="ArmyUnit.h" />
+    <ClInclude Include="EarthGunnery.h" />
+    <ClInclude Include="EarthSoldier.h" />
+    <ClInclude Include="EarthTank.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="gameconfig.h" />
     <ClInclude Include="Generator.h" />
     <ClInclude Include="LinkedQueue.h" />
     <ClInclude Include="Node.h" />

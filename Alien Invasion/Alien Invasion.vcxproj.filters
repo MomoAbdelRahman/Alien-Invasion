@@ -13,8 +13,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\DataStructures">
+    <Filter Include="DataStructures">
       <UniqueIdentifier>{14205598-6db4-4541-b66c-667e46d93831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructures\Basic ADT">
+      <UniqueIdentifier>{a33447f4-9d50-404c-a012-dc7db9d633a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EarthUnits">
+      <UniqueIdentifier>{813552b9-9fcc-435e-ada6-3c8ec498d3c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AlienUnits">
+      <UniqueIdentifier>{9751e120-d84e-467e-9861-fb14b0db042a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -23,32 +32,56 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArrayStack.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="LinkedQueue.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="Node.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="priNode.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="priQueue.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="QueueADT.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="StackADT.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
     <ClInclude Include="ArmyUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StackADT.h">
+      <Filter>DataStructures\Basic ADT</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrayStack.h">
+      <Filter>DataStructures\Basic ADT</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>DataStructures\Basic ADT</Filter>
+    </ClInclude>
+    <ClInclude Include="priNode.h">
+      <Filter>DataStructures\Basic ADT</Filter>
+    </ClInclude>
+    <ClInclude Include="priQueue.h">
+      <Filter>DataStructures\Basic ADT</Filter>
+    </ClInclude>
+    <ClInclude Include="QueueADT.h">
+      <Filter>DataStructures\Basic ADT</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedQueue.h">
+      <Filter>DataStructures\Basic ADT</Filter>
+    </ClInclude>
     <ClInclude Include="Generator.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gameconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthSoldier.h">
+      <Filter>EarthUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthTank.h">
+      <Filter>EarthUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthGunnery.h">
+      <Filter>EarthUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienSoldier.h">
+      <Filter>AlienUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienMonster.h">
+      <Filter>AlienUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienDrone.h">
+      <Filter>AlienUnits</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,8 @@
 #pragma once
 #include<iostream>
 using namespace std;
+//This class is the base class for all the army units
+//This includes both Earth and Alien army units
 enum TYPE
 {
 	EARTHSOLDIER,
@@ -11,7 +13,7 @@ enum TYPE
 	DRONE
 };
 class ArmyUnit {
-private:
+protected:
 	//Data members
 	int id;
 	TYPE type;
@@ -83,5 +85,6 @@ public:
 		cout << "Attack Capacity: " << attack_capacity << endl;
 		cout << endl;
 	}
-
+	//Pure virtual function for attack that will be different for each derived class
+	virtual bool attack()=0;
 };
