@@ -1,16 +1,15 @@
 #pragma once
-#include "AlienDrone.h"
-#include "AlienMonster.h"
-#include "AlienSoldier.h"
+#include "AlienSoldiersQ.h"
+#include "AlienDronesDQ.h"
+#include "AlienMonstersArr.h"
 #include "LinkedQueue.h"
-#include "Deque.h"
 
 //AlienArmy class that holds all the units of aliens army
 class AlienArmy {
 private:
-	LinkedQueue<AlienSoldier*> AlienSoldiers; //Queue of AlienSoldiers
-	Deque<AlienDrone*> AlienDrones; //Deque of AlienDrones
-	AlienMonster** AlienMonsters = new AlienMonster*[100]; //Dynamic Array of AlienMonsters
+	AlienSoldierQueue AlienSoldiers; //Queue of AlienSoldiers
+	AlienDronesDequeue AlienDrones; //Deque of AlienDrones
+	AlienMonstersArray AlienMonsters;//Dynamic Array of AlienMonsters
 	LinkedQueue<ArmyUnit*> KilledAliens; //Queue of KilledAliens
 public:
 	AlienArmy();

@@ -23,7 +23,7 @@ public:
 		}
 	}
 
-	bool double_dequeue() {
+	bool double_dequeue(T &r1, T &r2) {
 		if (this->isEmpty()) {
 			return false;
 		}
@@ -41,17 +41,18 @@ public:
 				newrear = newrear->getNext();
 			}
 			if(newfront==this->backPtr && newrear==this->frontPtr) {
-				delete this->frontPtr;
-				delete this->backPtr;
+				r1 = this->frontPtr->getItem();
+				r2 = this->backPtr->getItem();
 				this->frontPtr = nullptr;
 				this->backPtr = nullptr;
 				return true;
 			}
-			delete this->frontPtr;
+			r1= this->frontPtr->getItem();
+			r2= this->backPtr->getItem();
 			this->frontPtr = newfront;
-			delete this->backPtr;
 			this->backPtr = newrear;
 			newrear->setNext(nullptr);
+			return true;
 		}
 	}
 

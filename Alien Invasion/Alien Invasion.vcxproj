@@ -132,7 +132,9 @@
   <ItemGroup>
     <ClInclude Include="AlienArmy.h" />
     <ClInclude Include="AlienDrone.h" />
+    <ClInclude Include="AlienDronesDQ.h" />
     <ClInclude Include="AlienMonster.h" />
+    <ClInclude Include="AlienMonstersArr.h" />
     <ClInclude Include="AlienSoldier.h" />
     <ClInclude Include="AlienSoldiersQ.h" />
     <ClInclude Include="ArrayStack.h" />

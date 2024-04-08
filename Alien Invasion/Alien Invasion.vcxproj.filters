@@ -113,6 +113,12 @@
     <ClInclude Include="AlienSoldiersQ.h">
       <Filter>Alien Lists</Filter>
     </ClInclude>
+    <ClInclude Include="AlienMonstersArr.h">
+      <Filter>Alien Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienDronesDQ.h">
+      <Filter>Alien Lists</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Generator Data.txt">
