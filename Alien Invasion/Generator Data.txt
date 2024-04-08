@@ -1,0 +1,22 @@
+n
+ES% ET% EG%
+AS% AM% AD%
+Prob
+
+EMinPower-EMaxPower EMinHealth-EMaxHealth EMinCapacity-EMaxCapacity
+AMinPower-AMaxPower AMinHealth-AMaxHealth AMinCapacity-AMaxCapacity
+
+end
+
+N=Number of units to be generated per time step
+
+ES%= Percentage of Earth Army that are soldiers
+ET%= Percentage of Earth Army that are tanks
+EG%= Percentage of Earth Army that are gunnery
+
+AS%= Percentage of Alien Army that are soldiers
+AM%= Percentage of Alien Army that are Monsters
+AD%= Percentage of Alien Army that are Drones
+
+Prob= Probability of generating units at each time step
+
