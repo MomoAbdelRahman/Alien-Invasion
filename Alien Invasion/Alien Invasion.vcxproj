@@ -147,7 +147,6 @@
     <ClInclude Include="EarthTank.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameconfig.h" />
-    <ClInclude Include="Generator.h" />
     <ClInclude Include="GunneryPriQ.h" />
     <ClInclude Include="LinkedQueue.h" />
     <ClInclude Include="Node.h" />
@@ -159,7 +158,7 @@
     <ClInclude Include="TanksStack.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Generator Data.txt" />
+    <Text Include="Generator template.txt" />
     <Text Include="Generator_Sample.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

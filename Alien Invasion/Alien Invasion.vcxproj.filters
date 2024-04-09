@@ -65,9 +65,6 @@
     <ClInclude Include="LinkedQueue.h">
       <Filter>DataStructures\Basic ADT</Filter>
     </ClInclude>
-    <ClInclude Include="Generator.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
     <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -124,7 +121,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Generator Data.txt">
+    <Text Include="Generator template.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="Generator_Sample.txt">
