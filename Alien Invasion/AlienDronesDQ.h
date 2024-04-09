@@ -39,4 +39,7 @@ public:
 		}
 		cout << "]" << endl;
 	}
+	int get_count(){
+		return count;
+	}
 };

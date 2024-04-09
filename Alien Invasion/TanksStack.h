@@ -45,4 +45,7 @@ public:
 			push(tank);
 		}
 	}
+	int get_count() { //get_count function to return the count of the number of tank units
+		return count;
+	}
 };

@@ -39,4 +39,7 @@ private:
 			enqueue(soldier);
 		}
 	}
+	int get_count() { //Returns the total number of EarthSoldier objects in the queue
+		return count;
+	}
 };

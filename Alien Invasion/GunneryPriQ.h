@@ -45,4 +45,7 @@ public:
 			enqueue(temp, next);
 		}
 	}
+	int get_count() { //Return the total number of Gunnery Units
+		return count;
+	}
 };

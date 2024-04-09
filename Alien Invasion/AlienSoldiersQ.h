@@ -39,4 +39,7 @@ public:
 			enqueue(soldier);
 		}
 	}
+	int get_count() { //Returns the total number of AlienSoldier objects in the queue
+		return count;
+	}
 };

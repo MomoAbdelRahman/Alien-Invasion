@@ -45,4 +45,7 @@ public:
 		cout << "]" << endl;
 	}
 
+	int get_count() { //Returns the number of AlienMonster objects in the array
+		return count;
+	}
 };

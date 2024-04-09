@@ -17,4 +17,14 @@ public:
 	bool addunit(ArmyUnit* unit); //Adds any army unit to the army based on the enum type
 	bool removeunit(ArmyUnit* unit); //Remove unit from the army based on the enum type
 	void print(); //Prints all the units in the army
+
+	int get_soldier_id() {
+		return EarthSoldiers.get_count();
+	}
+	int get_tank_id() {
+		return EarthTanks.get_count();
+	}
+	int get_gunnery_id() {
+		return EarthGunnery.get_count();
+	}
 };

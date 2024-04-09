@@ -4,6 +4,7 @@
 //Alien Monster class that inherits from the more general Army Unit class
 class AlienMonster : public ArmyUnit
 {
+public:
 	AlienMonster(int id, int health, int power, int jointime, int attackcapcity):ArmyUnit(id,MONSTER,health,jointime,power,attackcapcity){
 	}
 

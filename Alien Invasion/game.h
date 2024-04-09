@@ -4,12 +4,15 @@
 #include <iostream>
 #include <math.h>
 #include "gameconfig.h"
+#include "AlienArmy.h"
+#include "EarthArmy.h"
+#include "RandomGenerator.h"
 using namespace std;
 class game{
 private:
 	//Instance of gameconfig to held values
 	gameconfig config;
-
+	int time;
 	//Function to read the configuration data from a text file
 	void read_data() {
 		ifstream Data("Generator_Sample.txt");
@@ -41,6 +44,14 @@ private:
 		config.max_alien_health = abs(config.max_alien_health);
 		config.max_alien_capacity = abs(config.max_alien_capacity);
 	}
-
-
+	//An instance of the random generator to manage the random creation of units
+	randgen generator;
+	//The two armies
+	AlienArmy aliens;
+	EarthArmy Humans;
+	//The function called to start the game
+	void go() {
+		read_data();//Read the data from the file
+		generator= randgen(config);//Create the random generator with the configuration data
+	}
 };
