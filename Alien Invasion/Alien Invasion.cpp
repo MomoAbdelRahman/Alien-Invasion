@@ -15,7 +15,7 @@ int main()
 	X=abs(X);
 
 	if (X < 10) {
-	  ArmyUnit* e = nullptr;
+		ArmyUnit* e = nullptr;
 		g.Humans.removeunit(EARTHSOLDIER, e);
 		cout << "Removed ES" << endl;
 		g.printstate();
@@ -60,28 +60,27 @@ int main()
 		cout << "Aliens updated" << endl;
 		g.printstate();
 	}
-  else if(X > 40 && X < 50){
-    ArmyUnit* unit = nullptr;
-    ArmyUnit* unit2 = nullptr;
-    for (int i = 0; i < 5; i++) {
-      g.Aliens.removeunit(MONSTER, unit, unit2);
-      g.Aliens.addunit(unit);
-    }
-    cout<<"Aliens updated"<<endl;
-    g.printstate();
-  }
-  else if( X > 50 && X < 60) { 
-    ArmyUnit *unit = nullptr;
-    ArmyUnit *unit2 = nullptr;
-    for (int i = 0; i < 3; i++){
-      g.Aliens.removeunit(DRONE, unit, unit2);
-      g.Aliens.killunit(unit);
-      g.Aliens.killunit(unit2);
-    }
-    cout << "Aliens updated" << endl << endl;
-
-    }
+	else if(X > 40 && X < 50){
+		ArmyUnit* unit = nullptr;
+		ArmyUnit* unit2 = nullptr;
+		for (int i = 0; i < 5; i++) {
+			g.Aliens.removeunit(MONSTER, unit, unit2);
+			g.Aliens.addunit(unit);
+		}
+		cout<<"Aliens updated"<<endl;
+		g.printstate();
 	}
+	else if( X > 50 && X < 60) { 
+		ArmyUnit *unit = nullptr;
+		ArmyUnit *unit2 = nullptr;
+		for (int i = 0; i < 3; i++){
+			g.Aliens.removeunit(DRONE, unit, unit2);
+			g.Aliens.killunit(unit);
+			g.Aliens.killunit(unit2);
+		}
+		cout << "Aliens updated" << endl << endl;
+    }
+}
 
   
   g.printstate();

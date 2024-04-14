@@ -79,4 +79,7 @@ public:
 	int get_next_id() {
 		return get_soldier_id()+get_tank_id()+get_gunnery_id()+1; //Returns the next id to be assigned to a new unit by adding the total number of units in the army
 	}
+	int get_killcount() {
+		return killcount; //Returns the total number of units killed
+	}
 };

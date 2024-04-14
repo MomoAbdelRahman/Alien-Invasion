@@ -86,4 +86,10 @@ public:
 		}
 		time++;
 	}
+	void print_killed(){
+		cout << "Killed:";
+		int killcount=Humans.get_killcount()+Aliens.get_killcount();
+		LinkedQueue<ArmyUnit*> temp;
+		while()
+	}
 };

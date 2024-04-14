@@ -83,4 +83,26 @@ public:
 	int get_next_id() {
 		return (AlienSoldiers.get_count() + AlienDrones.get_count() + AlienMonsters.get_count() + 1);
 	}
+	int get_killcount() {
+		return killcount;
+	}
+
+	void print_killed() {
+		LinkedQueue<ArmyUnit*> temp;
+		while(!KilledAliens.isEmpty()) {
+			ArmyUnit* temp2;
+			KilledAliens.dequeue(temp2);
+			temp.enqueue(temp2);
+			cout << temp2->get_id();
+			if(!temp.isEmpty()) {
+				cout << ",";
+			}
+		}
+		while(!temp.isEmpty()) {
+			ArmyUnit* temp3;
+			temp.dequeue(temp3);
+			KilledAliens.enqueue(temp3);
+		}
+		cout << "]";
+	}
 };
