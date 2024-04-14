@@ -16,8 +16,8 @@ public:
 	}
 
 	void removeDrones(AlienDrone* &removed1, AlienDrone* &removed2){
-		double_dequeue(removed1, removed2); //Removing the AlienDrone units from the front and back of the Deque
-		count = count - 2;
+		if (double_dequeue(removed1, removed2)) //Removing the AlienDrone units from the front and back of the Deque
+  		count = count - 2;
 	}
 
 	void print(){
