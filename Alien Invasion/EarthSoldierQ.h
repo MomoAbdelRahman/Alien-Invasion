@@ -8,7 +8,7 @@ class EarthSoldierQueue : public LinkedQueue<EarthSoldier*>
 {
 private:
 	int count; //Keeps track of the number of EarthSoldier objects in the queue
-	public:
+public:
 	EarthSoldierQueue():LinkedQueue(){
 		count = 0;
 	}

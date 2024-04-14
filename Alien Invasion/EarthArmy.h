@@ -34,7 +34,19 @@ public:
 	
 	}
 
-	bool removeunit(ArmyUnit* unit); //Remove unit from the army based on the enum type
+	ArmyUnit* removeunit(TYPE t){ //Removes any army unit from the army based on the enum type
+		ArmyUnit* unit = nullptr;
+		switch (t) {
+		case EARTHSOLDIER:
+			return(EarthSoldiers.remove_earthsoldier());
+		case TANK:
+			return(EarthTanks.removeTank());
+		case GUNNERY:
+			return(EarthGunneries.RemoveGunnery());
+		}
+	}
+	
+
 	
 	void print() { //Prints the army
 		EarthSoldiers.print(); //Prints the soldiers in the army

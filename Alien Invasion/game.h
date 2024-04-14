@@ -6,7 +6,7 @@
 #include "RandomGenerator.h"
 using namespace std;
 class game{
-private:
+public:
 	//Instance of gameconfig to held values
 	gameconfig config;
 	int time;
@@ -59,7 +59,6 @@ private:
 		}
 		time++;
 	}
-public:
 	game() {
 		time = 0;
 		go();
