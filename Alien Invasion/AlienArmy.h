@@ -94,7 +94,7 @@ public:
 			KilledAliens.dequeue(temp2);
 			temp.enqueue(temp2);
 			cout << temp2->get_id();
-			if(!temp.isEmpty()) {
+			if(!KilledAliens.isEmpty()) {
 				cout << ",";
 			}
 		}
@@ -103,6 +103,5 @@ public:
 			temp.dequeue(temp3);
 			KilledAliens.enqueue(temp3);
 		}
-		cout << "]";
 	}
 };

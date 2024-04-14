@@ -72,10 +72,14 @@ public:
 	}
 
 	void printstate() {
+		cout<<"Time:"<<time<<endl;//Print the time"
 		cout << "======================Earth Army========================" << endl;
 		Humans.print();
 		cout << "======================Alien Army========================" << endl;
 		Aliens.print();
+		cout << "======================Killed========================" << endl;
+		print_killed();
+		cout << "======================================================" << endl << endl << endl;
 	}
 
 	void steptime() { //Function to simulate a time step and add new units to the armies if the probability is met
@@ -87,9 +91,8 @@ public:
 		time++;
 	}
 	void print_killed(){
-		cout << "Killed:";
-		int killcount=Humans.get_killcount()+Aliens.get_killcount();
-		LinkedQueue<ArmyUnit*> temp;
-		while()
+		cout << "Killed:"<<Humans.get_killcount()+Aliens.get_killcount()<<"[";
+		Humans.print_killed();
+		cout << "]" << endl;;
 	}
 };

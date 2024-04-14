@@ -46,7 +46,7 @@ public:
 			break;
 		case TANK:
 			EarthTanks.removeTank(temp2);
-			unit = temp;
+			unit = temp2;
 			break;
 		case GUNNERY:
 			EarthGunneries.RemoveGunnery(temp3);
@@ -57,7 +57,6 @@ public:
 	
 
 	void killunit(ArmyUnit* unit) { //Kills any army unit and adds it to the KilledEarth queue
-		cout << "Killing..." << endl;
 		KilledEarth.enqueue(unit);
 		killcount++;
 	}
@@ -81,5 +80,22 @@ public:
 	}
 	int get_killcount() {
 		return killcount; //Returns the total number of units killed
+	}
+	void print_killed() {
+		LinkedQueue<ArmyUnit*> temp;
+		while (!KilledEarth.isEmpty()) {
+			ArmyUnit* temp2;
+			KilledEarth.dequeue(temp2);
+			temp.enqueue(temp2);
+			cout << temp2->get_id();
+			if (!KilledEarth.isEmpty()) {
+				cout << ",";
+			}
+		}
+		while (!temp.isEmpty()) {
+			ArmyUnit* temp3;
+			temp.dequeue(temp3);
+			KilledEarth.enqueue(temp3);
+		}
 	}
 };
