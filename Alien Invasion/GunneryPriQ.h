@@ -10,22 +10,23 @@ private:
 	int count = 0; //Total number of Gunnery Units
 	int next = 0; //Priority of the next Gunnery Unit to be removed
 public:
-	GunneryPriQueue() :priQueue() {
+	GunneryPriQueue() :priQueue() { //Constructor
+		count = 0;
+		next = 0;
 
 	}
 
 	void AddGunnery(EarthGunnery* gunnery) { //Add a new Gunnery Unit to the priority queue
-		count++;
 		int priority = (gunnery->get_health() + gunnery->get_power());
 		enqueue(gunnery, priority);
 		if (priority > next) //Update the priority of the next Gunnery Unit to be removed
 			next = priority;
+		count++;
 	}
-	EarthGunnery* RemoveGunnery() {
-		EarthGunnery* toberemoved;
-		count--; //Decrease the total number of Gunnery Units
-		dequeue(toberemoved, next); //Remove the Gunnery Unit with the highest priority
-		return toberemoved;//Return a pointer to the removed Gunnery Unit
+	void RemoveGunnery(EarthGunnery* &gunner) {
+		if (dequeue(gunner, next)) {//Remove the Gunnery Unit with the highest priority
+			count--;
+		} 
 	}
 
 	void print() { //Print the Gunnery Units in the priority queue
@@ -36,7 +37,7 @@ public:
 			EarthGunnery* temp;
 			dequeue(temp, next);
 			cout << temp->get_id();
-			if(!t.isEmpty())
+			if(!isEmpty())
 				cout << ",";
 			t.enqueue(temp, next);
 		}
@@ -49,5 +50,9 @@ public:
 	}
 	int get_count() { //Return the total number of Gunnery Units
 		return count;
+	}
+
+	void select_gunnery(EarthGunnery* gunnery) {
+		this->peek(gunnery,next);
 	}
 };

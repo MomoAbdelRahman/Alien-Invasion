@@ -20,9 +20,8 @@ public :
 	void setNext(priNode<T>* nextNodePtr)
 	{		next = nextNodePtr; 	}
 	
-	T getItem(int& PRI) const
+	T getItem() const
 	{
-		PRI = pri;
 		return item;
 	}
 	

@@ -17,11 +17,10 @@ public:
 		count++;
 	}
 
-	EarthSoldier* remove_earthsoldier(){ //Dequeues an EarthSoldier object from the queue and returns a pointer to it
-		EarthSoldier* soldier;
-		dequeue(soldier);
-		count--;
-		return soldier;
+	void remove_earthsoldier(EarthSoldier* &soldier){ //Dequeues an EarthSoldier object from the queue and returns a pointer to it
+		if(dequeue(soldier)){
+			count--;
+		}
 	}
 	void print() { //Prints the ID of all EarthSoldier objects in the queue along with the total number of EarthSoldier objects
 		//cout << "======================Earth Soldier Units========================" << endl;
@@ -30,7 +29,10 @@ public:
 		EarthSoldier* soldier;
 		while (!isEmpty()) {
 			dequeue(soldier);
-			cout << soldier->get_id() << " ";
+			cout << soldier->get_id();
+			if (!isEmpty()) {
+				cout << ",";
+			}
 			temp.enqueue(soldier);
 		}
 		cout << "]" << endl;
@@ -41,5 +43,8 @@ public:
 	}
 	int get_count() { //Returns the total number of EarthSoldier objects in the queue
 		return count;
+	}
+	void select_soldier(EarthSoldier* soldier) {
+		peek(soldier);
 	}
 };

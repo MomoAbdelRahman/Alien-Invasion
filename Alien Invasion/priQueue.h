@@ -40,7 +40,7 @@ public:
         if (isEmpty())
             return false;
 
-        topEntry = head->getItem(pri);
+        topEntry = head->getItem();
         priNode<T>* temp = head;
         head = head->getNext();
         delete temp;

@@ -34,15 +34,23 @@ public:
 	
 	}
 
-	ArmyUnit* removeunit(TYPE t){ //Removes any army unit from the army based on the enum type
-		ArmyUnit* unit = nullptr;
+	void removeunit(TYPE t, ArmyUnit* &unit){ //Removes any army unit from the army based on the enum type
+		EarthSoldier* temp=nullptr;
+		EarthTank* temp2=nullptr;
+		EarthGunnery* temp3=nullptr;
 		switch (t) {
 		case EARTHSOLDIER:
-			return(EarthSoldiers.remove_earthsoldier());
+			EarthSoldiers.remove_earthsoldier(temp);
+			unit = temp;
+			break;
 		case TANK:
-			return(EarthTanks.removeTank());
+			EarthTanks.removeTank(temp2);
+			unit = temp;
+			break;
 		case GUNNERY:
-			return(EarthGunneries.RemoveGunnery());
+			EarthGunneries.RemoveGunnery(temp3);
+			unit = temp3;
+			break;
 		}
 	}
 	

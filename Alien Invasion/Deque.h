@@ -55,5 +55,18 @@ public:
 			return true;
 		}
 	}
+	void peek_front(T &r) {
+		if(this->isEmpty()) {
+			return;
+		}
+		r = this->frontPtr->getItem();
+	}
+
+	void peek_back(T &r) {
+		if(this->isEmpty()) {
+			return;
+		}
+		r = this->backPtr->getItem();
+	}
 
 };

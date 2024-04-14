@@ -18,13 +18,12 @@ public:
 			return false;
 		}
 	}
-	EarthTank* removeTank() { //removeTank function to remove a tank from the stack
-		EarthTank* toberemoved;
-		pop(toberemoved);
-		count--;
-		return toberemoved; //Returns a pointer to the tank that was removed
-		
+	void removeTank(EarthTank* &tank) { //removeTank function to remove a tank from the stack
+		if (pop(tank)) {
+			count--;
+		}
 	}
+
 	void print() { //print function to print the ID of the tank units in the stack
 		//cout << "======================Earth Tanks Units========================" << endl;
 		cout << "ET: " << count << " [";
@@ -47,5 +46,8 @@ public:
 	}
 	int get_count() { //get_count function to return the count of the number of tank units
 		return count;
+	}
+	void selecttank(EarthTank* tank) {
+		peek(tank);
 	}
 };

@@ -11,6 +11,7 @@ private:
 	AlienDronesDequeue AlienDrones; //Deque of AlienDrones
 	AlienMonstersArray AlienMonsters;//Dynamic Array of AlienMonsters
 	LinkedQueue<ArmyUnit*> KilledAliens; //Queue of KilledAliens
+	int killcount = 0; //Counter for the number of killed aliens
 public:
 	AlienArmy(){ //Default Constructor
 		}
@@ -33,13 +34,41 @@ public:
 		return true;
 	
 	}
-	ArmyUnit* removeunit(ArmyUnit* unit); //Removes any army unit from the AlienArmy based on the enum type
+	void removeunit(TYPE t, ArmyUnit* &unit,ArmyUnit* &unit2) {//Removes any army unit from the AlienArmy based on the enum type
+		AlienDrone* temp = nullptr;
+		AlienDrone* temp4= nullptr;
+		AlienSoldier* temp2 = nullptr;
+		AlienMonster* temp3 = nullptr;
+		switch (t) {
+		case ALIENSOLDIER:
+			AlienSoldiers.remove_aliensoldier(temp2);
+			unit = temp2;
+			unit2=nullptr;
+			break;
+		case DRONE:
+			AlienDrones.removeDrones(temp,temp4);
+			unit = temp;
+			unit2 = temp4;
+			break;
+		case MONSTER:
+			AlienMonsters.remove(temp3);
+			unit = temp3;
+			break;
+		}
 	
+	}
+
+	void killunit(ArmyUnit* unit) {//Kills any army unit from the AlienArmy
+		KilledAliens.enqueue(unit); //Enqueues the killed unit to the KilledAliens queue
+		killcount++; //Increments the killcount
+	}
+
 	void print() { //Prints all the units of the AlienArmy
 		AlienSoldiers.print(); //Prints all the units of the AlienArmy
 		AlienDrones.print(); //Prints all the units of the AlienArmy
 		AlienMonsters.print(); //Prints all the units of the AlienArmy
 	} 
+	
 	int get_soldier_id(){
 		return AlienSoldiers.get_count();
 	}

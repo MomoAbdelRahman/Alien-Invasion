@@ -15,7 +15,7 @@ public:
 		count = count + 2;
 	}
 
-	void removeDrones(AlienDrone* removed1, AlienDrone* removed2){
+	void removeDrones(AlienDrone* &removed1, AlienDrone* &removed2){
 		double_dequeue(removed1, removed2); //Removing the AlienDrone units from the front and back of the Deque
 		count = count - 2;
 	}
@@ -30,7 +30,10 @@ public:
 			double_dequeue(temp1, temp2);
 			temp.enqueue_front(temp1); //Storing the AlienDrone units in a temporary Deque
 			temp.enqueue_back(temp2);
-			cout << temp1->get_id() << "," << temp2->get_id() << ",";
+			cout << temp1->get_id() << "," << temp2->get_id();
+			if(!isEmpty()){
+				cout << ",";
+			}
 		}
 		while(!temp.isEmpty()){ //Restoring the AlienDrone units back to the original Deque
 			temp.double_dequeue(temp1, temp2);
@@ -41,5 +44,10 @@ public:
 	}
 	int get_count(){
 		return count;
+	}
+
+	void select_drone(AlienDrone* ad1, AlienDrone* ad2) {
+		peek_front(ad1);
+		peek_back(ad2);
 	}
 };
