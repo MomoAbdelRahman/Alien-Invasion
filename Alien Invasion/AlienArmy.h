@@ -60,8 +60,10 @@ public:
 	}
 
 	void killunit(ArmyUnit* unit) {//Kills any army unit from the AlienArmy
-		KilledAliens.enqueue(unit); //Enqueues the killed unit to the KilledAliens queue
-		killcount++; //Increments the killcount
+		if (unit) {
+			KilledAliens.enqueue(unit); //Enqueues the killed unit to the KilledAliens queue
+			killcount++; //Increments the killcount
+		}
 	}
 
 	void print() { //Prints all the units of the AlienArmy

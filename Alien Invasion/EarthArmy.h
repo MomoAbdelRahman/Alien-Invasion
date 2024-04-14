@@ -57,8 +57,10 @@ public:
 	
 
 	void killunit(ArmyUnit* unit) { //Kills any army unit and adds it to the KilledEarth queue
-		KilledEarth.enqueue(unit);
-		killcount++;
+		if (unit) {
+			KilledEarth.enqueue(unit);
+			killcount++;
+		}
 	}
 	void print() { //Prints the army
 		EarthSoldiers.print(); //Prints the soldiers in the army

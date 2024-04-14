@@ -8,7 +8,7 @@ int main()
 	g.add_humans();
 	// g.printstate();
 
-	while (g.time <= 5) {
+	while (g.time <= 50) {
 	g.steptime();
 	g.printstate();
 	int X=rand() % 100;
@@ -32,7 +32,7 @@ int main()
 		}
 		//g.printstate();
 	}
-	else if (X < 20 && X>30) {
+	else if (X > 20 && X<30) {
 		ArmyUnit* u = nullptr;
 		g.Humans.removeunit(GUNNERY, u);
 		//cout << "Unit is removed" << endl;
@@ -50,6 +50,7 @@ int main()
 		}
 		for (int i = 0; i < 5; i++) {
 			ArmyUnit* unit2 = nullptr;
+			g.Aliens.removeunit(ALIENSOLDIER, temp[i], unit2);
 			g.Aliens.removeunit(ALIENSOLDIER, temp[i], unit2);
 		}
 		for (int i = 0; i < 5; i++) {
