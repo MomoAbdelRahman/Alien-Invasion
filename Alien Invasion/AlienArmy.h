@@ -53,6 +53,7 @@ public:
 		case MONSTER:
 			AlienMonsters.remove(temp3);
 			unit = temp3;
+			unit2=nullptr;
 			break;
 		}
 	

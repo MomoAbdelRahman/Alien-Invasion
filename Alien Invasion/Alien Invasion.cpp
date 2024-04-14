@@ -9,8 +9,8 @@ int main()
 	g.printstate();
 	int X = rand() % 100;
 	X = abs(X);
-	
-	
+
+
 	//if (X < 10) {
 	//	ArmyUnit* e = nullptr;
 	//	g.Humans.removeunit(EARTHSOLDIER, e);
@@ -28,7 +28,6 @@ int main()
 	//	g.Humans.killunit(t);
 	//	g.printstate();
 	//}
-
 	//else if (X < 20 && X>30) {
 	//	ArmyUnit* u = nullptr;
 	//	g.Humans.removeunit(GUNNERY, u);
@@ -37,6 +36,25 @@ int main()
 	//	u->set_health(u->get_health() / 2);
 	//	g.Humans.addunit(u);
 	//	cout << "Unit is added and updated" << endl;
+	//	g.printstate();
+	//}
+	// 
+	//else if (X > 30 && X < 40) {
+	//	ArmyUnit* temp[5];
+	//	for (int i = 0; i < 5; i++) {
+	//		temp[i] = nullptr;
+	//	}
+	//	for (int i = 0; i < 5; i++) {
+	//		ArmyUnit* unit2 = nullptr;
+	//		g.Aliens.removeunit(ALIENSOLDIER, temp[i], unit2);
+	//	}
+	//	for (int i = 0; i < 5; i++) {
+	//		temp[i]->set_health(temp[i]->get_health() - 20);
+	//	}
+	//	for (int i = 0; i < 5; i++) {
+	//		g.Aliens.addunit(temp[i]);
+	//	}
+	//	cout << "Aliens updated" << endl;
 	//	g.printstate();
 	//}
 }
