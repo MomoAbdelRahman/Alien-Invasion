@@ -11,23 +11,32 @@ int main()
 	X = abs(X);
 	
 	
-	if (X < 10) {
-		ArmyUnit* e = nullptr;
-		g.Humans.removeunit(EARTHSOLDIER, e);
-		cout << "Removed ES" << endl;
-		g.printstate();
-		g.Humans.addunit(e);
-		cout<< "Added ES" << endl;
-		g.printstate();
-	}
-	else if(X>10 && X<20)
-	{
-		ArmyUnit* t = nullptr;
-		cout<<"Tank is removed"<<endl;
-		g.Humans.removeunit(TANK, t);
-		g.Humans.killunit(t);
-		g.printstate();
-	}
-	
+	//if (X < 10) {
+	//	ArmyUnit* e = nullptr;
+	//	g.Humans.removeunit(EARTHSOLDIER, e);
+	//	cout << "Removed ES" << endl;
+	//	g.printstate();
+	//	g.Humans.addunit(e);
+	//	cout<< "Added ES" << endl;
+	//	g.printstate();
+	//}
+	//else if(X>10 && X<20)
+	//{
+	//	ArmyUnit* t = nullptr;
+	//	cout<<"Tank is removed"<<endl;
+	//	g.Humans.removeunit(TANK, t);
+	//	g.Humans.killunit(t);
+	//	g.printstate();
+	//}
 
+	//else if (X < 20 && X>30) {
+	//	ArmyUnit* u = nullptr;
+	//	g.Humans.removeunit(GUNNERY, u);
+	//	cout << "Unit is removed" << endl;
+	//	g.printstate();
+	//	u->set_health(u->get_health() / 2);
+	//	g.Humans.addunit(u);
+	//	cout << "Unit is added and updated" << endl;
+	//	g.printstate();
+	//}
 }
