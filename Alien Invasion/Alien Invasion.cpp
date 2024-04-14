@@ -8,7 +8,7 @@ int main()
 	g.add_humans();
 	// g.printstate();
 
-	while (g.time < 1) {
+	while (g.time <= 1) {
 	g.steptime();
 	g.printstate();
 	int X=rand() % 100;
