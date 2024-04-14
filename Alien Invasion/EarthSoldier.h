@@ -1,7 +1,7 @@
 #pragma once
 #include"ArmyUnit.h"
 #include"LinkedQueue.h"
-#include"Generator.h"
+#include"RandomGenerator.h"
 
 //Earth Soldier Class that inherits from the more general ArmyUnit
 class EarthSoldier : public ArmyUnit

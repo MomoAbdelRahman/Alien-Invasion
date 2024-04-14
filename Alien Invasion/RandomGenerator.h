@@ -7,7 +7,6 @@
 #include "AlienSoldier.h"
 #include "AlienMonster.h"
 #include "AlienDrone.h"
-#include "game.h"
 class randgen {
 private:
 	int N;
@@ -63,49 +62,39 @@ public:
 	}
 
 	ArmyUnit* Earthgenerator(int ID, int jt) {
-		ArmyUnit* unit = nullptr;
-		int A = rand() % 100;
 		int rand_health = rand() % (max_earth_health - min_earth_health + 1) + min_earth_health;
 		int rand_power= rand() % (max_earth_power - min_earth_power + 1) + min_earth_power;
 		int rand_capacity = rand() % (max_earth_capacity - min_earth_capacity + 1) + min_earth_capacity;
-		if (A < prob) {
-			for (int i = 0; i < N; i++) {
-				int B = rand() % 100;
-				if (B <= ES) {
-					unit = new EarthSoldier(ID, rand_health,jt , rand_power, rand_capacity);
-				}
-				else if (B <= ES + ET) {
-					unit=new EarthTank(ID, rand_health, jt, rand_power, rand_capacity);
-				}
-				else if (B <= ES + ET + EG) {
-					unit=new EarthGunnery(ID, rand_health, jt, rand_power, rand_capacity);
-				}
-			}
+		ArmyUnit* unit = nullptr;
+		int B = rand() % 100;
+		if (B <= ES) {
+			unit = new EarthSoldier(ID, rand_health,jt , rand_power, rand_capacity);
 		}
+		else if (B <= ES + ET) {
+			unit=new EarthTank(ID, rand_health, jt, rand_power, rand_capacity);
+		}
+		else if (B <= ES + ET + EG) {
+			unit=new EarthGunnery(ID, rand_health, jt, rand_power, rand_capacity);
+		}	
 		return unit;
-
 	}
 
 	ArmyUnit* Aliengenerator(int ID, int jt) {
-		int A = rand() % 100;
 		ArmyUnit* unit = nullptr;
 		int rand_health = rand() % (max_alien_health - min_alien_health + 1) + min_alien_health;
 		int rand_power = rand() % (max_alien_power - min_alien_power + 1) + min_alien_power;
 		int rand_capacity = rand() % (max_alien_capacity - min_alien_capacity + 1) + min_alien_capacity;	
-		if (A < prob) {
-			for (int i = 0; i < N; i++) {
-				int B = rand() % 100;
-				if (B <= AS) {
-					unit = new AlienSoldier(ID, rand_health, jt, rand_power, rand_capacity);
-				}
-				else if (B <= AS + AM) {
-					unit = new AlienMonster(ID, rand_health, jt, rand_power, rand_capacity);
-				}
-				else if (B <= AS + AM + AD) {
-					unit=new AlienDrone(ID, rand_health, jt, rand_power, rand_capacity);
-				}
+		int B = rand() % 100;
+			if (B <= AS) {
+				unit = new AlienSoldier(ID, rand_health, jt, rand_power, rand_capacity);
 			}
-		}
+			else if (B <= AS + AM) {
+				unit = new AlienMonster(ID, rand_health, jt, rand_power, rand_capacity);
+			}
+			else if (B <= AS + AM + AD) {
+				unit=new AlienDrone(ID, rand_health, jt, rand_power, rand_capacity);
+			}
+			
 		return unit;
 	}
 

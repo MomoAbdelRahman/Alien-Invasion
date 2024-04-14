@@ -45,13 +45,47 @@ private:
 		config.max_alien_capacity = abs(config.max_alien_capacity);
 	}
 	//An instance of the random generator to manage the random creation of units
-	randgen generator;
+	randgen* generator;
 	//The two armies
-	AlienArmy aliens;
+	AlienArmy Aliens;
 	EarthArmy Humans;
 	//The function called to start the game
 	void go() {
 		read_data();//Read the data from the file
-		generator= randgen(config);//Create the random generator with the configuration data
+		generator=new  randgen(config);//Create the random generator with the configuration data
+	}
+	void steptime() { //Function to simulate a time step and add new units to the armies if the probability is met
+		int A = rand() % 100;
+		if (A < config.prob) {
+			add_humans();
+			add_aliens();
+		}
+		time++;
+	}
+public:
+	game() {
+		time = 0;
+	}
+
+	void add_humans() {
+		int next_Earth_ID;
+		for (int i = 0; i < config.N; i++) {
+			next_Earth_ID = Humans.get_next_id();//Get the ID of the next Earth unit
+			Humans.addunit(generator->Earthgenerator(next_Earth_ID,time)); //Generate new units for the Earth Army and adds it to the army
+		}
+	}
+	void add_aliens() {
+		int next_alien_ID;
+		for (int i = 0; i < config.N; i++) {
+			next_alien_ID = Aliens.get_next_id();//Get the ID of the next Alien unit
+			Aliens.addunit(generator->Aliengenerator(next_alien_ID,time)); //Generate new units for the Alien Army and adds it to the army
+		}
+	}
+
+	void printstate() {
+		cout << "======================Earth Army========================" << endl;
+		Humans.print();
+		cout << "======================Alien Army========================" << endl;
+		Aliens.print();
 	}
 };
