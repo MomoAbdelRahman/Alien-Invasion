@@ -51,14 +51,6 @@ public:
 		read_data();//Read the data from the file
 		generator=new randgen(config);//Create the random generator with the configuration data
 	}
-	void steptime() { //Function to simulate a time step and add new units to the armies if the probability is met
-		int A = rand() % 100;
-		if (A < config.prob) {
-			add_humans();
-			add_aliens();
-		}
-		time++;
-	}
 	game() {
 		time = 0;
 		go();
@@ -84,5 +76,14 @@ public:
 		Humans.print();
 		cout << "======================Alien Army========================" << endl;
 		Aliens.print();
+	}
+
+	void steptime() { //Function to simulate a time step and add new units to the armies if the probability is met
+		int A = rand() % 100;
+		if (A < config.prob) {
+			add_humans();
+			add_aliens();
+		}
+		time++;
 	}
 };
