@@ -11,8 +11,7 @@ int main()
 	while (g.time < 1) {
 	g.steptime();
 	g.printstate();
-	// int X=rand() % 100;
-  int X = 55;
+	int X=rand() % 100;
 	X=abs(X);
 
 	if (X < 10) {
