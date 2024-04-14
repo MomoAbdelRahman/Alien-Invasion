@@ -9,7 +9,9 @@ int main()
 	g.printstate();
 	int X = rand() % 100;
 	X = abs(X);
-	/*if (X < 10) {
+	
+	
+	if (X < 10) {
 		ArmyUnit* e = nullptr;
 		g.Humans.removeunit(EARTHSOLDIER, e);
 		cout << "Removed ES" << endl;
@@ -17,9 +19,15 @@ int main()
 		g.Humans.addunit(e);
 		cout<< "Added ES" << endl;
 		g.printstate();
-	}*/
-	ArmyUnit* t = nullptr;
-	g.Humans.removeunit(TANK, t);
-	g.printstate();
+	}
+	else if(X>10 && X<20)
+	{
+		ArmyUnit* t = nullptr;
+		cout<<"Tank is removed"<<endl;
+		g.Humans.removeunit(TANK, t);
+		g.Humans.killunit(t);
+		g.printstate();
+	}
 	
+
 }

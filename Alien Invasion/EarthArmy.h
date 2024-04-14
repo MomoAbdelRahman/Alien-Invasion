@@ -11,6 +11,7 @@ private:
 	EarthTankStack EarthTanks; //Stack of tanks
 	GunneryPriQueue EarthGunneries; //Priority Queue of gunnery
 	LinkedQueue<ArmyUnit*> KilledEarth; //Queue of all the units in the army
+	int killcount = 0; //Counter to keep track of the number of units killed
 public:
 	EarthArmy() {
 
@@ -55,7 +56,11 @@ public:
 	}
 	
 
-	
+	void killunit(ArmyUnit* unit) { //Kills any army unit and adds it to the KilledEarth queue
+		cout << "Killing..." << endl;
+		KilledEarth.enqueue(unit);
+		killcount++;
+	}
 	void print() { //Prints the army
 		EarthSoldiers.print(); //Prints the soldiers in the army
 		EarthTanks.print(); //Prints the tanks in the army
