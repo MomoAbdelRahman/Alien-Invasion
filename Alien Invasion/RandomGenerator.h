@@ -7,6 +7,8 @@
 #include "AlienSoldier.h"
 #include "AlienMonster.h"
 #include "AlienDrone.h"
+#include"AlienArmy.h"
+#include"EarthArmy.h"
 class randgen {
 private:
 	int N;
@@ -62,19 +64,19 @@ public:
 	}
 
 	ArmyUnit* Earthgenerator(int ID, int jt) {
-		int rand_health = rand() % (max_earth_health - min_earth_health + 1) + min_earth_health;
-		int rand_power= rand() % (max_earth_power - min_earth_power + 1) + min_earth_power;
-		int rand_capacity = rand() % (max_earth_capacity - min_earth_capacity + 1) + min_earth_capacity;
+		int rand_health = rand() % (max_earth_health - min_earth_health + 1) + min_earth_health; //Generates a random number between min and max health
+		int rand_power= rand() % (max_earth_power - min_earth_power + 1) + min_earth_power; //Generates a random number between min and max power
+		int rand_capacity = rand() % (max_earth_capacity - min_earth_capacity + 1) + min_earth_capacity; //Generates a random number between min and max capacity
 		ArmyUnit* unit = nullptr;
-		int B = rand() % 100;
+		int B = rand() % 100; //Generates a random number between 0 and 100
 		if (B <= ES) {
-			unit = new EarthSoldier(ID, rand_health,jt , rand_power, rand_capacity);
+			unit = new EarthSoldier(ID, rand_health,jt , rand_power, rand_capacity); //Creates a new EarthSoldier object if B is less than or equal to ES
 		}
 		else if (B <= ES + ET) {
-			unit=new EarthTank(ID, rand_health, jt, rand_power, rand_capacity);
+			unit=new EarthTank(ID, rand_health, jt, rand_power, rand_capacity); //Creates a new EarthTank object if B is less than or equal to ES + ET
 		}
 		else if (B <= ES + ET + EG) {
-			unit=new EarthGunnery(ID, rand_health, jt, rand_power, rand_capacity);
+			unit=new EarthGunnery(ID, rand_health, jt, rand_power, rand_capacity); //Creates a new EarthGunnery object if B is less than or equal to ES + ET + EG
 		}	
 		return unit;
 	}
@@ -94,7 +96,6 @@ public:
 			else if (B <= AS + AM + AD) {
 				unit=new AlienDrone(ID, rand_health, jt, rand_power, rand_capacity);
 			}
-			
 		return unit;
 	}
 

@@ -3,9 +3,6 @@
 #include <fstream>
 #include <iostream>
 #include <math.h>
-#include "gameconfig.h"
-#include "AlienArmy.h"
-#include "EarthArmy.h"
 #include "RandomGenerator.h"
 using namespace std;
 class game{

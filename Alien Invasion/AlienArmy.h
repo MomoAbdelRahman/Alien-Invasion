@@ -17,12 +17,13 @@ public:
 	bool Attack(); //Attack function that attacks the human army
 
 	bool addunit(ArmyUnit* unit) {//Adds any army unit to the AlienArmy based on the enum type
+		ArmyUnit* unit2 = nullptr;
 		switch (unit->get_type()) {
 		case ALIENSOLDIER:
 			AlienSoldiers.add_aliensoldier((AlienSoldier*)unit);
 			break;
 		case DRONE:
-			ArmyUnit* unit2=new AlienDrone(unit->get_id()+1,unit->get_health(),unit->get_join_time(),unit->get_power(),unit->get_attack_capacity());
+			unit2=new AlienDrone(unit->get_id()+1,unit->get_health(),unit->get_join_time(),unit->get_power(),unit->get_attack_capacity());
 			AlienDrones.insertDrone((AlienDrone*)unit, (AlienDrone*)unit2);
 			break;
 		case MONSTER:
