@@ -34,7 +34,12 @@ public:
 	
 	}
 	bool removeunit(ArmyUnit* unit); //Removes any army unit from the AlienArmy based on the enum type
-	void print(); //Prints all the units of the AlienArmy
+	
+	void print() { //Prints all the units of the AlienArmy
+		AlienSoldiers.print(); //Prints all the units of the AlienArmy
+		AlienDrones.print(); //Prints all the units of the AlienArmy
+		AlienMonsters.print(); //Prints all the units of the AlienArmy
+	} 
 	int get_soldier_id(){
 		return AlienSoldiers.get_count();
 	}

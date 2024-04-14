@@ -7,4 +7,6 @@ int main()
 	g.add_aliens();
 	g.add_humans();
 	g.printstate();
+	int x = rand() % 100;
+
 }

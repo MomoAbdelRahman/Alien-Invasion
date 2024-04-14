@@ -29,13 +29,15 @@ public:
 	}
 
 	void print() { //Print the Gunnery Units in the priority queue
-		cout << "======================Earth Gunnery Units========================" << endl;
-		cout << "Total Number of Gunnery Units: " << count << " [";
+		//cout << "======================Earth Gunnery Units========================" << endl;
+		cout << "EG: " << count << " [";
 		GunneryPriQueue t; //Temporary priority queue to store the Gunnery Units
 		while(!isEmpty()) {
 			EarthGunnery* temp;
 			dequeue(temp, next);
-			cout << temp->get_id()<<",";
+			cout << temp->get_id();
+			if(!t.isEmpty())
+				cout << ",";
 			t.enqueue(temp, next);
 		}
 		cout<< "]" << endl;

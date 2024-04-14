@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include "ArmyUnit.h"
 
 //Alien Drone class that inherits from the more general Army Unit class

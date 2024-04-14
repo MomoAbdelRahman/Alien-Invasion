@@ -37,8 +37,8 @@ public:
 	};
 
 	void print() { //Prints the ID of AlienMonster objects in the array
-		cout << "======================Alien Monster Units========================" << endl;
-		cout << "Total Number of Alien Monster Units: " << count << " [";
+		//cout << "======================Alien Monster Units========================" << endl;
+		cout << "AM:" << count << " [";
 		for(int i = 0; i < count; i++) {
 			cout << alienMonsters[i]->get_id()<<",";
 		}

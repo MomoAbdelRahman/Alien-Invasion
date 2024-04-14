@@ -35,7 +35,12 @@ public:
 	}
 
 	bool removeunit(ArmyUnit* unit); //Remove unit from the army based on the enum type
-	void print(); //Prints all the units in the army
+	
+	void print() { //Prints the army
+		EarthSoldiers.print(); //Prints the soldiers in the army
+		EarthTanks.print(); //Prints the tanks in the army
+		EarthGunneries.print(); //Prints the gunnery in the army
+	} 
 
 	int get_soldier_id() {
 		return EarthSoldiers.get_count(); //Returns the total number of soldiers in the army

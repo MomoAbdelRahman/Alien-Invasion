@@ -21,19 +21,19 @@ public:
 	}
 
 	void print(){
-		cout << "======================Alien Drone Units========================" << endl; //Printing the AlienDrone units
-		cout << "Total Number of Alien Drone Units: " << count << " [";
-		AlienDronesDequeue* temp;
+		//cout << "======================Alien Drone Units========================" << endl; //Printing the AlienDrone units
+		cout << "AD:" << count << " [";
+		AlienDronesDequeue temp;
 		AlienDrone* temp1;
 		AlienDrone* temp2;
 		while(!isEmpty()){
 			double_dequeue(temp1, temp2);
-			temp->enqueue_front(temp1); //Storing the AlienDrone units in a temporary Deque
-			temp->enqueue_back(temp2);
+			temp.enqueue_front(temp1); //Storing the AlienDrone units in a temporary Deque
+			temp.enqueue_back(temp2);
 			cout << temp1->get_id() << "," << temp2->get_id() << ",";
 		}
-		while(!temp->isEmpty()){ //Restoring the AlienDrone units back to the original Deque
-			temp->double_dequeue(temp1, temp2);
+		while(!temp.isEmpty()){ //Restoring the AlienDrone units back to the original Deque
+			temp.double_dequeue(temp1, temp2);
 			enqueue_front(temp1);
 			enqueue_back(temp2);
 		}

@@ -49,7 +49,7 @@ private:
 	//The function called to start the game
 	void go() {
 		read_data();//Read the data from the file
-		generator=new  randgen(config);//Create the random generator with the configuration data
+		generator=new randgen(config);//Create the random generator with the configuration data
 	}
 	void steptime() { //Function to simulate a time step and add new units to the armies if the probability is met
 		int A = rand() % 100;
@@ -62,6 +62,7 @@ private:
 public:
 	game() {
 		time = 0;
+		go();
 	}
 
 	void add_humans() {
@@ -74,7 +75,7 @@ public:
 	void add_aliens() {
 		int next_alien_ID;
 		for (int i = 0; i < config.N; i++) {
-			next_alien_ID = Aliens.get_next_id();//Get the ID of the next Alien unit
+			next_alien_ID = 1000+Aliens.get_next_id();//Get the ID of the next Alien unit
 			Aliens.addunit(generator->Aliengenerator(next_alien_ID,time)); //Generate new units for the Alien Army and adds it to the army
 		}
 	}

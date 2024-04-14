@@ -24,8 +24,8 @@ private:
 		return soldier;
 	}
 	void print() { //Prints the ID of all EarthSoldier objects in the queue along with the total number of EarthSoldier objects
-		cout << "======================Earth Soldier Units========================" << endl;
-		cout << "Total Number of Earth Soldier Units: " << count << " [";
+		//cout << "======================Earth Soldier Units========================" << endl;
+		cout << "ES: " << count << " [";
 		EarthSoldierQueue temp; //Temporary queue to store EarthSoldier objects
 		EarthSoldier* soldier;
 		while (!isEmpty()) {

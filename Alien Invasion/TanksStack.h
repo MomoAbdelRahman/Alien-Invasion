@@ -26,8 +26,8 @@ public:
 		
 	}
 	void print() { //print function to print the ID of the tank units in the stack
-		cout << "======================Earth Tanks Units========================" << endl;
-		cout << "Total Number of Tank Units: " << count << " [";
+		//cout << "======================Earth Tanks Units========================" << endl;
+		cout << "ET: " << count << " [";
 		EarthTankStack temp;//temporary stack to store the tank units
 		while (!isEmpty()) {
 			EarthTank* tank;

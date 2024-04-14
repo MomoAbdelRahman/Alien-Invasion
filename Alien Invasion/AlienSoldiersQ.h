@@ -24,8 +24,8 @@ public:
 		return soldier;
 	}
 	void print() { //Prints the ID of all AlienSoldier objects in the queue along with the total number of EarthSoldier objects
-		cout << "======================Earth Soldier Units========================" << endl;
-		cout << "Total Number of Earth Soldier Units: " << count << " [";
+		//cout << "======================Alien Soldier Units========================" << endl;
+		cout << "AS: " << count << " [";
 		AlienSoldierQueue temp; //Temporary queue to store AlienSoldier objects
 		AlienSoldier* soldier;
 		while (!isEmpty()) {
