@@ -8,7 +8,7 @@ int main()
 	g.add_humans();
 	// g.printstate();
 
-	while (g.time <= 50) {
+	while (g.time < 50) {
 	g.steptime();
 	g.printstate();
 	int X=rand() % 100;
@@ -82,7 +82,7 @@ int main()
 		}
 		//cout << "Aliens updated" << endl << endl;
     }
-}
+	system("pause");
 
- 
+	}
 }
