@@ -60,6 +60,12 @@ int main()
 	//		g.printstate();
 	//	}
 	//}
-
-
+	ArmyUnit* unit = nullptr;
+	ArmyUnit* unit2 = nullptr;
+	for (int i = 0; i < 5; i++) {
+		g.Aliens.removeunit(MONSTER, unit, unit2);
+		g.Aliens.addunit(unit);
+	}
+	cout<<"Aliens updated"<<endl;
+	g.printstate();
 }

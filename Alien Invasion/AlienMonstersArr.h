@@ -7,7 +7,7 @@ private:
 	AlienMonster** alienMonsters;
 	int size;
 	int count;
-	int next;
+	int next=-1;
 public:
 	AlienMonstersArray(int size = 100) { //Creates an array of AlienMonster objects with a default size of 100
 		this->size = size;
@@ -23,15 +23,18 @@ public:
 			{
 				return;
 			}
-	
 	}
-	void remove(AlienMonster* &monster ) { //Removes an AlienMonster object from the array
+	void remove(AlienMonster* &monster) { //Removes an AlienMonster object from the array
+		if(next==-1){
+			next=rand()%count;
+		}
 		if(count>0){
 			monster = alienMonsters[next];
 			for (int i = next; i < count - 1; i++) { //Shifts the elements to the left
 				alienMonsters[i] = alienMonsters[i + 1];
 			}
 			count--;
+			next = rand() % count;
 		}
 	};
 
@@ -49,6 +52,9 @@ public:
 		return count;
 	}
 	void select_monster(AlienMonster* monster) {
+		if(next==-1){
+			next=rand()%count;
+		}
 		monster=alienMonsters[next];
 	}
 };
