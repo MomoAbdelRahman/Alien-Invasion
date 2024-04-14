@@ -59,13 +59,15 @@ int main()
 	//		cout << "Aliens updated" << endl;
 	//		g.printstate();
 	//	}
+	//	else if (X > 40 && X < 50) {
+	//		ArmyUnit* unit = nullptr;
+	//		ArmyUnit* unit2 = nullptr;
+	//		for (int i = 0; i < 5; i++) {
+	//			g.Aliens.removeunit(MONSTER, unit, unit2);
+	//			g.Aliens.addunit(unit);
+	//		}
+	//		cout << "Aliens updated" << endl;
+	//		g.printstate();
+	//	}
 	//}
-	ArmyUnit* unit = nullptr;
-	ArmyUnit* unit2 = nullptr;
-	for (int i = 0; i < 5; i++) {
-		g.Aliens.removeunit(MONSTER, unit, unit2);
-		g.Aliens.addunit(unit);
-	}
-	cout<<"Aliens updated"<<endl;
-	g.printstate();
 }
