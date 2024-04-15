@@ -18,7 +18,9 @@ public:
 	bool Attack(); //Attack function that attacks the human army
 
 	bool addunit(ArmyUnit* unit) {//Adds any army unit to the AlienArmy based on the enum type
-		ArmyUnit* unit2 = nullptr;
+		if (!unit)
+      return false;
+    ArmyUnit* unit2 = nullptr;
 		switch (unit->get_type()) {
 		case ALIENSOLDIER:
 			AlienSoldiers.add_aliensoldier((AlienSoldier*)unit);

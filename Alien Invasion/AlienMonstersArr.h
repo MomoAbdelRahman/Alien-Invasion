@@ -25,7 +25,7 @@ public:
 			}
 	}
 	void remove(AlienMonster* &monster) { //Removes an AlienMonster object from the array
-		if(next==-1){
+		if(next==-1 && count){
 			next=rand()%count;
 		}
 		if(count>0){
@@ -34,17 +34,20 @@ public:
 				alienMonsters[i] = alienMonsters[i + 1];
 			}
 			count--;
-			next = rand() % count;
+      // next = rand() % count;
+      if (count)
+  			next = rand() % count;
 		}
 	};
 
 	void print() { //Prints the ID of AlienMonster objects in the array
-		//cout << "======================Alien Monster Units========================" << endl;
+		// cout << "======================Alien Monster Units========================" << endl;
 		cout << "AM:" << count << " [";
-		for(int i = 0; i < count-1; i++) {
-			cout << alienMonsters[i]->get_id()<<",";
+		for(int i = 0; i < count; i++) { 
+			cout << alienMonsters[i]->get_id();
+      if (i < count - 1)
+        cout << ",";
 		}
-		cout<<alienMonsters[count-1]->get_id();
 		cout << "]" << endl;
 	}
 

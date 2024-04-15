@@ -1,4 +1,4 @@
-#include <iostream>
+// #include <iostream>
 #include "game.h"
 using namespace std;
 int main()
@@ -6,7 +6,7 @@ int main()
 	game g;
 	g.add_aliens();
 	g.add_humans();
-	// g.printstate();
+	g.printstate();
 
 	while (g.time < 50) {
 	g.steptime();
@@ -16,16 +16,17 @@ int main()
 	if (X < 10) {
 		ArmyUnit* e = nullptr;
 		g.Humans.removeunit(EARTHSOLDIER, e);
-		//cout << "Removed ES" << endl;
-		//g.printstate();
+		cout << "Removed ES" << endl;
+    cout << e << endl;
+		// g.printstate();
 		g.Humans.addunit(e);
-		//cout<< "Added ES" << endl;
+		// cout<< "Added ES" << endl;
 		//g.printstate();
 	}
 	else if(X>10 && X<20)
 	{
 		ArmyUnit* t = nullptr;
-		//cout<<"Tank is removed"<<endl;
+		cout<<"Tank is removed"<<endl;
 		g.Humans.removeunit(TANK, t);
 		if (t) {
 			g.Humans.killunit(t);
@@ -34,11 +35,17 @@ int main()
 	}
 	else if (X > 20 && X<30) {
 		ArmyUnit* u = nullptr;
-		g.Humans.removeunit(GUNNERY, u);
+    g.Humans.removeunit(GUNNERY, u);
+		if (u){
+        u->set_health(u->get_health() / 2);
+        g.Humans.addunit(u);
+      }
+    else{
+        cout << "a nullptr!" << endl;
+      }
+    // cout << u << endl;
 		//cout << "Unit is removed" << endl;
 		//g.printstate();
-		u->set_health(u->get_health() / 2);
-		g.Humans.addunit(u);
 		//cout << "Unit is added and updated" << endl;
 		//g.printstate();
 	}
@@ -50,7 +57,6 @@ int main()
 		}
 		for (int i = 0; i < 5; i++) {
 			ArmyUnit* unit2 = nullptr;
-			g.Aliens.removeunit(ALIENSOLDIER, temp[i], unit2);
 			g.Aliens.removeunit(ALIENSOLDIER, temp[i], unit2);
 		}
 		for (int i = 0; i < 5; i++) {
@@ -81,8 +87,26 @@ int main()
 			g.Aliens.killunit(unit2);
 		}
 		//cout << "Aliens updated" << endl << endl;
-    }
-	system("pause");
+  }
+	// system("pause");
 
 	}
+
+
+  // EarthTankStack e;
+  // 
+  // EarthTank *t;
+  // for (int i = 0; i < 5; i++){
+  //   t = new EarthTank(i, 10, 0, 20, 4);
+  //   e.AddTank(t);
+  // }
+  // t = nullptr;
+  // e.print();
+  //
+  // e.removeTank(t);
+  // 
+  // cout << t << endl;
+  // 
+  // e.print();
+
 }

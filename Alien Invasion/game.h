@@ -91,7 +91,7 @@ public:
 		time++;
 	}
 	void print_killed(){
-		cout << "Killed:"<<Humans.get_killcount()+Aliens.get_killcount()<<"[";
+		cout << "Killed:"<<Humans.get_killcount()+Aliens.get_killcount()<<" [";
 		Humans.print_killed();
 		Aliens.print_killed();
 		cout << "]" << endl;;

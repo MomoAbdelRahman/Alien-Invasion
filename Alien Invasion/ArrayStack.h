@@ -9,7 +9,6 @@
 #define ARRAY_STACK_
 
 #include "StackADT.h"
-
 //Unless spesificed by the stack user, the default size is 100
 template<typename T>
 class ArrayStack : public StackADT<T>

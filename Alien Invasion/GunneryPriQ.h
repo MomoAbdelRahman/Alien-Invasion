@@ -26,7 +26,8 @@ public:
 	void RemoveGunnery(EarthGunnery* &gunner) {
 		if (dequeue(gunner, next)) {//Remove the Gunnery Unit with the highest priority
 			count--;
-		} 
+		}
+    cout << count << endl;
 	}
 
 	void print() { //Print the Gunnery Units in the priority queue

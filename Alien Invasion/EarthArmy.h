@@ -19,6 +19,8 @@ public:
 	bool attack(); //Attack function that attacks the Alien army
 
 	bool addunit(ArmyUnit* unit) { //Adds any army unit to the army based on the enum type
+    if (!unit)
+      return false;
 		switch (unit->get_type()) {
 		case EARTHSOLDIER:
 			EarthSoldiers.add_earthsoldier((EarthSoldier*)unit);
@@ -36,6 +38,7 @@ public:
 	}
 
 	void removeunit(TYPE t, ArmyUnit* &unit){ //Removes any army unit from the army based on the enum type
+
 		EarthSoldier* temp=nullptr;
 		EarthTank* temp2=nullptr;
 		EarthGunnery* temp3=nullptr;
@@ -55,7 +58,7 @@ public:
 		}
 	}
 	
-
+//TODO: make the killunit function remove unit automatically
 	void killunit(ArmyUnit* unit) { //Kills any army unit and adds it to the KilledEarth queue
 		if (unit) {
 			KilledEarth.enqueue(unit);
