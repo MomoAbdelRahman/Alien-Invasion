@@ -2,15 +2,17 @@
 #include "ArrayStack.h"
 #include"EarthTank.h"
 //EarthTankStack class is a stack of EarthTank objects that inherits from ArrayStack class
-class EarthTankStack: public ArrayStack<EarthTank*>
+class EarthTankStack
 {
 private:
-	int count=0; //count of the number of tank units in the stack
+	int count; //count of the number of tank units in the stack
+	ArrayStack <EarthTank*> tankStack; //stack of EarthTank objects
 public:
-	EarthTankStack() : ArrayStack() {
+	EarthTankStack() { //constructor
+		count = 0;
 	}
 	bool AddTank(EarthTank* tank) { //AddTank function to add a tank to the stack 
-		if(push(tank)) {
+		if(tankStack.push(tank)) {
 			count++; //increment the count of the number of tank units
 			return true;
 		}
@@ -19,7 +21,7 @@ public:
 		}
 	}
 	void removeTank(EarthTank* &tank) { //removeTank function to remove a tank from the stack
-		if (pop(tank)) {
+		if (tankStack.pop(tank)) {
 			count--;
 		}
 	}
@@ -30,9 +32,9 @@ public:
 		EarthTankStack temp;//temporary stack to store the tank units
 		while (!isEmpty()) {
 			EarthTank* tank;
-			pop(tank);
+			removeTank(tank);
 			cout << tank->get_id();
-			temp.push(tank);
+			temp.AddTank(tank);
 			if (!isEmpty()) {
 				cout << ",";
 			}
@@ -40,14 +42,17 @@ public:
 		cout << "]" << endl;
 		while (!temp.isEmpty()) {//push the tank units back to the original stack
 			EarthTank* tank;
-			temp.pop(tank);
-			push(tank);
+			temp.removeTank(tank);
+			AddTank(tank);
 		}
 	}
 	int get_count() { //get_count function to return the count of the number of tank units
 		return count;
 	}
 	void selecttank(EarthTank* tank) {
-		peek(tank);
+		tankStack.peek(tank);
+	}
+	bool isEmpty() { //isEmpty function to check if the stack is empty
+		return tankStack.isEmpty();
 	}
 };

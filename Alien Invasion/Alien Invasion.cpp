@@ -4,9 +4,6 @@ using namespace std;
 int main()
 {
 	game g;
-	g.add_aliens();
-	g.add_humans();
-	g.printstate();
 
 	while (g.time < 50) {
 	g.steptime();
@@ -60,6 +57,7 @@ int main()
 			g.Aliens.removeunit(ALIENSOLDIER, temp[i], unit2);
 		}
 		for (int i = 0; i < 5; i++) {
+			if(temp[i] != nullptr)
 			temp[i]->set_health(temp[i]->get_health() - 20);
 		}
 		for (int i = 0; i < 5; i++) {
@@ -87,8 +85,8 @@ int main()
 			g.Aliens.killunit(unit2);
 		}
 		//cout << "Aliens updated" << endl << endl;
-  }
-	// system("pause");
+	}
+	 system("pause");
 
 	}
 

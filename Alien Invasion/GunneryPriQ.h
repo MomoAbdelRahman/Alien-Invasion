@@ -4,13 +4,14 @@
 #include <iostream>
 using namespace std;
 //This class is a priority queue of EarthGunnery objects. It is used to store the EarthGunnery objects in a priority queue based on their health and power.
-class GunneryPriQueue : public priQueue<EarthGunnery*>
+class GunneryPriQueue
 {
 private:
 	int count = 0; //Total number of Gunnery Units
 	int next = 0; //Priority of the next Gunnery Unit to be removed
+	priQueue<EarthGunnery*> gunnerys; //Priority queue to store the Gunnery Units
 public:
-	GunneryPriQueue() :priQueue() { //Constructor
+	GunneryPriQueue() { //Constructor
 		count = 0;
 		next = 0;
 
@@ -18,16 +19,14 @@ public:
 
 	void AddGunnery(EarthGunnery* gunnery) { //Add a new Gunnery Unit to the priority queue
 		int priority = (gunnery->get_health() + gunnery->get_power());
-		enqueue(gunnery, priority);
-		if (priority > next) //Update the priority of the next Gunnery Unit to be removed
-			next = priority;
+		gunnerys.enqueue(gunnery, priority);
+		if (priority > next) { next = priority; }
 		count++;
 	}
 	void RemoveGunnery(EarthGunnery* &gunner) {
-		if (dequeue(gunner, next)) {//Remove the Gunnery Unit with the highest priority
+		if (gunnerys.dequeue(gunner, next)) {//Remove the Gunnery Unit with the highest priority
 			count--;
 		}
-    cout << count << endl;
 	}
 
 	void print() { //Print the Gunnery Units in the priority queue
@@ -36,17 +35,17 @@ public:
 		GunneryPriQueue t; //Temporary priority queue to store the Gunnery Units
 		while(!isEmpty()) {
 			EarthGunnery* temp;
-			dequeue(temp, next);
+			RemoveGunnery(temp);
 			cout << temp->get_id();
 			if(!isEmpty())
 				cout << ",";
-			t.enqueue(temp, next);
+			t.AddGunnery(temp);
 		}
 		cout<< "]" << endl;
 		while (!t.isEmpty()) { //Restore the Gunnery Units to the original priority queue
 			EarthGunnery* temp;
-			t.dequeue(temp, next);
-			enqueue(temp, next);
+			t.RemoveGunnery(temp);
+			AddGunnery(temp);
 		}
 	}
 	int get_count() { //Return the total number of Gunnery Units
@@ -54,6 +53,9 @@ public:
 	}
 
 	void select_gunnery(EarthGunnery* gunnery) {
-		this->peek(gunnery,next);
+		gunnerys.peek(gunnery,next);
+	}
+	bool isEmpty() { //Check if the priority queue is empty
+		return gunnerys.isEmpty();
 	}
 };

@@ -65,9 +65,17 @@ public:
 	}
 	void add_aliens() {
 		int next_alien_ID;
-		for (int i = 0; i < config.N; i++) {
+		int count = 0;
+		for (int i = 0; count < config.N; i++) {
 			next_alien_ID = 1000+Aliens.get_next_id();//Get the ID of the next Alien unit
-			Aliens.addunit(generator->Aliengenerator(next_alien_ID,time)); //Generate new units for the Alien Army and adds it to the army
+			ArmyUnit* newunit = generator->Aliengenerator(next_alien_ID,time);//Generate new units for the Alien Army
+			if(newunit->get_type()==DRONE){
+				count = count + 2;
+			}
+			else{
+				count++;
+			}
+			Aliens.addunit(newunit); //Generate new units for the Alien Army and adds it to the army
 		}
 	}
 

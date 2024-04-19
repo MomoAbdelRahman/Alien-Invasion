@@ -4,21 +4,22 @@
 #include <iostream>
 using namespace std;
 //This Class inherits from LinkedQueue and is used to store AlienSoldier objects
-class AlienSoldierQueue : public LinkedQueue < AlienSoldier* >
+class AlienSoldierQueue
 {
 private:
 	int count; //Keeps track of the number of AlienSoldier objects in the queue
+	LinkedQueue <AlienSoldier*> soldiers; //Queue to store AlienSoldier objects
 public:
-	AlienSoldierQueue() :LinkedQueue() {
+	AlienSoldierQueue(){
 		count = 0;
 	}
 	void add_aliensoldier(AlienSoldier *soldier) { //Adds an AlienSoldier object to the queue which is passed as a parameter
-		enqueue(soldier);
+		soldiers.enqueue(soldier);
 		count++;
 	}
 
 	void remove_aliensoldier(AlienSoldier* &soldier) { //Dequeues an AlienSoldier object from the queue and returns a pointer to it
-		if (dequeue(soldier)) {
+		if (soldiers.dequeue(soldier)) {
 			count--;
 		}
 	}
@@ -28,16 +29,16 @@ public:
 		AlienSoldierQueue temp; //Temporary queue to store AlienSoldier objects
 		AlienSoldier* soldier;
 		while (!isEmpty()) {
-			dequeue(soldier);
+			remove_aliensoldier (soldier);
 			cout << soldier->get_id();
 			if(!isEmpty())
 				cout << ",";
-			temp.enqueue(soldier);
+			temp.add_aliensoldier(soldier);
 		}
 		cout << "]" << endl;
 		while (!temp.isEmpty()) { //Re-enqueues the AlienSoldier objects back to the original queue
-			temp.dequeue(soldier);
-			enqueue(soldier);
+			temp.remove_aliensoldier(soldier);
+			add_aliensoldier(soldier);
 		}
 	}
 	int get_count() { //Returns the total number of AlienSoldier objects in the queue
@@ -45,6 +46,9 @@ public:
 	}
 
 	void select_soldier(AlienSoldier* soldier) {
-		peek(soldier);
+		soldiers.peek(soldier);
+	}
+	bool isEmpty() {
+		return soldiers.isEmpty();
 	}
 };
