@@ -114,19 +114,7 @@ void AlienArmy::print_killed()
 	}
 }
 
-LinkedQueue<ArmyUnit*> AlienArmy::get_next(TYPE t,int n)
+LinkedQueue<ArmyUnit*> AlienArmy::get_soldiers(int n)
 {
-	switch (t)
-	{
-	case ALIENSOLDIER:
-		return AlienSoldiers.get_soldiers(n);
-		break;
-	case MONSTER:
-		break;
-	case DRONE:
-		break;
-	default:
-		break;
-	}
-	
+	return AlienSoldiers.get_soldiers(n);
 }

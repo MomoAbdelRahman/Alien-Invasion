@@ -6,7 +6,7 @@ EarthSoldier::EarthSoldier(int id, int health, int jointime, int power, int atta
 
 bool EarthSoldier::attack()
 {
-	LinkedQueue<ArmyUnit*> enemies = gameptr->Aliens.get_next(ALIENSOLDIER,this->attack_capacity);
+	LinkedQueue<ArmyUnit*> enemies = gameptr->Aliens.get_soldiers(this->attack_capacity);
 	ArmyUnit* enemy = nullptr;
 	ArmyUnit* temp = nullptr;
 	ArmyUnit* temp2 = nullptr;

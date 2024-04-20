@@ -39,5 +39,5 @@ public:
 	int get_killcount();
 
 	void print_killed();
-	LinkedQueue<ArmyUnit*> get_next(TYPE t,int n);
+	LinkedQueue<ArmyUnit*> get_soldiers(int n);
 };
