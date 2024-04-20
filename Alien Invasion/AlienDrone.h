@@ -5,11 +5,8 @@
 class AlienDrone : public ArmyUnit
 {
 public:
-	AlienDrone(int id, int health, int power, int jointime, int attackcapcity) :ArmyUnit(id, DRONE, health, jointime, power, attackcapcity) {
-	}
+	AlienDrone(int id, int health, int power, int jointime, int attackcapcity);
 
 	//Attack Function that will be overrided by the derived classes
-	bool attack() override {
-		return true;
-	}
+	bool attack() override;
 };

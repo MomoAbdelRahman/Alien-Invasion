@@ -5,12 +5,8 @@
 class AlienSoldier : public ArmyUnit
 {
 public:
-	AlienSoldier(int id, int health, int power, int jointime, int attackcapacity):ArmyUnit(id,ALIENSOLDIER,health,jointime,power,attackcapacity){
-	
-	}
+	AlienSoldier(int id, int health, int power, int jointime, int attackcapacity);
 
 	//Attack Function that will be overrided by the derived classes
-	bool attack(){
-		return true;
-	}
+	bool attack();
 };

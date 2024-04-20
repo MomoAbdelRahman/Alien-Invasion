@@ -4,6 +4,7 @@
 #include <iostream>
 #include <math.h>
 #include "RandomGenerator.h"
+#include"game.h"
 using namespace std;
 class game{
 public:
@@ -11,100 +12,24 @@ public:
 	gameconfig config;
 	int time;
 	//Function to read the configuration data from a text file
-	void read_data() {
-		ifstream Data("Generator_Sample.txt");
-		Data >> config.N;
-		Data >> config.ES;
-		Data >> config.ET;
-		Data >> config.EG;
-		Data >> config.AS;
-		Data >> config.AM;
-		Data >> config.AD;
-		Data >> config.prob;
-		Data >> config.min_earth_power;
-		Data >> config.max_earth_power;
-		Data >> config.min_earth_health;
-		Data >> config.max_earth_health;
-		Data >> config.min_earth_capacity;
-		Data >> config.max_earth_capacity;
-		Data >> config.min_alien_power;
-		Data >> config.max_alien_power;
-		Data >> config.min_alien_health;
-		Data >> config.max_alien_health;
-		Data >> config.min_alien_capacity;
-		Data >> config.max_alien_capacity;
-		Data.close();
-		config.max_earth_power = abs(config.max_earth_power);
-		config.max_earth_health = abs(config.max_earth_health);
-		config.max_earth_capacity = abs(config.max_earth_capacity);
-		config.max_alien_power = abs(config.max_alien_power);
-		config.max_alien_health = abs(config.max_alien_health);
-		config.max_alien_capacity = abs(config.max_alien_capacity);
-	}
+	void read_data();
 	//An instance of the random generator to manage the random creation of units
 	randgen* generator;
 	//The two armies
 	AlienArmy Aliens;
 	EarthArmy Humans;
 	//The function called to start the game
-	void go() {
-		read_data();//Read the data from the file
-		generator=new randgen(config);//Create the random generator with the configuration data
-	}
-	game() {
-		time = 0;
-		go();
-	}
+	void go();
+	game();
 
-	void add_humans() {
-		int next_Earth_ID;
-		for (int i = 0; i < config.N; i++) {
-			next_Earth_ID = Humans.get_next_id();//Get the ID of the next Earth unit
-			ArmyUnit* newunit = generator->Earthgenerator(next_Earth_ID,time);//Generate new units for the Earth Army
-			newunit->set_game(this);
-			Humans.addunit(newunit); //Generate new units for the Earth Army and adds it to the army
-		}
-	}
-	void add_aliens() {
-		int next_alien_ID;
-		int count = 0;
-		for (int i = 0; count < config.N; i++) {
-			next_alien_ID = 1000+Aliens.get_next_id();//Get the ID of the next Alien unit
-			ArmyUnit* newunit = generator->Aliengenerator(next_alien_ID,time);//Generate new units for the Alien Army
-			newunit->set_game(this);
-			if(newunit->get_type()==DRONE){
-				count = count + 2;
-			}
-			else{
-				count++;
-			}
-			Aliens.addunit(newunit); //Generate new units for the Alien Army and adds it to the army
-		}
-	}
+	void add_humans();
+	void add_aliens();
 
-	void printstate() {
-		cout<<"Time:"<<time<<endl;//Print the time"
-		cout << "======================Earth Army========================" << endl;
-		Humans.print();
-		cout << "======================Alien Army========================" << endl;
-		Aliens.print();
-		cout << "======================Killed========================" << endl;
-		print_killed();
-		cout << "======================================================" << endl << endl << endl;
-	}
+	void printstate();
 
-	void steptime() { //Function to simulate a time step and add new units to the armies if the probability is met
-		int A = rand() % 100;
-		if (A < config.prob) {
-			add_humans();
-			add_aliens();
-		}
-		time++;
-	}
-	void print_killed(){
-		cout << "Killed:"<<Humans.get_killcount()+Aliens.get_killcount()<<" [";
-		Humans.print_killed();
-		Aliens.print_killed();
-		cout << "]" << endl;;
-	}
+	void steptime(); //Function to simulate a time step and add new units to the armies if the probability is met
+
+	void print_killed();
+
+	
 };

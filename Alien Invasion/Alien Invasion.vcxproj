@@ -128,6 +128,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Alien Invasion.cpp" />
+    <ClCompile Include="AlienArmy.cpp" />
+    <ClCompile Include="AlienDrone.cpp" />
+    <ClCompile Include="AlienDronesDQ.cpp" />
+    <ClCompile Include="AlienMonster.cpp" />
+    <ClCompile Include="AlienMonstersArr.cpp" />
+    <ClCompile Include="AlienSoldier.cpp" />
+    <ClCompile Include="AlienSoldiersQ.cpp" />
+    <ClCompile Include="ArmyUnit.cpp" />
+    <ClCompile Include="EarthArmy.cpp" />
+    <ClCompile Include="EarthGunnery.cpp" />
+    <ClCompile Include="EarthSoldier.cpp" />
+    <ClCompile Include="EarthSoldierQ.cpp" />
+    <ClCompile Include="EarthTank.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="GunneryPriQ.cpp" />
+    <ClCompile Include="RandomGenerator.cpp" />
+    <ClCompile Include="TanksStack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlienArmy.h" />

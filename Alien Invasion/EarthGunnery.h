@@ -5,11 +5,8 @@
 class EarthGunnery : public ArmyUnit
 {
 public:
-	EarthGunnery(int id, int health, int power,int jointime,int attackcapacity):ArmyUnit(id,GUNNERY,health,jointime,power,attackcapacity){
-	
-	}
+	EarthGunnery(int id, int health, int power, int jointime, int attackcapacity);
+
 	//Attack Function that will be overrided by the derived classes
-	bool attack() override {
-		return true;
-	}
+	bool attack() override;
 };

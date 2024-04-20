@@ -34,10 +34,82 @@
     <Filter Include="ArmyClasses">
       <UniqueIdentifier>{b5ade964-ae0d-44b9-ab1a-bcc8e37e32eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Earth">
+      <UniqueIdentifier>{b6e5b650-476f-4098-9274-a94d01c0e754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Aliens">
+      <UniqueIdentifier>{746dd966-be92-4cc5-a5b4-6067f5d936d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Earth\Lists">
+      <UniqueIdentifier>{ce98c66b-8b21-47d5-a88a-ca91f5b34379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Earth\Units">
+      <UniqueIdentifier>{7fabe0f6-d609-4f47-8631-8b14a30c9c4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Aliens\Lists">
+      <UniqueIdentifier>{994775ae-dff9-4d76-9a75-647f3a954edb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Aliens\Units">
+      <UniqueIdentifier>{5a4de61f-c274-4f26-b875-50bb92227570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Control">
+      <UniqueIdentifier>{7a45481e-1580-4b8f-99fc-af3f9b615df6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Alien Invasion.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EarthArmy.cpp">
+      <Filter>Source Files\Earth</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienArmy.cpp">
+      <Filter>Source Files\Aliens</Filter>
+    </ClCompile>
+    <ClCompile Include="EarthSoldierQ.cpp">
+      <Filter>Source Files\Earth\Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="GunneryPriQ.cpp">
+      <Filter>Source Files\Earth\Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="TanksStack.cpp">
+      <Filter>Source Files\Earth\Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="EarthGunnery.cpp">
+      <Filter>Source Files\Earth\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="EarthSoldier.cpp">
+      <Filter>Source Files\Earth\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="EarthTank.cpp">
+      <Filter>Source Files\Earth\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienDronesDQ.cpp">
+      <Filter>Source Files\Aliens\Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienMonstersArr.cpp">
+      <Filter>Source Files\Aliens\Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienSoldiersQ.cpp">
+      <Filter>Source Files\Aliens\Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienDrone.cpp">
+      <Filter>Source Files\Aliens\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienMonster.cpp">
+      <Filter>Source Files\Aliens\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienSoldier.cpp">
+      <Filter>Source Files\Aliens\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomGenerator.cpp">
+      <Filter>Source Files\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="ArmyUnit.cpp">
+      <Filter>Source Files\Control</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
