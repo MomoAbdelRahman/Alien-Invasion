@@ -60,7 +60,9 @@ public:
 		int next_Earth_ID;
 		for (int i = 0; i < config.N; i++) {
 			next_Earth_ID = Humans.get_next_id();//Get the ID of the next Earth unit
-			Humans.addunit(generator->Earthgenerator(next_Earth_ID,time)); //Generate new units for the Earth Army and adds it to the army
+			ArmyUnit* newunit = generator->Earthgenerator(next_Earth_ID,time);//Generate new units for the Earth Army
+			newunit->set_game(this);
+			Humans.addunit(newunit); //Generate new units for the Earth Army and adds it to the army
 		}
 	}
 	void add_aliens() {
@@ -69,6 +71,7 @@ public:
 		for (int i = 0; count < config.N; i++) {
 			next_alien_ID = 1000+Aliens.get_next_id();//Get the ID of the next Alien unit
 			ArmyUnit* newunit = generator->Aliengenerator(next_alien_ID,time);//Generate new units for the Alien Army
+			newunit->set_game(this);
 			if(newunit->get_type()==DRONE){
 				count = count + 2;
 			}

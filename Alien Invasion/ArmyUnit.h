@@ -1,5 +1,4 @@
 #pragma once
-#include<iostream>
 using namespace std;
 //This class is the base class for all the army units
 //This includes both Earth and Alien army units
@@ -12,6 +11,7 @@ enum TYPE
 	MONSTER,
 	DRONE
 };
+class game;
 class ArmyUnit {
 protected:
 	//Data members
@@ -21,9 +21,10 @@ protected:
 	int join_time;
 	int power;
 	int attack_capacity;
+	game* gameptr=nullptr;
 public:
 	//Parameterized constructor
-	ArmyUnit(int id, TYPE type, int health, int join_time, int power, int attack_capacity):id(id), type(type),health(health), join_time(join_time), power(power), attack_capacity(attack_capacity) {}
+	ArmyUnit(int id, TYPE type, int health, int join_time, int power, int attack_capacity) :id(id), type(type), health(health), join_time(join_time), power(power), attack_capacity(attack_capacity) { gameptr = nullptr; }
 
 	//Getters for Data members
 	int get_id() {
@@ -85,6 +86,16 @@ public:
 		cout << "Attack Capacity: " << attack_capacity << endl;
 		cout << endl;
 	}
+	
+	void set_game(game* g) {
+		gameptr = g;
+	}
+
+	game* get_game() {
+		return gameptr;
+	}
+	
 	//Pure virtual function for attack that will be different for each derived class
 	virtual bool attack()=0;
+
 };

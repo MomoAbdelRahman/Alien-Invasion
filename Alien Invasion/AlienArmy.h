@@ -27,6 +27,7 @@ public:
 			break;
 		case DRONE:
 			unit2=new AlienDrone(unit->get_id()+1,unit->get_health(),unit->get_join_time(),unit->get_power(),unit->get_attack_capacity());
+			unit2->set_game(unit->get_game());
 			AlienDrones.insertDrone((AlienDrone*)unit, (AlienDrone*)unit2);
 			break;
 		case MONSTER:

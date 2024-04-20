@@ -1,12 +1,5 @@
 #pragma once
 #include "gameconfig.h"
-#include "ArmyUnit.h"
-#include "EarthSoldier.h"
-#include "EarthTank.h"
-#include "EarthGunnery.h"
-#include "AlienSoldier.h"
-#include "AlienMonster.h"
-#include "AlienDrone.h"
 #include"AlienArmy.h"
 #include"EarthArmy.h"
 class randgen {
