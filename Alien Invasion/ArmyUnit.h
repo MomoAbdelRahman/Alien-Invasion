@@ -46,9 +46,9 @@ public:
 	//Print function
 	void print();
 	
-	void set_game(game* g);
+	void set_game(game* g); //sets the game pointer
 
-	game* get_game();
+	game* get_game(); //returns the game pointer
 
 	//Pure virtual function for attack that will be different for each derived class
 	virtual bool attack() = 0;

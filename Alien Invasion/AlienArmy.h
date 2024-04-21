@@ -32,13 +32,14 @@ public:
 
 
 	
-	int get_soldier_id();
-	int get_drone_id();
-	int get_monster_id();
+	int get_soldier_id(); //Returns the number of AlienSoldiers
+	int get_drone_id(); //Returns the number of AlienDrones
+	int get_monster_id(); //Returns the number of AlienMonsters
 
-	int get_next_id();
-	int get_killcount();
+	int get_next_id(); //Returns the id of the next alien to be used
+	int get_killcount(); //Returns the number of killed aliens
 
-	void print_killed();
-	LinkedQueue<ArmyUnit*> get_soldiers(int n);
+	void print_killed(); //Prints all the killed aliens
+	LinkedQueue<ArmyUnit*>* get_soldiers(int n); //Returns n number of AlienSoldiers
+	LinkedQueue<ArmyUnit*>* get_monsters(int n); //Returns n number of AlienMonsters
 };

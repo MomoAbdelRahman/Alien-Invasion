@@ -7,7 +7,7 @@ using namespace std;
 class AlienSoldierQueue
 {
 private:
-	int count; //Keeps track of the number of AlienSoldier objects in the queue
+	int count=0; //Keeps track of the number of AlienSoldier objects in the queue
 	LinkedQueue <AlienSoldier*> soldiers; //Queue to store AlienSoldier objects
 public:
 	AlienSoldierQueue();
@@ -22,9 +22,9 @@ public:
 	int get_count(); //Returns the total number of AlienSoldier objects in the queue
 		
 
-	void select_soldier(AlienSoldier* &soldier);
+	void select_soldier(AlienSoldier* &soldier); //Returns a pointer to the next AlienSoldier object in the queue
 
-	bool isEmpty();
+	bool isEmpty(); //Checks if the queue is empty
 
-	LinkedQueue<ArmyUnit*> get_soldiers(int n);
+	LinkedQueue<ArmyUnit*>* get_soldiers(int n); //Returns a queue of AlienSoldier objects from the queue
 };

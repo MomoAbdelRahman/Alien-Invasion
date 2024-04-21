@@ -53,23 +53,44 @@ bool AlienSoldierQueue::isEmpty()
 	return soldiers.isEmpty();
 }
 
-LinkedQueue<ArmyUnit*> AlienSoldierQueue::get_soldiers(int n)
+LinkedQueue<ArmyUnit*>* AlienSoldierQueue::get_soldiers(int n)
 {
-	LinkedQueue<ArmyUnit*> temp;
-	AlienSoldierQueue temp2;
-	AlienSoldier* soldier;
-	int c = 0;
+	LinkedQueue<ArmyUnit*>* returned = new LinkedQueue<ArmyUnit*>;
+	AlienSoldierQueue temp;
+	AlienSoldier* unit;
+	int count = 0;
 	while (!isEmpty()) {
-		remove_aliensoldier(soldier);
-		if (c < n) {
-			temp.enqueue(soldier);
-			c++;
+		remove_aliensoldier(unit);
+		if (count < n) {
+			returned->enqueue(unit);
+			count++;
 		}
-		temp2.add_aliensoldier(soldier);
+		temp.add_aliensoldier(unit);
 	}
-	while (!temp2.isEmpty()) {
-		temp2.remove_aliensoldier(soldier);
-		add_aliensoldier(soldier);
+	while (!temp.isEmpty()) {
+		temp.remove_aliensoldier(unit);
+		add_aliensoldier(unit);
 	}
-	return temp;
+	return returned;
+
+	//ArmyUnit** temp=new ArmyUnit*[n];
+	//for (int i = 0; i < n; i++) { temp[i] = nullptr; }
+	//AlienSoldierQueue temp2;
+	//AlienSoldier* soldier;
+	//int c = 0;
+	//while (!isEmpty()) {
+	//	remove_aliensoldier(soldier);
+	//	if (c < n) {
+	//		if (soldier) {
+	//		temp[c]=soldier;
+	//		}
+	//		c++;
+	//	}
+	//	temp2.add_aliensoldier(soldier);
+	//}
+	//while (!temp2.isEmpty()) {
+	//	temp2.remove_aliensoldier(soldier);
+	//	add_aliensoldier(soldier);
+	//}
+	//return temp;
 }

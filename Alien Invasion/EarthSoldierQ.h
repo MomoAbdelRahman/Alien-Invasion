@@ -21,6 +21,7 @@ public:
 		
 	
 	int get_count(); //Returns the total number of EarthSoldier objects in the queue
-	void select_soldier(EarthSoldier* &soldier);
-	bool isempty();
+
+	void select_soldier(EarthSoldier* &soldier); //Returns a pointer to the EarthSoldier object at the front of the queue
+	bool isempty(); //Returns true if the queue is empty, false otherwise
 };
