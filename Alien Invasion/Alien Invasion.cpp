@@ -85,25 +85,6 @@ int main()
 	//	}
 	//	//cout << "Aliens updated" << endl << endl;
 	//}
-	 system("pause");
-
+	system("pause");
 	}
-
-
-  // EarthTankStack e;
-  // 
-  // EarthTank *t;
-  // for (int i = 0; i < 5; i++){
-  //   t = new EarthTank(i, 10, 0, 20, 4);
-  //   e.AddTank(t);
-  // }
-  // t = nullptr;
-  // e.print();
-  //
-  // e.removeTank(t);
-  // 
-  // cout << t << endl;
-  // 
-  // e.print();
-
 }

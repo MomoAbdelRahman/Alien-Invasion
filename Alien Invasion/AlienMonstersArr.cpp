@@ -61,3 +61,46 @@ void AlienMonstersArray::select_monster(AlienMonster* &monster)
 	monster = alienMonsters[next];
 }
 
+LinkedQueue<ArmyUnit*>* AlienMonstersArray::get_monsters(int n) {
+	LinkedQueue<ArmyUnit*>* returned = new LinkedQueue<ArmyUnit*>;
+	AlienMonster* monster;
+	AlienMonstersArray temp;
+	int count = 0;
+	while (!isEmpty()) {
+		remove(monster);
+		if (count < n) {
+			returned->enqueue(monster);
+			count++;
+		}
+		temp.add(monster);
+	}
+	while (!temp.isEmpty()) {
+		temp.remove(monster);
+		add(monster);
+	}
+	return returned;
+	//ArmyUnit** temp=new ArmyUnit*[n];
+	//for (int i = 0; i < n; i++) { temp[i] = nullptr; }
+	//AlienMonstersArray m;
+	//AlienMonster* monster;
+	//int count = 0;
+	//while (!isEmpty()) {
+	//	remove(monster);
+	//	if (count < n) {
+	//		if(monster)
+	//		temp[count]=(monster);
+	//		count++;
+	//	}
+	//	m.add(monster);
+	//}
+	//while (!m.isEmpty()) {
+	//	m.remove(monster);
+	//	add(monster);
+	//}
+	//return temp;
+}
+
+bool AlienMonstersArray::isEmpty()
+{
+	return count==0;
+}

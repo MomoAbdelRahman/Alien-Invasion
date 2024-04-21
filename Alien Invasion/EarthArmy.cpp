@@ -9,6 +9,11 @@ bool EarthArmy::attack()
 	EarthSoldier* attacksoldier = nullptr;
 	EarthSoldiers.select_soldier(attacksoldier);
 	if (attacksoldier) { attacksoldier->attack(); }
+
+	EarthTank* attacktank = nullptr;
+	EarthTanks.selecttank(attacktank);
+	if(attacktank) { attacktank->attack(); }
+
 	return true;
 }
 

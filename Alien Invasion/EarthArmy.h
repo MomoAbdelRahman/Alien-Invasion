@@ -16,34 +16,20 @@ private:
 public:
 	EarthArmy();
 	bool attack(); //Attack function that attacks the Alien army
-
 	bool addunit(ArmyUnit* unit); //Adds any army unit to the army based on the enum type
-    
-
 	void removeunit(TYPE t, ArmyUnit*& unit); //Removes any army unit from the army based on the enum type
-
-		
-	
-	
 //TODO: make the killunit function remove unit automatically
 	void killunit(ArmyUnit* unit); //Kills any army unit and adds it to the KilledEarth queue
 
 	
 	void print(); //Prints the army
-
-
-
 	int get_soldier_id();//Returns the total number of soldiers in the army
-
 	int get_tank_id();//Returns the total number of tanks in the army
-
 	int get_gunnery_id();//Returns the total number of gunnery in the army
-	
 	int get_next_id();//Returns the next id to be assigned to a new unit by adding the total number of units in the army
-	
 	int get_killcount();//Returns the total number of units killed
 	
-	void print_killed();
+	void print_killed(); //Prints the KilledEarth queue
 
 
 };

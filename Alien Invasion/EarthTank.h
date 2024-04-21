@@ -1,6 +1,6 @@
 #pragma once
 #include "ArmyUnit.h"
-
+#include "LinkedQueue.h"
 //EarthTank class that inherits from the more general ArmyUnit class
 class EarthTank : public ArmyUnit {
 public:

@@ -117,7 +117,12 @@ void AlienArmy::print_killed()
 	}
 }
 
-LinkedQueue<ArmyUnit*> AlienArmy::get_soldiers(int n)
+LinkedQueue<ArmyUnit*>* AlienArmy::get_soldiers(int n)
 {
 	return AlienSoldiers.get_soldiers(n);
+}
+
+LinkedQueue<ArmyUnit*>* AlienArmy::get_monsters(int n)
+{
+	return AlienMonsters.get_monsters(n);
 }

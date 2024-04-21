@@ -32,11 +32,9 @@ private:
 	int max_alien_capacity;
 
 public:
-	randgen(gameconfig& config);
+	randgen(gameconfig& config); //constructor
 
-	ArmyUnit* Earthgenerator(int ID, int jt);
+	ArmyUnit* Earthgenerator(int ID, int jt); //function to generate random earth units
 
-	ArmyUnit* Aliengenerator(int ID, int jt);
-
-
+	ArmyUnit* Aliengenerator(int ID, int jt); //function to generate random alien units
 };

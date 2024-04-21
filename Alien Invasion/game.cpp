@@ -113,3 +113,88 @@ void game::print_killed()
 	cout << "]" << endl;;
 }
 
+LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
+	switch (t)
+	{
+	case EARTHSOLDIER:
+		return Aliens.get_soldiers(n);
+		break;
+	case TANK:
+		if (Humans.get_soldier_id() <= 0.3 * Aliens.get_soldier_id()) {
+			ArmyUnit* temp;
+			int soldiercount = Aliens.get_soldier_id();
+			int monstercount = Aliens.get_monster_id();
+			int soldierlength;
+			int monsterlength;
+			LinkedQueue<ArmyUnit*>* t1;
+			LinkedQueue<ArmyUnit*>* t2;
+			if (soldiercount >= n / 2 && monstercount >= n / 2) {
+				t1 = Aliens.get_soldiers(n / 2);
+				t2 = Aliens.get_monsters(n / 2);
+				soldierlength = n / 2;
+				monsterlength = n / 2;
+			}
+			else if (soldiercount <= n / 2 && monstercount >= n / 2) {
+				t1 = Aliens.get_soldiers(soldiercount);
+				t2 = Aliens.get_monsters(n - soldiercount);
+				soldierlength = soldiercount;
+				monsterlength = n - soldiercount;
+			}
+			else if (soldiercount >= n / 2 && monstercount <= n / 2) {
+				t2 = Aliens.get_monsters(monstercount);
+				t1 = Aliens.get_soldiers(n - monstercount);
+				monsterlength = monstercount;
+				soldierlength = n - monstercount;
+			}
+			else {
+				t2 = Aliens.get_monsters(monstercount);
+				t1 = Aliens.get_soldiers(soldiercount);
+				soldierlength = soldiercount;
+				monsterlength = monstercount;
+			}
+			
+			LinkedQueue<ArmyUnit*>* tr=new LinkedQueue<ArmyUnit*>;
+			for (int i = 0; i < soldierlength; i++) {
+				t1->dequeue(temp);
+				if(temp)
+				tr->enqueue(temp);
+			}
+			for (int i = 0; i < monsterlength; i++) {
+				t2->dequeue(temp);
+				if (temp)
+				tr->enqueue(temp);
+			}
+			delete t1;
+			delete t2;
+			return tr;
+
+			//ArmyUnit** tr = new ArmyUnit * [n];
+			//for (int i = 0; i < n; i++) { tr[i] = nullptr; }
+			//for (int i = 0; i < soldierlength; i++) {
+			//	if(t1[i])
+			//	tr[i] = t1[i];
+			//}
+			//for (int i = 0; i < monsterlength; i++) {
+			//	if (t2[i]) {
+			//		tr[i + soldierlength] = t2[i];
+			//	}
+			//}
+			//return tr;
+		}
+		else {
+			return Aliens.get_monsters(n);
+		}
+		break;
+	case GUNNERY:
+		break;
+	case ALIENSOLDIER:
+		break;
+	case MONSTER:
+		break;
+	case DRONE:
+		break;
+	default:
+		break;
+	}
+
+}
