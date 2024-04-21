@@ -76,28 +76,37 @@ void game::add_aliens()
 void game::printstate()
 {
 	cout << "Time:" << time << endl;//Print the time"
+	print_humans();
+	print_aliens();
+}
+
+void game::print_humans() {
 	cout << "======================Earth Army========================" << endl;
 	Humans.print();
+}
+void game::print_aliens() {
 	cout << "======================Alien Army========================" << endl;
 	Aliens.print();
-	cout << "======================Killed========================" << endl;
-	print_killed();
-	cout << "======================================================" << endl << endl << endl;
 }
 
 void game::steptime()
 {
+	printstate();
+	cout << "=========================Attacks========================"<<endl;
 	Humans.attack();
 	int A = rand() % 100;
 	if (A < config.prob) {
 		add_humans();
 		add_aliens();
 	}
+	print_killed();
+	cout << endl << endl;
 	time++;
 }
 
 void game::print_killed()
 {
+	cout << "=========================Killed=========================" << endl;
 	cout << "Killed:" << Humans.get_killcount() + Aliens.get_killcount() << " [";
 	Humans.print_killed();
 	Aliens.print_killed();

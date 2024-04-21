@@ -12,6 +12,7 @@ private:
 	GunneryPriQueue EarthGunneries; //Priority Queue of gunnery
 	LinkedQueue<ArmyUnit*> KilledEarth; //Queue of all the units in the army
 	int killcount = 0; //Counter to keep track of the number of units killed
+	int current_id = 0; //Counter to keep track of the next id to be assigned to a new unit
 public:
 	EarthArmy();
 	bool attack(); //Attack function that attacks the Alien army

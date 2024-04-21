@@ -27,6 +27,10 @@ public:
 
 	void printstate();
 
+	void print_humans();
+
+	void print_aliens();
+
 	void steptime(); //Function to simulate a time step and add new units to the armies if the probability is met
 
 	void print_killed();

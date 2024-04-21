@@ -7,7 +7,6 @@ int main()
 
 	while (g.time < 50) {
 	g.steptime();
-	g.printstate();
 	int X=rand() % 100;
 	X=abs(X);
 	//if (X < 10) {
@@ -86,7 +85,7 @@ int main()
 	//	}
 	//	//cout << "Aliens updated" << endl << endl;
 	//}
-	// system("pause");
+	 system("pause");
 
 	}
 

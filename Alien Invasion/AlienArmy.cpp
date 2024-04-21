@@ -17,14 +17,17 @@ bool AlienArmy::addunit(ArmyUnit* unit)
 	switch (unit->get_type()) {
 	case ALIENSOLDIER:
 		AlienSoldiers.add_aliensoldier((AlienSoldier*)unit);
+		current_id++;
 		break;
 	case DRONE:
 		unit2 = new AlienDrone(unit->get_id() + 1, unit->get_health(), unit->get_join_time(), unit->get_power(), unit->get_attack_capacity());
 		unit2->set_game(unit->get_game());
 		AlienDrones.insertDrone((AlienDrone*)unit, (AlienDrone*)unit2);
+		current_id = current_id + 2;
 		break;
 	case MONSTER:
 		AlienMonsters.add((AlienMonster*)unit);
+		current_id++;
 		break;
 	}
 	return true;
@@ -87,7 +90,7 @@ int AlienArmy::get_monster_id()
 
 int AlienArmy::get_next_id()
 {
-	return (AlienSoldiers.get_count() + AlienDrones.get_count() + AlienMonsters.get_count() + 1);
+	return current_id + 1;
 }
 
 int AlienArmy::get_killcount()

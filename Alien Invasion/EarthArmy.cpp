@@ -19,13 +19,16 @@ bool EarthArmy::addunit(ArmyUnit* unit)
 	switch (unit->get_type()) {
 	case EARTHSOLDIER:
 		EarthSoldiers.add_earthsoldier((EarthSoldier*)unit);
+		current_id++;
 		break;
 	case TANK:
 		EarthTanks.AddTank((EarthTank*)unit);
+		current_id++;
 		break;
 	case GUNNERY:
 		int priority = ((EarthGunnery*)unit)->get_health() + ((EarthGunnery*)unit)->get_power();
 		EarthGunneries.AddGunnery((EarthGunnery*)unit);
+		current_id++;
 		break;
 	}
 	return true;
@@ -84,7 +87,7 @@ int EarthArmy::get_gunnery_id()
 
 int EarthArmy::get_next_id()
 {
-	return get_soldier_id() + get_tank_id() + get_gunnery_id() + 1;
+	return current_id+1;
 }
 
 int EarthArmy::get_killcount()
