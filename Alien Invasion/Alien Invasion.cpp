@@ -29,7 +29,7 @@ int main()
     if (u){
         u->set_health(u->get_health() / 2);
         g.Humans.addunit(u);
-      }
+    }
 	}
 
 	else if (X > 30 && X < 40) {
@@ -43,7 +43,7 @@ int main()
     }
     for (int i = 0; i < 5; i++) {
       if(temp[i] != nullptr)
-      temp[i]->set_health(temp[i]->get_health() - 20);
+        temp[i]->set_health(temp[i]->get_health() - 20);
     }
     for (int i = 0; i < 5; i++) {
       g.Aliens.addunit(temp[i]);
