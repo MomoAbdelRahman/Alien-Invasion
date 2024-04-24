@@ -16,4 +16,5 @@ public:
 
 	void select_drone(AlienDrone* &ad1, AlienDrone* &ad2); //selects 2 AlienDrone units from the Deque
 	bool isEmpty(); //checks if the Deque is empty
+	LinkedQueue<ArmyUnit*>* get_drones(int n); //returns the AlienDrone units in the Deque
 };

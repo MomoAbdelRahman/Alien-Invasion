@@ -14,6 +14,10 @@ bool EarthArmy::attack()
 	EarthTanks.selecttank(attacktank);
 	if(attacktank) { attacktank->attack(); }
 
+	EarthGunnery* attackgunnery = nullptr;
+	EarthGunneries.select_gunnery(attackgunnery);
+	if(attackgunnery) { attackgunnery->attack(); }
+
 	return true;
 }
 

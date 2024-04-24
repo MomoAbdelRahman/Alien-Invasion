@@ -42,4 +42,5 @@ public:
 	void print_killed(); //Prints all the killed aliens
 	LinkedQueue<ArmyUnit*>* get_soldiers(int n); //Returns n number of AlienSoldiers
 	LinkedQueue<ArmyUnit*>* get_monsters(int n); //Returns n number of AlienMonsters
+	LinkedQueue<ArmyUnit*>* get_drones(int n); //Returns n number of AlienDrones
 };

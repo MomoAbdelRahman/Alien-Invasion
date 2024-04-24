@@ -12,7 +12,7 @@ public:
 	//Instance of gameconfig to held values
 	gameconfig config;
 	int time;
-	
+	int killcount;
 	//Function to read the configuration data from a text file
 	void read_data();
 	
@@ -22,7 +22,7 @@ public:
 	//The two armies
 	AlienArmy Aliens;
 	EarthArmy Humans;
-	
+	LinkedQueue<ArmyUnit*> killed;
 	void go(); //The function called to start the game
 	game(); //Constructor
 
@@ -40,6 +40,6 @@ public:
 	void print_killed(); //Function to print the units killed in the last time step
 
 	LinkedQueue<ArmyUnit*>* get_enemies(TYPE t, int n); //Function to get the enemies of a unit
-
+	void kill_unit(ArmyUnit* u); //Function to kill a unit
 	
 };

@@ -55,3 +55,33 @@ bool AlienDronesDequeue::isEmpty()
 {
 	return alienDD.isEmpty();
 }
+
+LinkedQueue<ArmyUnit*>* AlienDronesDequeue::get_drones(int n)
+{
+	LinkedQueue<ArmyUnit*>* temp = new LinkedQueue<ArmyUnit*>;
+	AlienDronesDequeue temp1;
+	AlienDrone* tempunit;
+	AlienDrone* tempunit2;
+	int count = 0;
+	while (!isEmpty()) {
+		removeDrones(tempunit, tempunit2);
+		if (count < n) {
+			if (tempunit != nullptr) {
+				temp->enqueue(tempunit);
+				count++;
+			}
+			if (tempunit2 != nullptr) {
+				temp->enqueue(tempunit2);
+				count++;
+			}
+			
+		}
+		temp1.insertDrone(tempunit, tempunit);
+		
+	}
+	while (!temp1.isEmpty()) {
+		temp1.removeDrones(tempunit, tempunit);
+		insertDrone(tempunit, tempunit);
+	}
+	return temp;
+}

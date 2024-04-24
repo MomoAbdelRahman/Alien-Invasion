@@ -22,7 +22,7 @@ bool EarthSoldier::attack()
 			if (enemy->get_health() <= 0) {
 				enemy->set_health(0);
 				gameptr->Aliens.removeunit(enemy->get_type(), temp, temp2);
-				gameptr->Aliens.killunit(temp);
+				gameptr->kill_unit(temp);
 			}
 			shot.enqueue(enemy);
 			shots++;

@@ -126,3 +126,8 @@ LinkedQueue<ArmyUnit*>* AlienArmy::get_monsters(int n)
 {
 	return AlienMonsters.get_monsters(n);
 }
+
+LinkedQueue<ArmyUnit*>* AlienArmy::get_drones(int n)
+{
+	return AlienDrones.get_drones(n);
+}

@@ -107,13 +107,37 @@ void game::steptime()
 void game::print_killed()
 {
 	cout << "=========================Killed=========================" << endl;
-	cout << "Killed:" << Humans.get_killcount() + Aliens.get_killcount() << " [";
-	Humans.print_killed();
-	Aliens.print_killed();
+	cout << "Killed:" << killcount << " [";
+	//Humans.print_killed();
+	//Aliens.print_killed();
+	ArmyUnit* temp;
+	LinkedQueue<ArmyUnit*> tempkilled;
+	while (killed.dequeue(temp)) {
+		if (temp) {
+			cout << temp->get_id();
+			if (!killed.isEmpty()) {
+				cout << ",";
+			}
+			tempkilled.enqueue(temp);
+		}
+	}
+	while (tempkilled.dequeue(temp)) {
+		if (temp) {
+			killed.enqueue(temp);
+		}
+	}
+
 	cout << "]" << endl;;
 }
 
 LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
+	int soldiercount = Aliens.get_soldier_id();
+	int monstercount = Aliens.get_monster_id();
+	int dronecount = Aliens.get_drone_id();
+	ArmyUnit* temp;
+	LinkedQueue<ArmyUnit*>* t1;
+	LinkedQueue<ArmyUnit*>* t2;
+	LinkedQueue<ArmyUnit*>* tr = new LinkedQueue<ArmyUnit*>;
 	switch (t)
 	{
 	case EARTHSOLDIER:
@@ -122,12 +146,8 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 	case TANK:
 		if (Humans.get_soldier_id() <= 0.3 * Aliens.get_soldier_id()) {
 			ArmyUnit* temp;
-			int soldiercount = Aliens.get_soldier_id();
-			int monstercount = Aliens.get_monster_id();
 			int soldierlength;
 			int monsterlength;
-			LinkedQueue<ArmyUnit*>* t1;
-			LinkedQueue<ArmyUnit*>* t2;
 			if (soldiercount >= n / 2 && monstercount >= n / 2) {
 				t1 = Aliens.get_soldiers(n / 2);
 				t2 = Aliens.get_monsters(n / 2);
@@ -167,25 +187,52 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 			delete t1;
 			delete t2;
 			return tr;
-
-			//ArmyUnit** tr = new ArmyUnit * [n];
-			//for (int i = 0; i < n; i++) { tr[i] = nullptr; }
-			//for (int i = 0; i < soldierlength; i++) {
-			//	if(t1[i])
-			//	tr[i] = t1[i];
-			//}
-			//for (int i = 0; i < monsterlength; i++) {
-			//	if (t2[i]) {
-			//		tr[i + soldierlength] = t2[i];
-			//	}
-			//}
-			//return tr;
 		}
 		else {
 			return Aliens.get_monsters(n);
 		}
 		break;
 	case GUNNERY:
+		int monsterlength;
+		int dronelength;
+		if (monstercount >= n / 2 && dronecount >= n / 2) {
+			t1 = Aliens.get_monsters(n / 2);
+			t2 = Aliens.get_drones(n / 2);
+			monsterlength = n / 2;
+			dronelength = n / 2;
+		}
+		else if (monstercount <= n / 2 && dronecount >= n / 2) {
+			t1 = Aliens.get_monsters(monstercount);
+			t2 = Aliens.get_drones(n - monstercount);
+			monsterlength = monstercount;
+			dronelength = n - monstercount;
+		}
+		else if (monstercount >= n / 2 && dronecount <= n / 2) {
+			t2 = Aliens.get_drones(dronecount);
+			t1 = Aliens.get_monsters(n - dronecount);
+			dronelength = dronecount;
+			monsterlength = n - dronecount;
+		}
+		else {
+			t2 = Aliens.get_drones(dronecount);
+			t1 = Aliens.get_monsters(monstercount);
+			monsterlength = monstercount;
+			dronelength = dronecount;
+		}
+		
+		for (int i = 0; i < monsterlength; i++) {
+			t1->dequeue(temp);
+			if (temp)
+				tr->enqueue(temp);
+		}
+		for (int i = 0; i < dronelength; i++) {
+			t2->dequeue(temp);
+			if (temp)
+				tr->enqueue(temp);
+		}
+		delete t1;
+		delete t2;
+		return tr;
 		break;
 	case ALIENSOLDIER:
 		break;
@@ -193,8 +240,15 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 		break;
 	case DRONE:
 		break;
-	default:
-		break;
+
 	}
 
+}
+
+void game::kill_unit(ArmyUnit* u)
+{
+	if (u) {
+		killed.enqueue(u);
+		killcount++;
+	}
 }
