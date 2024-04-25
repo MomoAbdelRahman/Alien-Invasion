@@ -59,3 +59,26 @@ bool EarthTankStack::isEmpty()
 {
 	return tankStack.isEmpty();
 }
+
+LinkedQueue<ArmyUnit*>* EarthTankStack::get_tanks(int n)
+{
+	LinkedQueue<ArmyUnit*>* returned = new LinkedQueue<ArmyUnit*>;
+	EarthTankStack temp;
+	EarthTank* unit;
+	int count = 0;
+	while (!isEmpty()) {
+		removeTank(unit);
+		if (count < n) {
+			if (unit) {
+				returned->enqueue(unit);
+				count++;
+			}
+		}
+		temp.AddTank(unit);
+	}
+	while (!temp.isEmpty()) {
+		temp.removeTank(unit);
+		AddTank(unit);
+	}
+	return returned;
+}

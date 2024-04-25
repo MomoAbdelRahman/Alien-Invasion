@@ -76,12 +76,12 @@ LinkedQueue<ArmyUnit*>* AlienDronesDequeue::get_drones(int n)
 			}
 			
 		}
-		temp1.insertDrone(tempunit, tempunit);
+		temp1.insertDrone(tempunit, tempunit2);
 		
 	}
 	while (!temp1.isEmpty()) {
-		temp1.removeDrones(tempunit, tempunit);
-		insertDrone(tempunit, tempunit);
+		temp1.removeDrones(tempunit, tempunit2);
+		insertDrone(tempunit, tempunit2);
 	}
 	return temp;
 }

@@ -59,6 +59,7 @@ public :
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& frntEntry);  
 	bool peek(T& frntEntry)  const;	
+	void printQ();
 	~LinkedQueue();
 };
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -184,4 +185,18 @@ LinkedQueue<T>::~LinkedQueue()
 	//cout<<"\nEnding LinkedQueue destructor..."<<endl;
 }
 
+template <typename T>
+void LinkedQueue<T>::printQ()
+{
+	Node<T>* temp = frontPtr;
+	while (temp)
+	{
+		cout<<temp->getItem();
+		if (!isEmpty()) {
+			cout << ",";
+		}
+		temp = temp->getNext();
+	}
+	cout<<endl;
+}
 #endif

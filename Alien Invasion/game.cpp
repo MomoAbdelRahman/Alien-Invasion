@@ -60,7 +60,7 @@ void game::add_aliens()
 	int next_alien_ID;
 	int count = 0;
 	for (int i = 0; count < config.N; i++) {
-		next_alien_ID = 1000 + Aliens.get_next_id();//Get the ID of the next Alien unit
+		next_alien_ID = Aliens.get_next_id();//Get the ID of the next Alien unit
 		ArmyUnit* newunit = generator->Aliengenerator(next_alien_ID, time);//Generate new units for the Alien Army
 		newunit->set_game(this);
 		if (newunit->get_type() == DRONE) {
@@ -94,6 +94,7 @@ void game::steptime()
 	printstate();
 	cout << "=========================Attacks========================"<<endl;
 	Humans.attack();
+	Aliens.Attack();
 	int A = rand() % 100;
 	if (A < config.prob) {
 		add_humans();
@@ -134,6 +135,8 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 	int soldiercount = Aliens.get_soldier_id();
 	int monstercount = Aliens.get_monster_id();
 	int dronecount = Aliens.get_drone_id();
+	int tankscount = Humans.get_tank_id();
+	int humansoldierc = Humans.get_soldier_id();
 	ArmyUnit* temp;
 	LinkedQueue<ArmyUnit*>* t1;
 	LinkedQueue<ArmyUnit*>* t2;
@@ -175,13 +178,11 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 			
 			LinkedQueue<ArmyUnit*>* tr=new LinkedQueue<ArmyUnit*>;
 			for (int i = 0; i < soldierlength; i++) {
-				t1->dequeue(temp);
-				if(temp)
+				if(t1->dequeue(temp))
 				tr->enqueue(temp);
 			}
 			for (int i = 0; i < monsterlength; i++) {
-				t2->dequeue(temp);
-				if (temp)
+				if (t2->dequeue(temp))
 				tr->enqueue(temp);
 			}
 			delete t1;
@@ -221,13 +222,11 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 		}
 		
 		for (int i = 0; i < monsterlength; i++) {
-			t1->dequeue(temp);
-			if (temp)
+			if (t1->dequeue(temp))
 				tr->enqueue(temp);
 		}
 		for (int i = 0; i < dronelength; i++) {
-			t2->dequeue(temp);
-			if (temp)
+			if (t2->dequeue(temp))
 				tr->enqueue(temp);
 		}
 		delete t1;
@@ -235,8 +234,47 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 		return tr;
 		break;
 	case ALIENSOLDIER:
+		return Humans.get_soldiers(n);
 		break;
 	case MONSTER:
+		int humansoldierlength;
+		int tanklength;
+		if (humansoldierc >= n / 2 && tankscount >= n / 2) {
+			t1 = Humans.get_soldiers(n / 2);
+			t2 = Humans.get_tanks(n / 2);
+			humansoldierlength = n / 2;
+			tanklength = n / 2;
+		}
+		else if (humansoldierc <= n / 2 && tankscount >= n / 2) {
+			t1 = Humans.get_soldiers(humansoldierc);
+			t2 = Humans.get_tanks(n - humansoldierc);
+			humansoldierlength = humansoldierc;
+			tanklength = n - humansoldierc;
+		}
+		else if (humansoldierc >= n / 2 && tankscount <= n / 2) {
+			t2 = Humans.get_tanks(tankscount);
+			t1 = Humans.get_soldiers(n - tankscount);
+			tanklength = tankscount;
+			humansoldierlength = n - tankscount;
+		}
+		else {
+			t2 = Humans.get_tanks(tankscount);
+			t1 = Humans.get_soldiers(soldiercount);
+			tanklength = tankscount;
+			humansoldierlength = humansoldierc;
+		}
+
+		for (int i = 0; i < tanklength; i++) {
+			if (t1->dequeue(temp))
+				tr->enqueue(temp);
+		}
+		for (int i = 0; i < humansoldierlength; i++) {
+			if (t2->dequeue(temp))
+				tr->enqueue(temp);
+		}
+		delete t1;
+		delete t2;
+		return tr;
 		break;
 	case DRONE:
 		break;

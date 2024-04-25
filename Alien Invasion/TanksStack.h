@@ -15,5 +15,5 @@ public:
 	int get_count(); //get_count function to return the count of the number of tank units
 	void selecttank(EarthTank* &tank); //selecttank function to select the tank unit at the top of the stack
 	bool isEmpty(); //isEmpty function to check if the stack is empty
-
+	LinkedQueue<ArmyUnit*>* get_tanks(int n);
 };

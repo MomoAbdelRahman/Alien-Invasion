@@ -6,7 +6,14 @@ AlienArmy::AlienArmy()
 
 bool AlienArmy::Attack()
 {
-	return false;
+	AlienSoldier* attackingsolder = nullptr;
+	AlienSoldiers.select_soldier(attackingsolder);
+	if (attackingsolder) { attackingsolder->attack(); }
+
+	AlienMonster* attackingmonster = nullptr;
+	AlienMonsters.select_monster(attackingmonster);
+	if (attackingmonster) { attackingmonster->attack(); }
+	return true;
 }
 
 bool AlienArmy::addunit(ArmyUnit* unit)
@@ -20,7 +27,7 @@ bool AlienArmy::addunit(ArmyUnit* unit)
 		current_id++;
 		break;
 	case DRONE:
-		unit2 = new AlienDrone(unit->get_id() + 1, unit->get_health(), unit->get_join_time(), unit->get_power(), unit->get_attack_capacity());
+		unit2 = new AlienDrone(unit->get_id() + 1 , unit->get_health(), unit->get_join_time(), unit->get_power(), unit->get_attack_capacity());
 		unit2->set_game(unit->get_game());
 		AlienDrones.insertDrone((AlienDrone*)unit, (AlienDrone*)unit2);
 		current_id = current_id + 2;

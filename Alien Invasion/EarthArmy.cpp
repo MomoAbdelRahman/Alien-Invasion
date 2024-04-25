@@ -124,3 +124,13 @@ void EarthArmy::print_killed()
 	
 }
 
+LinkedQueue<ArmyUnit*>* EarthArmy::get_soldiers(int n)
+{
+	return EarthSoldiers.get_soldiers(n);
+}
+
+LinkedQueue<ArmyUnit*>* EarthArmy::get_tanks(int n)
+{
+	return EarthTanks.get_tanks(n);
+}
+

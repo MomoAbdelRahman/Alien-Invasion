@@ -31,8 +31,12 @@ void AlienMonstersArray::remove(AlienMonster*& monster)
 		}
 		count--;
 		// next = rand() % count;
-		if (count)
-			next = rand() % count;
+		
+	}
+	if (count)
+		next = rand() % count;
+	else {
+		next = -1;
 	}
 }
 
@@ -55,6 +59,9 @@ int AlienMonstersArray::get_count()
 
 void AlienMonstersArray::select_monster(AlienMonster* &monster)
 {
+	if (count == 0) {
+		return;
+	}
 	if (next == -1) {
 		next = rand() % count;
 	}

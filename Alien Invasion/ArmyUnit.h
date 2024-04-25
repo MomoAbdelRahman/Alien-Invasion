@@ -52,5 +52,5 @@ public:
 
 	//Pure virtual function for attack that will be different for each derived class
 	virtual bool attack() = 0;
-
+	friend ostream& operator<<(ostream& os, const ArmyUnit& dt);
 };

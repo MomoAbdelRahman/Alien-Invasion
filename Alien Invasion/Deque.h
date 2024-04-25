@@ -5,10 +5,18 @@ template <typename T>
 class Deque:public LinkedQueue<T> {
 public:
 	bool enqueue_back(const T& x) {
-		this->enqueue(x);
+		if (this->isEmpty()) {
+			this->enqueue(x);
+			return true;
+		}
+		Node<T>* p = new Node<T>;
+		p->setItem(x);
+		this->backPtr->setNext(p);
+		this->backPtr = p;
 		return true;
 	}
 	
+
 	bool enqueue_front(const T& x) {
 		if(this->isEmpty()) {
 			this->enqueue(x);

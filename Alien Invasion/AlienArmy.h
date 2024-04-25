@@ -11,7 +11,7 @@ private:
 	AlienMonstersArray AlienMonsters;//Dynamic Array of AlienMonsters
 	LinkedQueue<ArmyUnit*> KilledAliens; //Queue of KilledAliens
 	int killcount = 0; //Counter for the number of killed aliens
-	int current_id= 0; //Counter for the current id of the aliens
+	int current_id= 2000; //Counter for the current id of the aliens
 public:
 	AlienArmy(); //Default Constructor
 
