@@ -13,7 +13,14 @@ bool AlienArmy::Attack()
 	AlienMonster* attackingmonster = nullptr;
 	AlienMonsters.select_monster(attackingmonster);
 	if (attackingmonster) { attackingmonster->attack(); }
+	
+	AlienDrone* attackingdrone = nullptr;
+	AlienDrone* attackingdrone2 = nullptr;
+	AlienDrones.select_drone(attackingdrone, attackingdrone2);
+	if(attackingdrone) { attackingdrone->attack(); }
+	if(attackingdrone2) { attackingdrone2->attack(); }
 	return true;
+
 }
 
 bool AlienArmy::addunit(ArmyUnit* unit)

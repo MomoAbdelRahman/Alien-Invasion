@@ -1,6 +1,7 @@
 #pragma once
 #include "priQueue.h"
 #include"EarthGunnery.h"
+#include"LinkedQueue.h"
 #include <iostream>
 using namespace std;
 //This class is a priority queue of EarthGunnery objects. It is used to store the EarthGunnery objects in a priority queue based on their health and power.
@@ -18,4 +19,5 @@ public:
 	int get_count(); //Return the total number of Gunnery Units
 	void select_gunnery(EarthGunnery* &gunnery); //Select the Gunnery Unit with the highest priority
 	bool isEmpty(); //Check if the priority queue is empty
+	LinkedQueue<ArmyUnit*>* get_gunneries(int n); //Return the Gunnery Units in the priority queue
 };

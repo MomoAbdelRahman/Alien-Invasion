@@ -1,5 +1,5 @@
 #include "GunneryPriQ.h"
-
+#include "LinkedQueue.h"
 GunneryPriQueue::GunneryPriQueue()
 {
 	count = 0;
@@ -55,4 +55,29 @@ void GunneryPriQueue::select_gunnery(EarthGunnery* &gunnery)
 bool GunneryPriQueue::isEmpty()
 {
 	return gunnerys.isEmpty();
+}
+
+LinkedQueue<ArmyUnit*>* GunneryPriQueue::get_gunneries(int n)
+{
+	LinkedQueue<ArmyUnit*>* gunneries = new LinkedQueue<ArmyUnit*>();
+	GunneryPriQueue t; //Temporary priority queue to store the Gunnery Units
+	EarthGunnery* temp;
+	int count = 0;
+	while (!isEmpty()) {
+		if(count <n){
+			RemoveGunnery(temp);
+			gunneries->enqueue(temp);
+			t.AddGunnery(temp);
+			count++;
+		}
+		else{
+			RemoveGunnery(temp);
+			t.AddGunnery(temp);
+		}
+	}
+	while (!t.isEmpty()) { //Restore the Gunnery Units to the original priority queue
+		t.RemoveGunnery(temp);
+		AddGunnery(temp);
+	}
+	return gunneries;
 }

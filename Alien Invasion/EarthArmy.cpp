@@ -134,3 +134,8 @@ LinkedQueue<ArmyUnit*>* EarthArmy::get_tanks(int n)
 	return EarthTanks.get_tanks(n);
 }
 
+LinkedQueue<ArmyUnit*>* EarthArmy::get_gunneries(int n)
+{
+	return EarthGunneries.get_gunneries(n);
+}
+

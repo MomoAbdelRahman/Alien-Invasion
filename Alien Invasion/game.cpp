@@ -137,6 +137,7 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 	int dronecount = Aliens.get_drone_id();
 	int tankscount = Humans.get_tank_id();
 	int humansoldierc = Humans.get_soldier_id();
+	int gunnerycount= Humans.get_gunnery_id();
 	ArmyUnit* temp;
 	LinkedQueue<ArmyUnit*>* t1;
 	LinkedQueue<ArmyUnit*>* t2;
@@ -277,6 +278,44 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 		return tr;
 		break;
 	case DRONE:
+		int gunnerylength;
+		int tankslength;
+		if (gunnerycount >= n / 2 && tankscount >= n / 2) {
+			t1 = Humans.get_gunneries(n / 2);
+			t2 = Humans.get_tanks(n / 2);
+			gunnerylength = n / 2;
+			tankslength = n / 2;
+		}
+		else if (gunnerycount <= n / 2 && tankscount >= n / 2) {
+			t1 = Humans.get_soldiers(gunnerycount);
+			t2 = Humans.get_gunneries(n - gunnerycount);
+			gunnerylength = gunnerycount;
+			tankslength = n - humansoldierc;
+		}
+		else if (gunnerycount >= n / 2 && tankscount <= n / 2) {
+			t2 = Humans.get_tanks(tankscount);
+			t1 = Humans.get_gunneries(n - tankscount);
+			tankslength = tankscount;
+			gunnerylength = n - tankscount;
+		}
+		else {
+			t2 = Humans.get_tanks(tankscount);
+			t1 = Humans.get_gunneries(soldiercount);
+			tankslength = tankscount;
+			gunnerylength = gunnerycount;
+		}
+
+		for (int i = 0; i < tankslength; i++) {
+			if (t1->dequeue(temp))
+				tr->enqueue(temp);
+		}
+		for (int i = 0; i < gunnerylength; i++) {
+			if (t2->dequeue(temp))
+				tr->enqueue(temp);
+		}
+		delete t1;
+		delete t2;
+		return tr;
 		break;
 
 	}

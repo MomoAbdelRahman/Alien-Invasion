@@ -33,4 +33,5 @@ public:
 
 	LinkedQueue<ArmyUnit*>* get_soldiers(int n); //Returns a queue of n soldiers
 	LinkedQueue<ArmyUnit*>* get_tanks(int n);
+	LinkedQueue<ArmyUnit*>* get_gunneries(int n);
 };
