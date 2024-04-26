@@ -192,11 +192,11 @@ void LinkedQueue<T>::printQ()
 	while (temp)
 	{
 		cout<<temp->getItem();
-		if (!isEmpty()) {
+		temp = temp->getNext();
+		if (temp) {
 			cout << ",";
 		}
-		temp = temp->getNext();
+		
 	}
-	cout<<endl;
 }
 #endif

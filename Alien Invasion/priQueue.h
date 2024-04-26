@@ -1,7 +1,7 @@
 #pragma once
 #include "priNode.h"
-
-
+#include <iostream>
+using namespace std;
 //This class impelements the priority queue as a sorted list (Linked List)
 //The item with highest priority is at the front of the queue
 template <typename T>
@@ -58,5 +58,15 @@ public:
 
     bool isEmpty() const {
         return head == nullptr;
+    }
+    void printpriQ() {
+        if (!isEmpty()) {
+            priNode<T>* iter = head;
+            while (iter != nullptr) {
+                cout << iter->getItem();
+                if (iter->getNext() != nullptr) { cout << ","; }
+                iter = iter->getNext();
+            }
+        }
     }
 };

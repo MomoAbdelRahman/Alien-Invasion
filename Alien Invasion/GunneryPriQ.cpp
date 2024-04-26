@@ -25,21 +25,24 @@ void GunneryPriQueue::print()
 {
 	//cout << "======================Earth Gunnery Units========================" << endl;
 	cout << "EG: " << count << " [";
-	GunneryPriQueue t; //Temporary priority queue to store the Gunnery Units
-	while (!isEmpty()) {
-		EarthGunnery* temp;
-		RemoveGunnery(temp);
-		cout << temp->get_id();
-		if (!isEmpty())
-			cout << ",";
-		t.AddGunnery(temp);
-	}
+	gunnerys.printpriQ();
 	cout << "]" << endl;
-	while (!t.isEmpty()) { //Restore the Gunnery Units to the original priority queue
-		EarthGunnery* temp;
-		t.RemoveGunnery(temp);
-		AddGunnery(temp);
-	}
+
+	//GunneryPriQueue t; //Temporary priority queue to store the Gunnery Units
+	//while (!isEmpty()) {
+	//	EarthGunnery* temp;
+	//	RemoveGunnery(temp);
+	//	cout << temp->get_id();
+	//	if (!isEmpty())
+	//		cout << ",";
+	//	t.AddGunnery(temp);
+	//}
+	//cout << "]" << endl;
+	//while (!t.isEmpty()) { //Restore the Gunnery Units to the original priority queue
+	//	EarthGunnery* temp;
+	//	t.RemoveGunnery(temp);
+	//	AddGunnery(temp);
+	//}
 }
 
 int GunneryPriQueue::get_count()

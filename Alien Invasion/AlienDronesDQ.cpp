@@ -22,22 +22,25 @@ void AlienDronesDequeue::print()
 {
 	//cout << "======================Alien Drone Units========================" << endl; //Printing the AlienDrone units
 	cout << "AD:" << count << " [";
-	AlienDronesDequeue temp;
-	AlienDrone* temp1;
-	AlienDrone* temp2;
-	while (!isEmpty()) {
-		removeDrones(temp1, temp2);
-		temp.insertDrone(temp1, temp2);
-		cout << temp1->get_id() << "," << temp2->get_id();
-		if (!isEmpty()) {
-			cout << ",";
-		}
-	}
-	while (!temp.isEmpty()) { //Restoring the AlienDrone units back to the original Deque
-		temp.removeDrones(temp1, temp2);
-		insertDrone(temp1, temp2);
-	}
-	cout << "]" << endl;
+	alienDD.printDQ();
+	cout << "]"<<endl;
+
+	//AlienDronesDequeue temp;
+	//AlienDrone* temp1;
+	//AlienDrone* temp2;
+	//while (!isEmpty()) {
+	//	removeDrones(temp1, temp2);
+	//	temp.insertDrone(temp1, temp2);
+	//	cout << temp1->get_id() << "," << temp2->get_id();
+	//	if (!isEmpty()) {
+	//		cout << ",";
+	//	}
+	//}
+	//while (!temp.isEmpty()) { //Restoring the AlienDrone units back to the original Deque
+	//	temp.removeDrones(temp1, temp2);
+	//	insertDrone(temp1, temp2);
+	//}
+	//cout << "]" << endl;
 }
 
 int AlienDronesDequeue::get_count()

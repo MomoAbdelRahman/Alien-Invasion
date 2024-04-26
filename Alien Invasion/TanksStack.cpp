@@ -27,22 +27,24 @@ void EarthTankStack::print()
 {
 	//cout << "======================Earth Tanks Units========================" << endl;
 	cout << "ET: " << count << " [";
-	EarthTankStack temp;//temporary stack to store the tank units
-	while (!isEmpty()) {
-		EarthTank* tank;
-		removeTank(tank);
-		cout << tank->get_id();
-		temp.AddTank(tank);
-		if (!isEmpty()) {
-			cout << ",";
-		}
-	}
+	tankStack.printstack();
 	cout << "]" << endl;
-	while (!temp.isEmpty()) {//push the tank units back to the original stack
-		EarthTank* tank;
-		temp.removeTank(tank);
-		AddTank(tank);
-	}
+	//EarthTankStack temp;//temporary stack to store the tank units
+	//while (!isEmpty()) {
+	//	EarthTank* tank;
+	//	removeTank(tank);
+	//	cout << tank->get_id();
+	//	temp.AddTank(tank);
+	//	if (!isEmpty()) {
+	//		cout << ",";
+	//	}
+	//}
+	//cout << "]" << endl;
+	//while (!temp.isEmpty()) {//push the tank units back to the original stack
+	//	EarthTank* tank;
+	//	temp.removeTank(tank);
+	//	AddTank(tank);
+	//}
 }
 
 int EarthTankStack::get_count()

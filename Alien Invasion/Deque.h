@@ -3,6 +3,7 @@
 
 template <typename T>
 class Deque:public LinkedQueue<T> {
+	int count=0;
 public:
 	bool enqueue_back(const T& x) {
 		if (this->isEmpty()) {
@@ -13,6 +14,7 @@ public:
 		p->setItem(x);
 		this->backPtr->setNext(p);
 		this->backPtr = p;
+		count++;
 		return true;
 	}
 	
@@ -20,6 +22,7 @@ public:
 	bool enqueue_front(const T& x) {
 		if(this->isEmpty()) {
 			this->enqueue(x);
+			count++;
 			return true;
 		}
 		else {
@@ -27,6 +30,7 @@ public:
 			p->setItem(x);
 			p->setNext(this->frontPtr);
 			this->frontPtr = p;
+			count++;
 			return true;
 		}
 	}
@@ -39,6 +43,7 @@ public:
 			delete this->frontPtr;
 			this->frontPtr = nullptr;
 			this->backPtr= nullptr;
+			count--;
 			return true;
 		}
 		else
@@ -60,6 +65,7 @@ public:
 			this->frontPtr = newfront;
 			this->backPtr = newrear;
 			newrear->setNext(nullptr);
+			count = count - 2;
 			return true;
 		}
 	}
@@ -76,5 +82,12 @@ public:
 		}
 		r = this->backPtr->getItem();
 	}
-
+	void printDQ() {
+		Node<T>* left = this->frontPtr;
+		while (left != nullptr) {
+			cout << left->getItem();
+			if (left->getNext()) { cout << ","; }
+			left = left->getNext();
+		}
+	}
 };

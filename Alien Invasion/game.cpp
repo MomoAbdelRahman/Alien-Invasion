@@ -109,9 +109,11 @@ void game::print_killed()
 {
 	cout << "=========================Killed=========================" << endl;
 	cout << "Killed:" << killcount << " [";
+	killed.printQ();
+	cout << "]" << endl;
 	//Humans.print_killed();
 	//Aliens.print_killed();
-	ArmyUnit* temp;
+	/*ArmyUnit* temp;
 	LinkedQueue<ArmyUnit*> tempkilled;
 	while (killed.dequeue(temp)) {
 		if (temp) {
@@ -128,7 +130,7 @@ void game::print_killed()
 		}
 	}
 
-	cout << "]" << endl;;
+	cout << "]" << endl;;*/
 }
 
 LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {

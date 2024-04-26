@@ -22,23 +22,24 @@ void EarthSoldierQueue::print()
 {
 	//cout << "======================Earth Soldier Units========================" << endl;
 	cout << "ES: " << count << " [";
+	soldiers.printQ();
+	cout<<"]"<<endl;
 
-
-	EarthSoldierQueue temp; //Temporary queue to store EarthSoldier objects
-	EarthSoldier* soldier;
-	while (!soldiers.isEmpty()) {
-		soldiers.dequeue(soldier);
-		cout << soldier->get_id();
-		if (!soldiers.isEmpty()) {
-			cout << ",";
-		}
-		temp.add_earthsoldier(soldier);
-	}
-	cout << "]" << endl;
-	while (!temp.isempty()) { //Re-enqueues the EarthSoldier objects back to the original queue
-		temp.remove_earthsoldier(soldier);
-		soldiers.enqueue(soldier);
-	}
+	//EarthSoldierQueue temp; //Temporary queue to store EarthSoldier objects
+	//EarthSoldier* soldier;
+	//while (!soldiers.isEmpty()) {
+	//	soldiers.dequeue(soldier);
+	//	cout << soldier->get_id();
+	//	if (!soldiers.isEmpty()) {
+	//		cout << ",";
+	//	}
+	//	temp.add_earthsoldier(soldier);
+	//}
+	//cout << "]" << endl;
+	//while (!temp.isempty()) { //Re-enqueues the EarthSoldier objects back to the original queue
+	//	temp.remove_earthsoldier(soldier);
+	//	soldiers.enqueue(soldier);
+	//}
 }
 
 int EarthSoldierQueue::get_count()

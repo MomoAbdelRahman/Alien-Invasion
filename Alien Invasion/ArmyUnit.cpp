@@ -86,6 +86,8 @@ game* ArmyUnit::get_game()
 	return gameptr;
 }
 
-
-
-
+ostream& operator<<(ostream& os, const ArmyUnit* dt)
+{
+	os<<dt->id;
+	return os;
+}

@@ -22,20 +22,23 @@ void AlienSoldierQueue::print()
 {
 	//cout << "======================Alien Soldier Units========================" << endl;
 	cout << "AS: " << count << " [";
-	AlienSoldierQueue temp; //Temporary queue to store AlienSoldier objects
-	AlienSoldier* soldier;
-	while (!isEmpty()) {
-		remove_aliensoldier(soldier);
-		cout << soldier->get_id();
-		if (!isEmpty())
-			cout << ",";
-		temp.add_aliensoldier(soldier);
-	}
+	soldiers.printQ();
 	cout << "]" << endl;
-	while (!temp.isEmpty()) { //Re-enqueues the AlienSoldier objects back to the original queue
-		temp.remove_aliensoldier(soldier);
-		add_aliensoldier(soldier);
-	}
+	
+	//AlienSoldierQueue temp; //Temporary queue to store AlienSoldier objects
+	//AlienSoldier* soldier;
+	//while (!isEmpty()) {
+	//	remove_aliensoldier(soldier);
+	//	cout << soldier->get_id();
+	//	if (!isEmpty())
+	//		cout << ",";
+	//	temp.add_aliensoldier(soldier);
+	//}
+	//cout << "]" << endl;
+	//while (!temp.isEmpty()) { //Re-enqueues the AlienSoldier objects back to the original queue
+	//	temp.remove_aliensoldier(soldier);
+	//	add_aliensoldier(soldier);
+	//}
 }
 
 int AlienSoldierQueue::get_count()

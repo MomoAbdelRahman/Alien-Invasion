@@ -19,21 +19,6 @@
     <Filter Include="DataStructures\Basic ADT">
       <UniqueIdentifier>{a33447f4-9d50-404c-a012-dc7db9d633a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EarthUnits">
-      <UniqueIdentifier>{813552b9-9fcc-435e-ada6-3c8ec498d3c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AlienUnits">
-      <UniqueIdentifier>{9751e120-d84e-467e-9861-fb14b0db042a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Earth Lists">
-      <UniqueIdentifier>{c280a08b-57ab-4a2c-bd5c-4a14f7980774}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Alien Lists">
-      <UniqueIdentifier>{4edbe4e0-0289-42e2-a2e2-04097af451c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ArmyClasses">
-      <UniqueIdentifier>{b5ade964-ae0d-44b9-ab1a-bcc8e37e32eb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Earth">
       <UniqueIdentifier>{b6e5b650-476f-4098-9274-a94d01c0e754}</UniqueIdentifier>
     </Filter>
@@ -54,6 +39,27 @@
     </Filter>
     <Filter Include="Source Files\Control">
       <UniqueIdentifier>{7a45481e-1580-4b8f-99fc-af3f9b615df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Earth">
+      <UniqueIdentifier>{659a8fb6-bc44-4a39-920b-c8846d59c334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Earth\EarthUnits">
+      <UniqueIdentifier>{813552b9-9fcc-435e-ada6-3c8ec498d3c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Earth\Earth Lists">
+      <UniqueIdentifier>{c280a08b-57ab-4a2c-bd5c-4a14f7980774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Aliens">
+      <UniqueIdentifier>{1cc35c08-6cc1-46f9-b6bc-8e7b9f8d2b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Aliens\AlienUnits">
+      <UniqueIdentifier>{9751e120-d84e-467e-9861-fb14b0db042a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Aliens\Alien Lists">
+      <UniqueIdentifier>{4edbe4e0-0289-42e2-a2e2-04097af451c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Control">
+      <UniqueIdentifier>{62b16d72-4c0d-41de-b8f5-7a140d4cdd58}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -113,9 +119,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArmyUnit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StackADT.h">
       <Filter>DataStructures\Basic ADT</Filter>
     </ClInclude>
@@ -137,59 +140,62 @@
     <ClInclude Include="LinkedQueue.h">
       <Filter>DataStructures\Basic ADT</Filter>
     </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gameconfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="EarthSoldier.h">
-      <Filter>EarthUnits</Filter>
+      <Filter>Header Files\Earth\EarthUnits</Filter>
     </ClInclude>
     <ClInclude Include="EarthTank.h">
-      <Filter>EarthUnits</Filter>
+      <Filter>Header Files\Earth\EarthUnits</Filter>
     </ClInclude>
     <ClInclude Include="EarthGunnery.h">
-      <Filter>EarthUnits</Filter>
+      <Filter>Header Files\Earth\EarthUnits</Filter>
     </ClInclude>
     <ClInclude Include="AlienSoldier.h">
-      <Filter>AlienUnits</Filter>
+      <Filter>Header Files\Aliens\AlienUnits</Filter>
     </ClInclude>
     <ClInclude Include="AlienMonster.h">
-      <Filter>AlienUnits</Filter>
+      <Filter>Header Files\Aliens\AlienUnits</Filter>
     </ClInclude>
     <ClInclude Include="AlienDrone.h">
-      <Filter>AlienUnits</Filter>
-    </ClInclude>
-    <ClInclude Include="EarthArmy.h">
-      <Filter>ArmyClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="AlienArmy.h">
-      <Filter>ArmyClasses</Filter>
+      <Filter>Header Files\Aliens\AlienUnits</Filter>
     </ClInclude>
     <ClInclude Include="Deque.h">
       <Filter>DataStructures\Basic ADT</Filter>
     </ClInclude>
     <ClInclude Include="GunneryPriQ.h">
-      <Filter>Earth Lists</Filter>
+      <Filter>Header Files\Earth\Earth Lists</Filter>
     </ClInclude>
     <ClInclude Include="TanksStack.h">
-      <Filter>Earth Lists</Filter>
+      <Filter>Header Files\Earth\Earth Lists</Filter>
     </ClInclude>
     <ClInclude Include="EarthSoldierQ.h">
-      <Filter>Earth Lists</Filter>
+      <Filter>Header Files\Earth\Earth Lists</Filter>
     </ClInclude>
     <ClInclude Include="AlienSoldiersQ.h">
-      <Filter>Alien Lists</Filter>
+      <Filter>Header Files\Aliens\Alien Lists</Filter>
     </ClInclude>
     <ClInclude Include="AlienMonstersArr.h">
-      <Filter>Alien Lists</Filter>
+      <Filter>Header Files\Aliens\Alien Lists</Filter>
     </ClInclude>
     <ClInclude Include="AlienDronesDQ.h">
-      <Filter>Alien Lists</Filter>
+      <Filter>Header Files\Aliens\Alien Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthArmy.h">
+      <Filter>Header Files\Earth</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienArmy.h">
+      <Filter>Header Files\Aliens</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmyUnit.h">
+      <Filter>Header Files\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Header Files\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="gameconfig.h">
+      <Filter>Header Files\Control</Filter>
     </ClInclude>
     <ClInclude Include="RandomGenerator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Control</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
