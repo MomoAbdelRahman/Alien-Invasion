@@ -6,7 +6,7 @@ EarthTank::EarthTank(int id, int health, int jointime, int power, int attackcapa
 
 bool EarthTank::attack()
 {
-	cout << "ET " << this->get_id() << ":"; //prints the id of the tank attacking
+	
 	LinkedQueue<ArmyUnit*>* enemies=gameptr->get_enemies(TANK, this->attack_capacity);
 	ArmyUnit* enemy = nullptr;
 	ArmyUnit* temp = nullptr;
@@ -30,15 +30,17 @@ bool EarthTank::attack()
 			shots++;
 		}
 	}
-
-	cout << shots << " Shots" << "[";
-	while (!shot.isEmpty()) {
-		shot.dequeue(temp2);
-		cout << temp2->get_id();
-		if (!shot.isEmpty()) {
-			cout << ",";
+	if (!gameptr->silent) {
+		cout << "ET " << this->get_id() << ":"; //prints the id of the tank attacking
+		cout << shots << " Shots" << "[";
+		while (!shot.isEmpty()) {
+			shot.dequeue(temp2);
+			cout << temp2->get_id();
+			if (!shot.isEmpty()) {
+				cout << ",";
+			}
 		}
+		cout << "]" << endl;
 	}
-	cout << "]" << endl;
 	return true;
 }

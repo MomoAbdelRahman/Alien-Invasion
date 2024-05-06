@@ -8,7 +8,7 @@ EarthGunnery::EarthGunnery(int id, int health, int jointime, int power, int atta
 
 bool EarthGunnery::attack()
 {
-	cout << "EG " << this->get_id()<<":";
+	
 
 	LinkedQueue<ArmyUnit*>* enemies = gameptr->get_enemies(GUNNERY, this->attack_capacity);
 	ArmyUnit* enemy=nullptr;
@@ -32,17 +32,20 @@ bool EarthGunnery::attack()
 		
 		}
 	}
-	cout << shots << " Shots" << "[";
-	while(!shot.isEmpty())
-	{
-		shot.dequeue(enemy);
-		cout << enemy->get_id();
-		if(!shot.isEmpty())
+	if (!gameptr->silent) {
+		cout << "EG " << this->get_id() << ":"; //prints the id of the gunnery attacking
+		cout << shots << " Shots" << "[";
+		while (!shot.isEmpty())
 		{
-			cout << ",";
+			shot.dequeue(enemy);
+			cout << enemy->get_id();
+			if (!shot.isEmpty())
+			{
+				cout << ",";
+			}
 		}
+		cout << "]" << endl;
 	}
-	cout << "]" << endl;
 	return true;
 }
 

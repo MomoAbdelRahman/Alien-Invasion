@@ -5,7 +5,7 @@ EarthHealer::EarthHealer(int id, int health, int jointime, int power, int attack
 
 bool EarthHealer::attack()
 {
-	cout << "EH " << this->get_id() << ":"; //prints the id of the healer healing
+	
 	LinkedQueue<ArmyUnit*>* injured = gameptr->get_enemies(HEALER, this->attack_capacity); //gets the injured soldiers and tanks that should be healed
 	LinkedQueue<ArmyUnit*> troops_healed;
 	ArmyUnit* hurt = nullptr;
@@ -36,16 +36,18 @@ bool EarthHealer::attack()
 			}
 		}
 	}
-
-	cout << healed << " Heals" << "[";
-	while (!troops_healed.isEmpty()) {
-		troops_healed.dequeue(temp);
-		cout << temp->get_id();
-		if (!troops_healed.isEmpty()) {
-			cout << ",";
+	if (!gameptr->silent) {
+		cout << "EH " << this->get_id() << ":"; //prints the id of the healer healing
+		cout << healed << " Heals" << "[";
+		while (!troops_healed.isEmpty()) {
+			troops_healed.dequeue(temp);
+			cout << temp->get_id();
+			if (!troops_healed.isEmpty()) {
+				cout << ",";
+			}
 		}
+		cout << "]" << endl;
 	}
-	cout << "]" << endl;
 
 	return healed;
 }

@@ -118,7 +118,7 @@ void game::steptime()
 	cout << endl << endl;
 	UML_new = 0;
 	time++;
-}
+}\
 
 void game::print_UML()
 {
@@ -377,6 +377,20 @@ void game::kill_unit(ArmyUnit* u)
 		killed.enqueue(u);
 		killcount++;
 	}
+}
+
+void game::silent_step()
+{
+	Humans.attack();
+	Aliens.Attack();
+	update_UML();
+	int A = rand() % 100;
+	if (A < config.prob) {
+		add_humans();
+		add_aliens();
+	}
+	UML_new = 0;
+	time++;
 }
 
 void game::generate_output_file()

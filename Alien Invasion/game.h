@@ -7,7 +7,7 @@
 using namespace std;
 class game{
 public:
-	
+	bool silent = false; //Bool variable to indicate whether the game is in silent mode or not
 	//Instance of gameconfig to held values
 	gameconfig config;
 	int time;
@@ -52,5 +52,5 @@ public:
 	LinkedQueue<ArmyUnit*>* get_enemies(TYPE t, int n); //Function to get the enemies of a unit
 	void kill_unit(ArmyUnit* u); //Function to kill a unit
 
-	
+	void silent_step(); //Function to simulate a time step without printing the state of the game
 };

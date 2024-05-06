@@ -5,7 +5,7 @@ AlienMonster::AlienMonster(int id, int health, int jointime, int power, int atta
 
 bool AlienMonster::attack()
 {
-	cout << "AM " << this->get_id() << ":"; //prints the id of the soldier attacking
+	
 	LinkedQueue<ArmyUnit*>* enemies = gameptr->get_enemies(MONSTER, this->attack_capacity);//gets the enemies that the soldier can attack
 	ArmyUnit* enemy = nullptr; //pointer to the enemy
 	ArmyUnit* temp = nullptr; //pointer to the enemy
@@ -28,14 +28,17 @@ bool AlienMonster::attack()
 			shots++;
 		}
 	}
+	if(!gameptr->silent){
+	cout << "AM " << this->get_id() << ":"; //prints the id of the soldier attacking
 	cout << shots << " Shots" << "[";
-	while (!shot.isEmpty()) {
-		shot.dequeue(temp2);
-		cout << temp2->get_id();
-		if (!shot.isEmpty()) {
-			cout << ",";
+		while (!shot.isEmpty()) {
+			shot.dequeue(temp2);
+			cout << temp2->get_id();
+			if (!shot.isEmpty()) {
+				cout << ",";
+			}
 		}
+		cout << "]" << endl;
 	}
-	cout << "]" << endl;
 	return true;
 }
