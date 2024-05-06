@@ -373,7 +373,13 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 void game::kill_unit(ArmyUnit* u)
 {
 	if (u) {
+		u->set_time_of_death(time);
 		killed.enqueue(u);
 		killcount++;
 	}
+}
+
+void game::generate_output_file()
+{
+	
 }

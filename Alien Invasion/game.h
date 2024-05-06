@@ -46,6 +46,8 @@ public:
 
 	void print_killed(); //Function to print the units killed in the last time step
 
+	void generate_output_file();
+
 	LinkedQueue<ArmyUnit*>* get_enemies(TYPE t, int n); //Function to get the enemies of a unit
 	void kill_unit(ArmyUnit* u); //Function to kill a unit
 

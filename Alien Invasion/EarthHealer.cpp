@@ -19,6 +19,7 @@ bool EarthHealer::attack()
 	{
 		injured->dequeue(hurt);
 		if (hurt) {
+			if (!this->get_first_attack_time()) this->set_first_attack_time(gameptr->time);
  			if ((gameptr->time - hurt->get_UML_time()) >= 10) {
 				gameptr->kill_unit(hurt);
 			}

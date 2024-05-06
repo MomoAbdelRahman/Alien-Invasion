@@ -19,6 +19,7 @@ bool EarthGunnery::attack()
 	{
 		enemies->dequeue(enemy);
 		if(enemy){
+			if (!this->get_first_attack_time()) this->set_first_attack_time(gameptr->time);
 			shot.enqueue(enemy);
 			shots++;
 			enemy->set_health(enemy->get_health() - (this->get_power() * this->get_health()) / (100 * sqrt(enemy->get_health()))); //Damage done is (attacking unit power * attacking unit health)/(100*sqrt(attacked unit health))

@@ -23,8 +23,8 @@ protected:
 	int join_time;
 	int power;
 	int attack_capacity;
-	int time_of_death;
-	int first_attack_time;
+	int time_of_death=0;
+	int first_attack_time=0;
 	int UML_time; //time spent in UML (resets when taken back to battle)
 	game* gameptr=nullptr;
 public:
