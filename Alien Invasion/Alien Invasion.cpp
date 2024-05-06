@@ -8,4 +8,5 @@ int main()
 		g.steptime();
 		system("pause");
 	}
+	g.generate_output_file();
 }

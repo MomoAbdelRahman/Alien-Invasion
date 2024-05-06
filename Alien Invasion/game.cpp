@@ -381,5 +381,133 @@ void game::kill_unit(ArmyUnit* u)
 
 void game::generate_output_file()
 {
-	
+	int destructed_es = 0;
+	int destructed_et = 0;
+	int destructed_eg = 0;
+	int destructed_eh = 0;
+	int destructed_as = 0;
+	int destructed_am = 0;
+	int destructed_ad = 0;
+
+	int sum_df_e = 0;
+	int sum_dd_e = 0;
+	int sum_db_e = 0;
+	int sum_df_a = 0;
+	int sum_dd_a = 0;
+	int sum_db_a = 0;
+
+
+	ofstream output;
+	output.open("output.txt");
+	ArmyUnit* temp;
+	output << "td" << ", " << "id" << ", " << "tj" << ", " << "df" << ", " << "dd" << ", " << "db" << endl;
+	while (!killed.isEmpty()) {
+		killed.dequeue(temp);
+		int ta = temp->get_first_attack_time();
+		int td = temp->get_time_of_death();
+		int id = temp->get_id();
+		int tj = temp->get_join_time();
+		int df = ta - tj;
+		int dd = td - ta;
+		int db = td - tj;
+		output << td << ", " << id << ", " << tj << ", " << df << ", " << dd << ", " << db << endl;
+		
+		if (temp->get_type() == EARTHSOLDIER) {
+			destructed_es++;
+			sum_db_e += db;
+			sum_dd_e += dd;
+			sum_df_e += df;
+		}
+		else if (temp->get_type() == TANK) {
+			destructed_et++;
+			destructed_es++;
+			sum_db_e += db;
+			sum_dd_e += dd;
+			sum_df_e += df;
+		}
+		else if (temp->get_type() == GUNNERY) {
+			destructed_eg++;
+			destructed_es++;
+			sum_db_e += db;
+			sum_dd_e += dd;
+			sum_df_e += df;
+		}
+		else if (temp->get_type() == HEALER) {
+			destructed_eh++;
+			destructed_es++;
+			sum_db_e += db;
+			sum_dd_e += dd;
+			sum_df_e += df;
+		}
+		else if (temp->get_type() == ALIENSOLDIER) {
+			destructed_as++;
+			sum_db_a += db;
+			sum_dd_a += dd;
+			sum_df_a += df;
+		}
+		else if (temp->get_type() == MONSTER) {
+			destructed_am++;
+			sum_db_a += db;
+			sum_dd_a += dd;
+			sum_df_a += df;
+		}
+		else if (temp->get_type() == DRONE) {
+			destructed_ad++;
+			sum_db_a += db;
+			sum_dd_a += dd;
+			sum_df_a += df;
+		}
+	}
+	int total_es = Humans.get_soldier_id() + destructed_es;
+	int total_et = Humans.get_tank_id() + destructed_et;
+	int total_eg = Humans.get_gunnery_id() + destructed_eg;
+	int total_eh = Humans.get_healer_id() + destructed_eh;
+	int total_as = Aliens.get_soldier_id() + destructed_as;
+	int total_am = Aliens.get_monster_id() + destructed_am;
+	int total_ad = Aliens.get_drone_id() + destructed_ad;
+	int total_earth= total_es + total_et + total_eg + total_eh;
+	int total_dest_earth = destructed_es + destructed_et + destructed_eg + destructed_eh;
+	int total_alien = total_as + total_am + total_ad;
+	int total_dest_alien = destructed_as + destructed_am + destructed_ad;
+	int avg_df_e = sum_df_e / total_dest_earth;
+	int avg_dd_e = sum_dd_e / total_dest_earth;
+	int avg_db_e = sum_db_e / total_dest_earth;
+	int avg_df_a = sum_df_a / total_dest_alien;
+	int avg_dd_a = sum_dd_a / total_dest_alien;
+	int avg_db_a = sum_db_a / total_dest_alien;
+	int total_healed = healed_successfully;
+
+	output<<"Earth Army:"<<endl;
+	output << "Total Earth Soldiers: " << total_es << endl;
+	output << "Total Earth Tanks: " << total_et << endl;
+	output << "Total Earth Gunnery: " << total_eg << endl;
+	output << "Total Earth Healers: " << total_eh << endl;
+	output<<"Precentage of Destrcuted Earth Soldiers: "<<(destructed_es*100)/total_es<<"%"<<endl;
+	output << "Precentage of Destrcuted Earth Tanks: " << (destructed_et * 100) / total_et << "%" << endl;
+	output << "Precentage of Destrcuted Earth Gunnery: " << (destructed_eg * 100) / total_eg << "%" << endl;
+	output << "Precentage of Destrcuted Earth Healers: " << (destructed_eh * 100) / total_eh << "%" << endl;
+	output<<"Precentage of Destrcuted Earth Army: "<<(total_dest_earth*100)/total_earth<<"%"<<endl;
+	output<<"Average DF of Earth Army: "<<avg_df_e<<endl;
+	output << "Average DD of Earth Army: " << avg_dd_e << endl;
+	output << "Average DB of Earth Army: " << avg_db_e << endl;
+	output<<"DF/DB"<<100*avg_df_e/avg_db_e<<"%" << endl;
+	output << "DD/DB" << 100 * avg_dd_e / avg_db_e << "%" << endl;
+	output<< "Total Healed Percentage: " << total_healed/total_earth << endl;
+	output<< endl;
+
+
+	output << "Alien Army:" << endl;
+	output << "Total Alien Soldiers: " << total_as << endl;
+	output << "Total Alien Monsters: " << total_am << endl;
+	output << "Total Alien Drones: " << total_ad << endl;
+	output << "Precentage of Destrcuted Alien Soldiers: " << (destructed_as * 100) / total_as << "%" << endl;
+	output << "Precentage of Destrcuted Alien Monsters: " << (destructed_am * 100) / total_am << "%" << endl;
+	output << "Precentage of Destrcuted Alien Drones: " << (destructed_ad * 100) / total_ad << "%" << endl;
+	output << "Precentage of Destrcuted Alien Army: " << (total_dest_alien * 100) / total_alien << "%" << endl;
+	output << "Average DF of Alien Army: " << avg_df_a << endl;
+	output << "Average DD of Alien Army: " << avg_dd_a << endl;
+	output << "Average DB of Alien Army: " << avg_db_a << endl;
+	output << "DF/DB" << 100 * avg_df_a / avg_db_a << "%" << endl;
+	output << "DD/DB" << 100 * avg_dd_a / avg_db_a << "%" << endl;
+	output.close();
 }
