@@ -12,6 +12,7 @@ public:
 	gameconfig config;
 	int time;
 	int killcount;
+	int healed_successfully=0;
 	int UML_new = 0; //Units added to UML this round
 	bool tank_anxiety=false; //Bool variable to indicate whether earth soldiers fell below 30% of alien soldiers count and gets turned back off when ES is back to 80% of AS
 	//Function to read the configuration data from a text file

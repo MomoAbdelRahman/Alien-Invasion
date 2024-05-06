@@ -27,6 +27,7 @@ bool EarthHealer::attack()
 				hurt->set_health(hurt->get_health() + ((this->power) * (this->health)) / (100 * sqrt(hurt->get_health()))); //Health added is (healer power * healer health)/(100*sqrt(hurt health))
 				if (hurt->get_health() >= 0.2 * (gameptr->config.max_earth_health)) { //if unit is healed over 20% it is dropped back into battle, otherwise stays in UML
 					gameptr->Humans.addunit(hurt);
+					healed_successfully++;
 				}
 				else {
 					gameptr->UML.add_unit(hurt);
