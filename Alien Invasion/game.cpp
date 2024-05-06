@@ -496,6 +496,16 @@ void game::generate_output_file()
 	float avg_db_a = sum_db_a / (float)total_dest_alien;
 	float total_healed = healed_successfully;
 
+	if (Aliens.isEmpty()) {
+		output << "Earth Army Wins" << endl;
+	}
+	else if(Humans.isEmpty()){
+		output << "Alien Army Wins" << endl;
+	}
+	else {
+		output << "Draw" << endl;
+	}
+
 	output<<"Earth Army:"<<endl;
 	output << "Total Earth Soldiers: " << total_es << endl;
 	output << "Total Earth Tanks: " << total_et << endl;
@@ -519,7 +529,12 @@ void game::generate_output_file()
 	else {
 		output << "Precentage of Destrcuted Earth Gunnery: " << 0 << "%" << endl;
 	}
-	output<<"Precentage of Destrcuted Earth Army: "<<(total_dest_earth*100)/total_earth<<"%"<<endl;
+	if (total_earth) {
+				output<<"Precentage of Destrcuted Earth Army: "<<(total_dest_earth*100)/total_earth<<"%"<<endl;
+	}
+	else {
+		output << "Precentage of Destrcuted Earth Army: " << 0 << "%" << endl;
+	}
 	output<<"Average DF of Earth Army: "<<avg_df_e<<endl;
 	output << "Average DD of Earth Army: " << avg_dd_e << endl;
 	output << "Average DB of Earth Army: " << avg_db_e << endl;
@@ -551,10 +566,12 @@ void game::generate_output_file()
 	else {
 		output<< "Precentage of Destrcuted Alien Drones: " << 0 << "%" << endl;
 	}
-	output << "Precentage of Destrcuted Alien Soldiers: " << (destructed_as * 100) / total_as << "%" << endl;
-	output << "Precentage of Destrcuted Alien Monsters: " << (destructed_am * 100) / total_am << "%" << endl;
-	output << "Precentage of Destrcuted Alien Drones: " << (destructed_ad * 100) / total_ad << "%" << endl;
-	output << "Precentage of Destrcuted Alien Army: " << (total_dest_alien * 100) / total_alien << "%" << endl;
+	if (total_alien) {
+		output << "Precentage of Destrcuted Alien Army: " << (total_dest_alien * 100) / total_alien << "%" << endl;
+	}
+	else {
+		output << "Precentage of Destrcuted Alien Army: " << 0 << "%" << endl;
+	}
 	output << "Average DF of Alien Army: " << avg_df_a << endl;
 	output << "Average DD of Alien Army: " << avg_dd_a << endl;
 	output << "Average DB of Alien Army: " << avg_db_a << endl;
