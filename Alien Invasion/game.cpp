@@ -442,21 +442,18 @@ void game::generate_output_file()
 		}
 		else if (temp->get_type() == TANK) {
 			destructed_et++;
-			destructed_es++;
 			sum_db_e += db;
 			sum_dd_e += dd;
 			sum_df_e += df;
 		}
 		else if (temp->get_type() == GUNNERY) {
 			destructed_eg++;
-			destructed_es++;
 			sum_db_e += db;
 			sum_dd_e += dd;
 			sum_df_e += df;
 		}
 		else if (temp->get_type() == HEALER) {
 			destructed_eh++;
-			destructed_es++;
 			sum_db_e += db;
 			sum_dd_e += dd;
 			sum_df_e += df;
@@ -504,10 +501,24 @@ void game::generate_output_file()
 	output << "Total Earth Tanks: " << total_et << endl;
 	output << "Total Earth Gunnery: " << total_eg << endl;
 	output << "Total Earth Healers: " << total_eh << endl;
-	output<<"Precentage of Destrcuted Earth Soldiers: "<<(destructed_es*100)/total_es<<"%"<<endl;
-	output << "Precentage of Destrcuted Earth Tanks: " << (destructed_et * 100) / total_et << "%" << endl;
-	output << "Precentage of Destrcuted Earth Gunnery: " << (destructed_eg * 100) / total_eg << "%" << endl;
-	output << "Precentage of Destrcuted Earth Healers: " << (destructed_eh * 100) / total_eh << "%" << endl;
+	if (total_es) {
+		output<<"Precentage of Destrcuted Earth Soldiers: "<<(destructed_es*100)/total_es<<"%"<<endl;
+	}
+	else {
+		output << "Precentage of Destrcuted Earth Soldiers: " << 0 << "%" << endl;
+	}
+	if (total_et) {
+		output << "Precentage of Destrcuted Earth Tanks: " << (destructed_et * 100) / total_et << "%" << endl;
+	}
+	else {
+		output << "Precentage of Destrcuted Earth Tanks: " << 0<< "%" << endl;
+	}
+	if (total_eg) {
+		output << "Precentage of Destrcuted Earth Gunnery: " << (destructed_eg * 100) / total_eg << "%" << endl;
+	}
+	else {
+		output << "Precentage of Destrcuted Earth Gunnery: " << 0 << "%" << endl;
+	}
 	output<<"Precentage of Destrcuted Earth Army: "<<(total_dest_earth*100)/total_earth<<"%"<<endl;
 	output<<"Average DF of Earth Army: "<<avg_df_e<<endl;
 	output << "Average DD of Earth Army: " << avg_dd_e << endl;
@@ -522,6 +533,24 @@ void game::generate_output_file()
 	output << "Total Alien Soldiers: " << total_as << endl;
 	output << "Total Alien Monsters: " << total_am << endl;
 	output << "Total Alien Drones: " << total_ad << endl;
+	if (total_as) {
+		output << "Precentage of Destrcuted Alien Soldiers: " << (destructed_as * 100) / total_as << "%" << endl;
+	}
+	else {
+		output<<"Precentage of Destrcuted Alien Soldiers: " << 0 << "%" << endl;
+	}
+	if (total_am) {
+		output << "Precentage of Destrcuted Alien Monsters: " << (destructed_am * 100) / total_am << "%" << endl;
+	}
+	else {
+		output<<"Precentage of Destrcuted Alien Monsters: " << 0 << "%" << endl;
+	}
+	if (total_ad) {
+		output << "Precentage of Destrcuted Alien Drones: " << (destructed_ad * 100) / total_ad << "%" << endl;
+	}
+	else {
+		output<< "Precentage of Destrcuted Alien Drones: " << 0 << "%" << endl;
+	}
 	output << "Precentage of Destrcuted Alien Soldiers: " << (destructed_as * 100) / total_as << "%" << endl;
 	output << "Precentage of Destrcuted Alien Monsters: " << (destructed_am * 100) / total_am << "%" << endl;
 	output << "Precentage of Destrcuted Alien Drones: " << (destructed_ad * 100) / total_ad << "%" << endl;

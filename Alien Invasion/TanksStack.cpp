@@ -94,8 +94,7 @@ LinkedQueue<EarthTank*>* EarthTankStack::get_hurt_tanks()
 	while (!isEmpty()) {
 		removeTank(unit);
 		if (unit->get_health() < 0.2 * (unit->get_game()->config.max_earth_health)) {
-			injured->enqueue(unit);
-			count--;	
+			injured->enqueue(unit);	
 		}
 		else {
 			temp.AddTank(unit);

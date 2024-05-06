@@ -88,7 +88,6 @@ LinkedQueue<EarthSoldier*>* EarthSoldierQueue::get_hurt_soldiers()
 		remove_earthsoldier(unit);
 		if (unit->get_health() < 0.2 * (unit->get_game()->config.max_earth_health)) {
 			injured->enqueue(unit);
-			count--;
 		}
 		else {
 			temp.add_earthsoldier(unit);
