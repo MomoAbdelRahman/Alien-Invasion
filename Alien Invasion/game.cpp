@@ -410,7 +410,7 @@ void game::generate_output_file()
 		int df = ta - tj;
 		int dd = td - ta;
 		int db = td - tj;
-		output << td << ", " << id << ", " << tj << ", " << df << ", " << dd << ", " << db << endl;
+		output << td << ", " << id << ", " << tj << ", " << df << ", " << dd << ", " << db<< endl;
 		
 		if (temp->get_type() == EARTHSOLDIER) {
 			destructed_es++;
