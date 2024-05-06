@@ -107,18 +107,18 @@ void game::steptime()
 	cout << "=========================Attacks========================"<<endl;
 	Humans.attack();
 	Aliens.Attack();
-	update_UML();
 	int A = rand() % 100;
 	if (A < config.prob) {
 		add_humans();
 		add_aliens();
 	}
+	update_UML();
 	print_UML();
+	UML_new = 0;
 	print_killed();
 	cout << endl << endl;
-	UML_new = 0;
 	time++;
-}\
+}
 
 void game::print_UML()
 {
