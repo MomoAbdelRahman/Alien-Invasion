@@ -421,11 +421,19 @@ void game::generate_output_file()
 		int td = temp->get_time_of_death();
 		int id = temp->get_id();
 		int tj = temp->get_join_time();
-		int df = ta - tj;
-		int dd = td - ta;
+		int df;
+		int dd;
 		int db = td - tj;
-		output << td << ", " << id << ", " << tj << ", " << df << ", " << dd << ", " << db<< endl;
-		
+		if (ta) {
+			df = ta - tj;
+			dd = td - ta;
+			output << td << ", " << id << ", " << tj << ", " << df << ", " << dd << ", " << db << endl;
+		}
+		else {
+			df = 0;
+			dd = 0;
+			output << td << ", " << id << ", " << tj << ", " << "Never attacked" << ", " << "Never attacked" << ", " << db << endl;
+		}
 		if (temp->get_type() == EARTHSOLDIER) {
 			destructed_es++;
 			sum_db_e += db;
@@ -483,13 +491,13 @@ void game::generate_output_file()
 	int total_dest_earth = destructed_es + destructed_et + destructed_eg + destructed_eh;
 	int total_alien = total_as + total_am + total_ad;
 	int total_dest_alien = destructed_as + destructed_am + destructed_ad;
-	int avg_df_e = sum_df_e / total_dest_earth;
-	int avg_dd_e = sum_dd_e / total_dest_earth;
-	int avg_db_e = sum_db_e / total_dest_earth;
-	int avg_df_a = sum_df_a / total_dest_alien;
-	int avg_dd_a = sum_dd_a / total_dest_alien;
-	int avg_db_a = sum_db_a / total_dest_alien;
-	int total_healed = healed_successfully;
+	float avg_df_e = sum_df_e / (float)total_dest_earth;
+	float avg_dd_e = sum_dd_e / (float)total_dest_earth;
+	float avg_db_e = sum_db_e / (float)total_dest_earth;
+	float avg_df_a = sum_df_a / (float)total_dest_alien;
+	float avg_dd_a = sum_dd_a / (float)total_dest_alien;
+	float avg_db_a = sum_db_a / (float)total_dest_alien;
+	float total_healed = healed_successfully;
 
 	output<<"Earth Army:"<<endl;
 	output << "Total Earth Soldiers: " << total_es << endl;
@@ -504,8 +512,8 @@ void game::generate_output_file()
 	output<<"Average DF of Earth Army: "<<avg_df_e<<endl;
 	output << "Average DD of Earth Army: " << avg_dd_e << endl;
 	output << "Average DB of Earth Army: " << avg_db_e << endl;
-	output<<"DF/DB"<<100*avg_df_e/avg_db_e<<"%" << endl;
-	output << "DD/DB" << 100 * avg_dd_e / avg_db_e << "%" << endl;
+	output << "DF/DB=" << 100 * avg_df_e / avg_db_e << "%" << endl;
+	output << "DD/DB=" << 100 * avg_dd_e / avg_db_e << "%" << endl;
 	output<< "Total Healed Percentage: " << total_healed/total_earth << endl;
 	output<< endl;
 
@@ -521,7 +529,7 @@ void game::generate_output_file()
 	output << "Average DF of Alien Army: " << avg_df_a << endl;
 	output << "Average DD of Alien Army: " << avg_dd_a << endl;
 	output << "Average DB of Alien Army: " << avg_db_a << endl;
-	output << "DF/DB" << 100 * avg_df_a / avg_db_a << "%" << endl;
-	output << "DD/DB" << 100 * avg_dd_a / avg_db_a << "%" << endl;
+	output << "DF/DB=" << 100 * avg_df_a / avg_db_a << "%" << endl;
+	output << "DD/DB=" << 100 * avg_dd_a / avg_db_a << "%" << endl;
 	output.close();
 }
