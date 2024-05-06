@@ -132,6 +132,12 @@ int EarthArmy::get_killcount()
 	return killcount;
 }
 
+bool EarthArmy::isEmpty()
+{
+	if (EarthGunneries.isEmpty() && EarthSoldiers.isempty() && EarthTanks.isEmpty()) return true;
+	return false;
+}
+
 void EarthArmy::print_killed()
 {
 	LinkedQueue<ArmyUnit*> temp;

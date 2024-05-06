@@ -33,6 +33,8 @@ public:
 	int get_next_id();//Returns the next id to be assigned to a new unit by adding the total number of units in the army
 	int get_killcount();//Returns the total number of units killed
 	
+	bool isEmpty(); //Checks if all of the army is gone
+
 	void print_killed(); //Prints the KilledEarth queue
 
 	LinkedQueue<ArmyUnit*>* get_soldiers(int n); //Returns a queue of n soldiers
