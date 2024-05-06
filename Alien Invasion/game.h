@@ -53,4 +53,5 @@ public:
 	void kill_unit(ArmyUnit* u); //Function to kill a unit
 
 	void silent_step(); //Function to simulate a time step without printing the state of the game
+
 };
