@@ -138,13 +138,17 @@
     <ClCompile Include="ArmyUnit.cpp" />
     <ClCompile Include="EarthArmy.cpp" />
     <ClCompile Include="EarthGunnery.cpp" />
+    <ClCompile Include="EarthHealer.cpp" />
     <ClCompile Include="EarthSoldier.cpp" />
     <ClCompile Include="EarthSoldierQ.cpp" />
     <ClCompile Include="EarthTank.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GunneryPriQ.cpp" />
+    <ClCompile Include="HealerStack.cpp" />
+    <ClCompile Include="HealerStack.h" />
     <ClCompile Include="RandomGenerator.cpp" />
     <ClCompile Include="TanksStack.cpp" />
+    <ClCompile Include="UnitMaintenanceList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlienArmy.h" />
@@ -159,6 +163,7 @@
     <ClInclude Include="Deque.h" />
     <ClInclude Include="EarthArmy.h" />
     <ClInclude Include="EarthGunnery.h" />
+    <ClInclude Include="EarthHealer.h" />
     <ClInclude Include="EarthSoldier.h" />
     <ClInclude Include="EarthSoldierQ.h" />
     <ClInclude Include="EarthTank.h" />
@@ -173,6 +178,7 @@
     <ClInclude Include="RandomGenerator.h" />
     <ClInclude Include="StackADT.h" />
     <ClInclude Include="TanksStack.h" />
+    <ClInclude Include="UnitMaintenanceList.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Generator template.txt" />

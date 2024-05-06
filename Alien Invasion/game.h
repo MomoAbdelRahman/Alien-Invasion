@@ -4,7 +4,6 @@
 #include <iostream>
 #include <math.h>
 #include "RandomGenerator.h"
-#include"game.h"
 using namespace std;
 class game{
 public:
@@ -13,15 +12,19 @@ public:
 	gameconfig config;
 	int time;
 	int killcount;
+	int UML_new = 0; //Units added to UML this round
+	bool tank_anxiety=false; //Bool variable to indicate whether earth soldiers fell below 30% of alien soldiers count and gets turned back off when ES is back to 80% of AS
 	//Function to read the configuration data from a text file
 	void read_data();
 	
-	//An instance of the random generator to manage the random creation of units
-	randgen* generator;
+	void update_tank_status(); //Updates tank_anxiety
+
+	randgen* generator=nullptr; //An instance of the random generator to manage the random creation of units
 	
 	//The two armies
 	AlienArmy Aliens;
 	EarthArmy Humans;
+	UnitMaintenanceList UML;
 	LinkedQueue<ArmyUnit*> killed;
 	void go(); //The function called to start the game
 	game(); //Constructor
@@ -35,11 +38,16 @@ public:
 
 	void print_aliens(); //Function to print the aliens in the army
 
+	void print_UML(); //Function to print who is in the UML and how many 
+
+	void update_UML(); //Function to move hurt soldiers and tanks to UML
+
 	void steptime(); //Function to simulate a time step and add new units to the armies if the probability is met
 
 	void print_killed(); //Function to print the units killed in the last time step
 
 	LinkedQueue<ArmyUnit*>* get_enemies(TYPE t, int n); //Function to get the enemies of a unit
 	void kill_unit(ArmyUnit* u); //Function to kill a unit
+
 	
 };

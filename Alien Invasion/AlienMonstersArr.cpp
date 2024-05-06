@@ -43,7 +43,7 @@ void AlienMonstersArray::remove(AlienMonster*& monster)
 void AlienMonstersArray::print()
 {
 	// cout << "======================Alien Monster Units========================" << endl;
-	cout << "AM:" << count << " [";
+	cout << "AM: " << count << " [";
 	for (int i = 0; i < count; i++) {
 		cout << alienMonsters[i]->get_id();
 		if (i < count - 1)

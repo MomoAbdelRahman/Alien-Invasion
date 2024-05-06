@@ -1,4 +1,5 @@
 #include "EarthSoldierQ.h"
+#include "game.h"
 
 EarthSoldierQueue::EarthSoldierQueue()
 {
@@ -76,4 +77,26 @@ LinkedQueue<ArmyUnit*>* EarthSoldierQueue::get_soldiers(int n)
 		add_earthsoldier(unit);
 	}
 	return returned;
+}
+
+LinkedQueue<EarthSoldier*>* EarthSoldierQueue::get_hurt_soldiers()
+{
+	LinkedQueue<EarthSoldier*>* injured = new LinkedQueue<EarthSoldier*>;
+	EarthSoldierQueue temp;
+	EarthSoldier* unit;
+	while (!isempty()) {
+		remove_earthsoldier(unit);
+		if (unit->get_health() < 0.2 * (unit->get_game()->config.max_earth_health)) {
+			injured->enqueue(unit);
+			count--;
+		}
+		else {
+			temp.add_earthsoldier(unit);
+		}
+	}
+	while (!temp.isempty()) {
+		temp.remove_earthsoldier(unit);
+		add_earthsoldier(unit);
+	}
+	return injured;
 }

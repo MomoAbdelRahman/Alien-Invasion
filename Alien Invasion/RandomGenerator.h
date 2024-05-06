@@ -2,12 +2,14 @@
 #include "gameconfig.h"
 #include"AlienArmy.h"
 #include"EarthArmy.h"
+#include "UnitMaintenanceList.h"
 class randgen {
 private:
 	int N;
 	int ES;
 	int ET;
 	int EG;
+	int EH;
 	int AS;
 	int AM;
 	int AD;

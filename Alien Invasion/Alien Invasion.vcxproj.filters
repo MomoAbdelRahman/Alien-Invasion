@@ -117,6 +117,18 @@
     <ClCompile Include="ArmyUnit.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
+    <ClCompile Include="EarthHealer.cpp">
+      <Filter>Source Files\Earth\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="HealerStack.cpp">
+      <Filter>Source Files\Earth\Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="HealerStack.h">
+      <Filter>Header Files\Earth\Earth Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitMaintenanceList.cpp">
+      <Filter>Source Files\Earth\Lists</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StackADT.h">
@@ -196,6 +208,12 @@
     </ClInclude>
     <ClInclude Include="RandomGenerator.h">
       <Filter>Header Files\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthHealer.h">
+      <Filter>Header Files\Earth\EarthUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitMaintenanceList.h">
+      <Filter>Header Files\Earth\Earth Lists</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

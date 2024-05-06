@@ -8,6 +8,7 @@ struct gameconfig
 	int ES;
 	int ET;
 	int EG;
+	int EH;
 	int AS;
 	int AM;
 	int AD;
@@ -37,6 +38,7 @@ struct gameconfig
 		cout << "ES: " << ES << endl;
 		cout << "ET: " << ET << endl;
 		cout << "EG: " << EG << endl;
+		cout << "EH: " << EH << endl;
 		cout << "AS: " << AS << endl;
 		cout << "AM: " << AM << endl;
 		cout << "AD: " << AD << endl;

@@ -6,6 +6,7 @@ randgen::randgen(gameconfig& config)
 	ES = config.ES;
 	ET = config.ET;
 	EG = config.EG;
+	EH = config.EH;
 	AS = config.AS;
 	AM = config.AM;
 	AD = config.AD;
@@ -30,7 +31,7 @@ ArmyUnit* randgen::Earthgenerator(int ID, int jt)
 	int rand_power = rand() % (max_earth_power - min_earth_power + 1) + min_earth_power; //Generates a random number between min and max power
 	int rand_capacity = rand() % (max_earth_capacity - min_earth_capacity + 1) + min_earth_capacity; //Generates a random number between min and max capacity
 	ArmyUnit* unit = nullptr;
-	int B = rand() % 100; //Generates a random number between 0 and 100
+	int B = rand() % 101; //Generates a random number between 0 and 100
 	if (B <= ES) {
 		unit = new EarthSoldier(ID, rand_health, jt, rand_power, rand_capacity); //Creates a new EarthSoldier object if B is less than or equal to ES
 	}
@@ -39,6 +40,9 @@ ArmyUnit* randgen::Earthgenerator(int ID, int jt)
 	}
 	else if (B <= ES + ET + EG) {
 		unit = new EarthGunnery(ID, rand_health, jt, rand_power, rand_capacity); //Creates a new EarthGunnery object if B is less than or equal to ES + ET + EG
+	}
+	else if (B <= ES + ET + EG+ EH) {
+		unit = new EarthHealer(ID, rand_health, jt, rand_power, rand_capacity); //Creates a new EarthGunnery object if B is less than or equal to ES + ET + EG
 	}
 	return unit;
 }
@@ -49,7 +53,7 @@ ArmyUnit* randgen::Aliengenerator(int ID, int jt)
 	int rand_health = rand() % (max_alien_health - min_alien_health + 1) + min_alien_health;
 	int rand_power = rand() % (max_alien_power - min_alien_power + 1) + min_alien_power;
 	int rand_capacity = rand() % (max_alien_capacity - min_alien_capacity + 1) + min_alien_capacity;
-	int B = rand() % 100;
+	int B = rand() % 101; //Generates a random number between 0 and 100
 	if (B <= AS) {
 		unit = new AlienSoldier(ID, rand_health, jt, rand_power, rand_capacity);
 	}

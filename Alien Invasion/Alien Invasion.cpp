@@ -1,4 +1,5 @@
 #include "game.h"
+#include "priQueue.h"
 using namespace std;
 int main()
 {

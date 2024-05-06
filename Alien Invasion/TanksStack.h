@@ -16,4 +16,5 @@ public:
 	void selecttank(EarthTank* &tank); //selecttank function to select the tank unit at the top of the stack
 	bool isEmpty(); //isEmpty function to check if the stack is empty
 	LinkedQueue<ArmyUnit*>* get_tanks(int n);
+	LinkedQueue<EarthTank*>* get_hurt_tanks(); //Gets the tanks with less than 20% health
 };

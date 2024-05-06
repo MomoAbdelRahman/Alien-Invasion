@@ -21,7 +21,7 @@ void AlienDronesDequeue::removeDrones(AlienDrone*& removed1, AlienDrone*& remove
 void AlienDronesDequeue::print()
 {
 	//cout << "======================Alien Drone Units========================" << endl; //Printing the AlienDrone units
-	cout << "AD:" << count << " [";
+	cout << "AD: " << count << " [";
 	alienDD.printDQ();
 	cout << "]"<<endl;
 

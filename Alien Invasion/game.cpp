@@ -7,6 +7,7 @@ void game::read_data()
 	Data >> config.ES;
 	Data >> config.ET;
 	Data >> config.EG;
+	Data >> config.EH;
 	Data >> config.AS;
 	Data >> config.AM;
 	Data >> config.AD;
@@ -32,10 +33,21 @@ void game::read_data()
 	config.max_alien_capacity = abs(config.max_alien_capacity);
 }
 
+void game::update_tank_status()
+{
+	if (tank_anxiety) {
+		if (Humans.get_soldier_id() >= 0.8 * Aliens.get_soldier_id()) tank_anxiety = false;
+	}
+	else{
+		if (Humans.get_soldier_id() <= 0.3 * Aliens.get_soldier_id()) tank_anxiety = true;
+	}
+}
+
 void game::go()
 {
 	read_data();//Read the data from the file
-	generator = new randgen(config);//Create the random generator with the configuration data
+	generator = new randgen(config); //Create the random generator with the configuration data
+	UML.set_max_health(config.max_earth_health);
 }
 
 game::game()
@@ -95,14 +107,25 @@ void game::steptime()
 	cout << "=========================Attacks========================"<<endl;
 	Humans.attack();
 	Aliens.Attack();
+	update_UML();
 	int A = rand() % 100;
 	if (A < config.prob) {
 		add_humans();
 		add_aliens();
 	}
+	print_UML();
 	print_killed();
 	cout << endl << endl;
+	UML_new = 0;
 	time++;
+}
+
+void game::print_UML()
+{
+	cout << "==================Unit Maintenance List=================" << endl;
+	UML.print();
+	cout << "(" << UML_new << " units added)" << endl;
+
 }
 
 void game::print_killed()
@@ -133,6 +156,26 @@ void game::print_killed()
 	cout << "]" << endl;;*/
 }
 
+void game::update_UML()
+{
+	LinkedQueue<EarthSoldier*>* hurt_soldiers = Humans.get_hurt_soldiers();
+	LinkedQueue<EarthTank*>* hurt_tanks = Humans.get_hurt_tanks();
+	EarthSoldier* soldier;
+	EarthTank* tank;
+	while (!hurt_soldiers->isEmpty()) {
+		hurt_soldiers->dequeue(soldier);
+		UML.add_soldier(soldier);
+		soldier->set_UML_time(time);
+		UML_new++;
+	}
+	while (!hurt_tanks->isEmpty()) {
+		hurt_tanks->dequeue(tank);
+		UML.add_tank(tank);
+		tank->set_UML_time(time);
+		UML_new++;
+	}
+}
+
 LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 	int soldiercount = Aliens.get_soldier_id();
 	int monstercount = Aliens.get_monster_id();
@@ -150,35 +193,35 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 		return Aliens.get_soldiers(n);
 		break;
 	case TANK:
-		if (Humans.get_soldier_id() <= 0.3 * Aliens.get_soldier_id()) {
+		update_tank_status();
+		if (tank_anxiety) {
 			ArmyUnit* temp;
 			int soldierlength;
 			int monsterlength;
-			if (soldiercount >= n / 2 && monstercount >= n / 2) {
-				t1 = Aliens.get_soldiers(n / 2);
+			if (soldiercount <= n / 2 && monstercount <= n / 2) {
+				t1 = Aliens.get_soldiers(soldiercount);
+				t2 = Aliens.get_monsters(monstercount);
+				soldierlength = soldiercount;
+				monsterlength = monstercount;
+			}
+			else if (soldiercount >= n / 2 && monstercount > n / 2) {
+				t1 = Aliens.get_soldiers(n - (n / 2));
 				t2 = Aliens.get_monsters(n / 2);
-				soldierlength = n / 2;
+				soldierlength = n - (n / 2);
 				monsterlength = n / 2;
 			}
-			else if (soldiercount <= n / 2 && monstercount >= n / 2) {
+			else if (soldiercount <= n / 2 && monstercount > n / 2) {
+				t2 = Aliens.get_monsters(min(n - soldiercount, monstercount));
 				t1 = Aliens.get_soldiers(soldiercount);
-				t2 = Aliens.get_monsters(n - soldiercount);
+				monsterlength = min(n - soldiercount, monstercount);
 				soldierlength = soldiercount;
-				monsterlength = n - soldiercount;
 			}
-			else if (soldiercount >= n / 2 && monstercount <= n / 2) {
+			else { //soldiercount > n / 2 && monstercount < n / 2
 				t2 = Aliens.get_monsters(monstercount);
-				t1 = Aliens.get_soldiers(n - monstercount);
-				monsterlength = monstercount;
-				soldierlength = n - monstercount;
-			}
-			else {
-				t2 = Aliens.get_monsters(monstercount);
-				t1 = Aliens.get_soldiers(soldiercount);
-				soldierlength = soldiercount;
+				t1 = Aliens.get_soldiers(min(soldiercount, n - soldiercount));
+				soldierlength = min(soldiercount, n - soldiercount);
 				monsterlength = monstercount;
 			}
-			
 			LinkedQueue<ArmyUnit*>* tr=new LinkedQueue<ArmyUnit*>;
 			for (int i = 0; i < soldierlength; i++) {
 				if(t1->dequeue(temp))
@@ -236,35 +279,38 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 		delete t2;
 		return tr;
 		break;
+	case HEALER:
+		return UML.get_injured(n);
+		break;
 	case ALIENSOLDIER:
 		return Humans.get_soldiers(n);
 		break;
 	case MONSTER:
 		int humansoldierlength;
 		int tanklength;
-		if (humansoldierc >= n / 2 && tankscount >= n / 2) {
-			t1 = Humans.get_soldiers(n / 2);
-			t2 = Humans.get_tanks(n / 2);
-			humansoldierlength = n / 2;
+		if (humansoldierc <= n / 2 && tankscount <= n / 2) {
+			t1 = Aliens.get_soldiers(humansoldierc);
+			t2 = Aliens.get_monsters(monstercount);
+			humansoldierlength = humansoldierc;
+			tanklength = monstercount;
+		}
+		else if (humansoldierc >= n / 2 && monstercount > n / 2) {
+			t1 = Aliens.get_soldiers(n - (n / 2));
+			t2 = Aliens.get_monsters(n / 2);
+			humansoldierlength = n - (n / 2);
 			tanklength = n / 2;
 		}
-		else if (humansoldierc <= n / 2 && tankscount >= n / 2) {
-			t1 = Humans.get_soldiers(humansoldierc);
-			t2 = Humans.get_tanks(n - humansoldierc);
+		else if (humansoldierc <= n / 2 && monstercount > n / 2) {
+			t2 = Aliens.get_monsters(min(n - humansoldierc, monstercount));
+			t1 = Aliens.get_soldiers(humansoldierc);
+			tanklength = min(n - humansoldierc, monstercount);
 			humansoldierlength = humansoldierc;
-			tanklength = n - humansoldierc;
 		}
-		else if (humansoldierc >= n / 2 && tankscount <= n / 2) {
-			t2 = Humans.get_tanks(tankscount);
-			t1 = Humans.get_soldiers(n - tankscount);
-			tanklength = tankscount;
-			humansoldierlength = n - tankscount;
-		}
-		else {
-			t2 = Humans.get_tanks(tankscount);
-			t1 = Humans.get_soldiers(soldiercount);
-			tanklength = tankscount;
-			humansoldierlength = humansoldierc;
+		else { //humansoldierc > n / 2 && monstercount < n / 2
+			t2 = Aliens.get_monsters(monstercount);
+			t1 = Aliens.get_soldiers(min(humansoldierc, n - humansoldierc));
+			humansoldierlength = min(humansoldierc, n - humansoldierc);
+			tanklength = monstercount;
 		}
 
 		for (int i = 0; i < tanklength; i++) {
