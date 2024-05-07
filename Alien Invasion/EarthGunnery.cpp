@@ -26,8 +26,8 @@ bool EarthGunnery::attack()
 			if (enemy->get_health() <= 0)
 			{
 				enemy->set_health(0);
-				gameptr->kill_unit(enemy);
 				gameptr->Aliens.removeunit(enemy->get_type(), enemy, enemy2);
+				gameptr->kill_unit(enemy);
 			}
 		
 		}

@@ -289,28 +289,28 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 		int humansoldierlength;
 		int tanklength;
 		if (humansoldierc <= n / 2 && tankscount <= n / 2) {
-			t1 = Aliens.get_soldiers(humansoldierc);
-			t2 = Aliens.get_monsters(monstercount);
+			t1 = Humans.get_soldiers(humansoldierc);
+			t2 = Humans.get_tanks(tankscount);
 			humansoldierlength = humansoldierc;
-			tanklength = monstercount;
+			tanklength = tankscount;
 		}
-		else if (humansoldierc >= n / 2 && monstercount > n / 2) {
-			t1 = Aliens.get_soldiers(n - (n / 2));
-			t2 = Aliens.get_monsters(n / 2);
+		else if (humansoldierc >= n / 2 && tankscount > n / 2) {
+			t1 = Humans.get_soldiers(n - (n / 2));
+			t2 = Humans.get_tanks(n / 2);
 			humansoldierlength = n - (n / 2);
 			tanklength = n / 2;
 		}
-		else if (humansoldierc <= n / 2 && monstercount > n / 2) {
-			t2 = Aliens.get_monsters(min(n - humansoldierc, monstercount));
-			t1 = Aliens.get_soldiers(humansoldierc);
-			tanklength = min(n - humansoldierc, monstercount);
+		else if (humansoldierc <= n / 2 && tankscount > n / 2) {
+			t2 = Humans.get_tanks(min(n - humansoldierc, tankscount));
+			t1 = Humans.get_soldiers(humansoldierc);
+			tanklength = min(n - humansoldierc, tankscount);
 			humansoldierlength = humansoldierc;
 		}
 		else { //humansoldierc > n / 2 && monstercount < n / 2
-			t2 = Aliens.get_monsters(monstercount);
-			t1 = Aliens.get_soldiers(min(humansoldierc, n - humansoldierc));
+			t2 = Humans.get_tanks(tankscount);
+			t1 = Humans.get_soldiers(min(humansoldierc, n - humansoldierc));
 			humansoldierlength = min(humansoldierc, n - humansoldierc);
-			tanklength = monstercount;
+			tanklength = tankscount;
 		}
 
 		for (int i = 0; i < tanklength; i++) {
