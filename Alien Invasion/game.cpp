@@ -540,7 +540,7 @@ void game::generate_output_file()
 	output << "Average DB of Earth Army: " << avg_db_e << endl;
 	output << "DF/DB=" << 100 * avg_df_e / avg_db_e << "%" << endl;
 	output << "DD/DB=" << 100 * avg_dd_e / avg_db_e << "%" << endl;
-	output<< "Total Healed Percentage: " << total_healed/total_earth << endl;
+	output<< "Total Healed Percentage: " << 100* (float)total_healed/total_earth << "%" << endl;
 	output<< endl;
 
 
