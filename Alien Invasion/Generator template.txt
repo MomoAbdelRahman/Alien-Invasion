@@ -1,5 +1,5 @@
 n
-ES% ET% EG%
+ES% ET% EG% EH%
 AS% AM% AD%
 Prob
 
@@ -13,6 +13,7 @@ N=Number of units to be generated per time step
 ES%= Percentage of Earth Army that are soldiers
 ET%= Percentage of Earth Army that are tanks
 EG%= Percentage of Earth Army that are gunnery
+EH%= Percentage of Earth Army that are healers
 
 AS%= Percentage of Alien Army that are soldiers
 AM%= Percentage of Alien Army that are Monsters

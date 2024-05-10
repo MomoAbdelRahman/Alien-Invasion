@@ -30,7 +30,7 @@ public:
 
 	void print();//Prints all the units of the AlienArmy
 
-
+	bool isEmpty(); //Checks if all of the army is gone
 	
 	int get_soldier_id(); //Returns the number of AlienSoldiers
 	int get_drone_id(); //Returns the number of AlienDrones

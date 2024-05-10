@@ -1,4 +1,5 @@
 #include "TanksStack.h"
+#include "game.h"
 
 EarthTankStack::EarthTankStack()
 {
@@ -83,4 +84,25 @@ LinkedQueue<ArmyUnit*>* EarthTankStack::get_tanks(int n)
 		AddTank(unit);
 	}
 	return returned;
+}
+
+LinkedQueue<EarthTank*>* EarthTankStack::get_hurt_tanks()
+{
+	LinkedQueue<EarthTank*>* injured = new LinkedQueue<EarthTank*>;
+	EarthTankStack temp;
+	EarthTank* unit;
+	while (!isEmpty()) {
+		removeTank(unit);
+		if (unit->get_health() < 0.2 * (unit->get_game()->config.max_earth_health)) {
+			injured->enqueue(unit);	
+		}
+		else {
+			temp.AddTank(unit);
+		}
+	}
+	while (!temp.isEmpty()) {
+		temp.removeTank(unit);
+		AddTank(unit);
+	}
+	return injured;
 }

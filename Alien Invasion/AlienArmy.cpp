@@ -87,6 +87,12 @@ void AlienArmy::print()
 	AlienMonsters.print(); //Prints all the units of the AlienArmy
 }
 
+bool AlienArmy::isEmpty()
+{
+	if (AlienDrones.isEmpty() && AlienMonsters.isEmpty() && AlienSoldiers.isEmpty()) return true;
+	return false;
+}
+
 int AlienArmy::get_soldier_id()
 {
 	return AlienSoldiers.get_count();

@@ -1,12 +1,12 @@
 #include "AlienDrone.h"
 #include "game.h"
-AlienDrone::AlienDrone(int id, int health, int power, int jointime, int attackcapcity):ArmyUnit(id, DRONE, health, jointime, power, attackcapcity)
+AlienDrone::AlienDrone(int id, int health, int jointime, int power, int attackcapcity):ArmyUnit(id, DRONE, health, jointime, power, attackcapcity)
 {
 }
 
 bool AlienDrone::attack()
 {
-	cout << "AD " << this->get_id() << ":"; //prints the id of the soldier attacking
+	
 	LinkedQueue<ArmyUnit*>* enemies = gameptr->get_enemies(DRONE, this->attack_capacity);//gets the enemies that the soldier can attack
 	ArmyUnit* enemy = nullptr; //pointer to the enemy
 	ArmyUnit* temp = nullptr; //pointer to the enemy
@@ -18,7 +18,8 @@ bool AlienDrone::attack()
 	{
 		enemies->dequeue(enemy);
 		if (enemy) {
-			enemy->set_health(enemy->get_health() - this->get_power());
+			if (!(enemy->get_first_attack_time())) { enemy->set_first_attack_time(gameptr->time); }
+			enemy->set_health(enemy->get_health() - (this->get_power() * this->get_health()) / (100 * sqrt(enemy->get_health()))); //Damage done is (attacking unit power * attacking unit health)/(100*sqrt(attacked unit health))
 			if (enemy->get_health() <= 0) {
 				enemy->set_health(0);
 				gameptr->Humans.removeunit(enemy->get_type(), temp);
@@ -28,14 +29,17 @@ bool AlienDrone::attack()
 			shots++;
 		}
 	}
-	cout << shots << " Shots" << "[";
-	while (!shot.isEmpty()) {
-		shot.dequeue(temp2);
-		cout << temp2->get_id();
-		if (!shot.isEmpty()) {
-			cout << ",";
+	if (!gameptr->silent) {
+		cout << "AD " << this->get_id() << ":"; //prints the id of the soldier attacking
+		cout << shots << " Shots" << "[";
+		while (!shot.isEmpty()) {
+			shot.dequeue(temp2);
+			cout << temp2->get_id();
+			if (!shot.isEmpty()) {
+				cout << ",";
+			}
 		}
+		cout << "]" << endl;
 	}
-	cout << "]" << endl;
 	return true;
 }

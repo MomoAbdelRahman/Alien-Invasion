@@ -41,6 +41,7 @@ public:
             return false;
 
         topEntry = head->getItem();
+        pri = head->getPri();   
         priNode<T>* temp = head;
         head = head->getNext();
         delete temp;
