@@ -12,7 +12,7 @@ public:
 	//Instance of gameconfig to held values
 	gameconfig config;
 	int time;
-	int killcount;
+	int killcount = 0;
 	//Function to read the configuration data from a text file
 	void read_data();
 	
