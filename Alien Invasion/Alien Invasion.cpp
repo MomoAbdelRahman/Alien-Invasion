@@ -5,6 +5,6 @@ int main()
 	game g;
 	while (g.time < 50) {
 		g.steptime();
-		system("pause");
+    cin.ignore();
 	}
 }
