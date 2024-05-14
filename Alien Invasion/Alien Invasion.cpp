@@ -7,7 +7,7 @@ int main()
 	cout<<"Press 0 for interactive mode and 1 for silent mode"<<endl;
 	cin>>g.silent;
 	if (!g.silent) {
-		while (!g.Aliens.isEmpty() && !g.Humans.isEmpty()||g.time<40)
+		while ((!g.Aliens.isEmpty() && !g.Humans.isEmpty())||(g.time<40)||(g.time>500))
 		{
 			g.steptime();
 			system("pause");
