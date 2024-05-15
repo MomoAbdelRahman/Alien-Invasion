@@ -43,4 +43,6 @@ public:
 	LinkedQueue<ArmyUnit*>* get_healers(int n);
 	LinkedQueue<EarthSoldier*>* get_hurt_soldiers(); //Gets the soldiers with less than 20% health
 	LinkedQueue<EarthTank*>* get_hurt_tanks(); //Gets the tanks with less than 20% health
+
+	void reorder(); //Reorders the priority queue after removing a gunnery unit
 };

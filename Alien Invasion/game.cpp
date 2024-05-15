@@ -107,6 +107,7 @@ void game::steptime()
 	cout << "=========================Attacks========================"<<endl;
 	Humans.attack();
 	Aliens.Attack();
+	Humans.reorder();
 	int A = rand() % 100;
 	if (A < config.prob) {
 		add_humans();
@@ -335,8 +336,8 @@ LinkedQueue<ArmyUnit*>* game::get_enemies(TYPE t, int n) {
 			tankslength = n / 2;
 		}
 		else if (gunnerycount <= n / 2 && tankscount >= n / 2) {
-			t1 = Humans.get_soldiers(gunnerycount);
-			t2 = Humans.get_gunneries(n - gunnerycount);
+			t1 = Humans.get_gunneries(gunnerycount);
+			t2 = Humans.get_tanks(n - gunnerycount);
 			gunnerylength = gunnerycount;
 			tankslength = n - humansoldierc;
 		}
@@ -484,6 +485,40 @@ void game::generate_output_file()
 	int total_as = Aliens.get_soldier_id() + destructed_as;
 	int total_am = Aliens.get_monster_id() + destructed_am;
 	int total_ad = Aliens.get_drone_id() + destructed_ad;
+
+	ArmyUnit* temp2;
+	while (!UML.is_empty()) {
+		UML.remove_unit(temp2);
+		if (temp2->get_UML_time() >= 10) {
+			switch (temp2->get_type())
+			{
+				case EARTHSOLDIER:
+					destructed_es++;
+					total_es++;
+					break;
+				case TANK:
+					destructed_et++;
+					total_et++;
+					break;
+			default:
+				break;
+			}
+		}
+		else {
+			switch (temp2->get_type())
+			{
+			case EARTHSOLDIER:
+				total_es++;
+				break;
+			case TANK:
+				total_et++;
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
 	int total_earth= total_es + total_et + total_eg + total_eh;
 	int total_dest_earth = destructed_es + destructed_et + destructed_eg + destructed_eh;
 	int total_alien = total_as + total_am + total_ad;

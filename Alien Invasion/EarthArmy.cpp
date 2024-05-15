@@ -188,3 +188,8 @@ LinkedQueue<EarthTank*>* EarthArmy::get_hurt_tanks()
 	return EarthTanks.get_hurt_tanks();
 }
 
+void EarthArmy::reorder()
+{
+	EarthGunneries.reorder();
+}
+

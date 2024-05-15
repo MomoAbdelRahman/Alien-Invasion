@@ -1,5 +1,6 @@
 #include "GunneryPriQ.h"
 #include "LinkedQueue.h"
+#include "game.h"
 GunneryPriQueue::GunneryPriQueue()
 {
 	count = 0;
@@ -8,7 +9,7 @@ GunneryPriQueue::GunneryPriQueue()
 
 void GunneryPriQueue::AddGunnery(EarthGunnery* gunnery)
 {
-	int priority = (gunnery->get_health() + gunnery->get_power());
+	int priority = (gunnery->get_health()+ gunnery->get_power())*(gunnery->get_game()->time - gunnery->get_join_time());
 	gunnerys.enqueue(gunnery, priority);
 	if (priority > next) { next = priority; }
 	count++;
@@ -84,3 +85,19 @@ LinkedQueue<ArmyUnit*>* GunneryPriQueue::get_gunneries(int n)
 	}
 	return gunneries;
 }
+
+void GunneryPriQueue::reorder()
+{
+	GunneryPriQueue t; //Temporary priority queue to store the Gunnery Units
+	EarthGunnery* temp;
+	while (!isEmpty()) {
+		RemoveGunnery(temp);
+		t.AddGunnery(temp);
+	}
+	while (!t.isEmpty()) { //Restore the Gunnery Units to the original priority queue
+			t.RemoveGunnery(temp);
+			AddGunnery(temp);
+	}
+}
+
+
